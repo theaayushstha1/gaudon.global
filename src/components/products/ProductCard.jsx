@@ -13,12 +13,11 @@ const badgeColors = {
 };
 
 const categoryColors = {
-  acidic_glass_sealant: "from-neutral-600 to-neutral-700",
-  neutral_silicone_sealant: "from-neutral-500 to-neutral-600",
-  structural_sealant: "from-neutral-700 to-neutral-800",
-  weatherproof_sealant: "from-neutral-600 to-neutral-700",
-  special_industrial: "from-neutral-800 to-black",
-  construction_adhesive: "from-neutral-500 to-neutral-600"
+  kitchen_bath: "from-blue-500 to-blue-600",
+  weatherproof: "from-green-500 to-green-600",
+  glass: "from-red-500 to-red-600",
+  construction: "from-yellow-500 to-yellow-600",
+  acrylic: "from-purple-500 to-purple-600"
 };
 
 export default function ProductCard({ product, index, isSelected, onToggleCompare, canAddMore }) {

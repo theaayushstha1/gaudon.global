@@ -8,64 +8,64 @@ import { Button } from '@/components/ui/button';
 // Top 6 products for the slider
 const featuredProducts = [
   {
-    id: 'gaudon-999',
-    model: 'GAUDON 999',
-    name: 'High-Performance Structural Sealant',
-    warranty: '20 Years',
-    category: 'Structural',
-    description: 'Our best-selling neutral cure structural sealant with exceptional UV resistance and high bonding strength. Perfect for glass curtain walls, metal panels, and skylights.',
-    features: ['Neutral Cure', 'UV Resistant', 'High Strength', '-50°C to +100°C'],
-    image: '/images/products/placeholder-999.png'
-  },
-  {
-    id: 'gaudon-9009',
-    model: 'GAUDON 9009',
-    name: 'Two-Component Structural Silicone',
-    warranty: '30 Years',
-    category: 'Structural',
-    description: 'Premium two-component structural sealant for demanding curtain wall applications. Load-bearing capability with ISO certification.',
-    features: ['Two-Component', 'Load Bearing', 'ISO Certified', '30+ Year Lifespan'],
-    image: '/images/products/placeholder-9009.png'
-  },
-  {
-    id: 'gaudon-20000',
-    model: 'GAUDON 20000',
-    name: 'High-Strength Curtain Wall Sealant',
-    warranty: '30 Years',
-    category: 'Structural',
-    description: 'Our flagship curtain wall sealant engineered for maximum strength and durability. Trusted on landmark buildings worldwide.',
-    features: ['Curtain Wall', 'Premium Grade', 'Single Component', 'Fast Cure'],
-    image: '/images/products/placeholder-20000.png'
-  },
-  {
-    id: 'gaudon-7800',
-    model: 'GAUDON 7800',
-    name: 'Weatherproofing Silicone Sealant',
-    warranty: '20 Years',
-    category: 'Weatherproof',
-    description: 'Versatile weatherproofing solution for all climate conditions. Excellent flexibility and adhesion on multiple substrates.',
-    features: ['All Weather', 'Flexible', 'Fast Cure', 'Multi-Surface'],
-    image: '/images/products/placeholder-7800.png'
-  },
-  {
-    id: 'gaudon-9900',
-    model: 'GAUDON 9900',
-    name: 'High-Strength Acidic Glass Sealant',
-    warranty: '12 Years',
-    category: 'Glass',
-    description: 'Crystal clear glass sealant that never yellows. Ideal for aquariums, display cases, and large glass installations.',
-    features: ['Non-Yellowing', 'Aquarium Safe', 'High Elasticity', 'Transparent'],
-    image: '/images/products/placeholder-9900.png'
-  },
-  {
-    id: 'gaudon-7900',
-    model: 'GAUDON 7900',
-    name: 'Electronics & Industrial RTV Silicone',
+    id: 'gaudon-g1',
+    model: 'GAUDON G1',
+    name: 'Kitchen & Bath Silicone Sealant',
     warranty: '10 Years',
-    category: 'Specialty',
-    description: 'Specialized RTV silicone for electronics and high-temperature applications. Excellent electrical insulation properties.',
-    features: ['Heat Resistant', 'Up to 180°C', 'Electronic Safe', 'Industrial Grade'],
-    image: '/images/products/placeholder-7900.png'
+    category: 'Kitchen & Bath',
+    description: 'Premium mold-free silicone sealant designed for kitchen and bathroom applications. Features advanced 3X mold protection and 100% waterproof seal.',
+    features: ['Mold Free', '3X Protection', 'Waterproof', 'Low Odor'],
+    image: '/images/products/gaudon-g1-kitchen-bath.png'
+  },
+  {
+    id: 'gaudon-g2',
+    model: 'GAUDON G2',
+    name: 'Window & Door Silicone Sealant',
+    warranty: '30 Years',
+    category: 'Weatherproof',
+    description: 'Weather Tough silicone sealant engineered for extreme weather defense. Up to 30-year durability for windows and doors.',
+    features: ['30-Year', 'Weather Tough', 'Flexible', 'Neutral Cure'],
+    image: '/images/products/gaudon-g2-window-door.png'
+  },
+  {
+    id: 'gaudon-d1',
+    model: 'GAUDON D1',
+    name: 'All-Purpose Silicone Sealant',
+    warranty: '10 Years',
+    category: 'Glass & Aquarium',
+    description: 'Professional grade all-purpose silicone with aquarium safe formula. Ultra clear finish and 100% waterproof bond.',
+    features: ['Aquarium Safe', 'Ultra Clear', 'Professional', '100% Silicone'],
+    image: '/images/products/gaudon-d1-silicone.png'
+  },
+  {
+    id: 'gaudon-d2',
+    model: 'GAUDON D2',
+    name: 'Heavy Duty Silicone Sealant',
+    warranty: '15 Years',
+    category: 'Construction',
+    description: 'Heavy duty all-purpose silicone with 3X enhanced adhesion. Fast cure performance for the toughest jobs.',
+    features: ['Heavy Duty', '3X Adhesion', 'Fast Cure', 'Waterproof'],
+    image: '/images/products/gaudon-d2-heavy-duty.png'
+  },
+  {
+    id: 'gaudon-b1',
+    model: 'GAUDON B1',
+    name: 'Acrylic Latex Sealant',
+    warranty: '10 Years',
+    category: 'Acrylic',
+    description: 'Water-based acrylic latex sealant for everyday interior use. Easy one-step application with paintable finish.',
+    features: ['Paintable', 'Water-Based', 'Easy Apply', 'Interior'],
+    image: '/images/products/gaudon-b1-acrylic-latex.png'
+  },
+  {
+    id: 'gaudon-b1-premium',
+    model: 'GAUDON B1 Premium',
+    name: 'Premium Latex Sealant',
+    warranty: '15 Years',
+    category: 'Acrylic',
+    description: 'Premium water-based latex sealant with fast dry formula. Professional-grade results with premium paintable finish.',
+    features: ['Fast Dry', 'Premium', 'Paintable', 'Professional'],
+    image: '/images/products/gaudon-b1-premium-latex.png'
   }
 ];
 
@@ -117,22 +117,14 @@ export default function ProductShowcase() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3 }}
-                  className="relative aspect-square bg-gradient-to-br from-slate-100 to-slate-200 rounded-3xl flex items-center justify-center overflow-hidden"
+                  className="relative aspect-[3/4] bg-gradient-to-br from-slate-50 to-slate-100 rounded-3xl flex items-center justify-center overflow-hidden"
                 >
-                  {/* Product Visual Placeholder */}
-                  <div className="text-center p-8">
-                    {/* Cartridge shape placeholder */}
-                    <div className="relative mx-auto mb-6">
-                      <div className="w-32 h-52 mx-auto bg-gradient-to-b from-slate-700 to-slate-900 rounded-t-2xl rounded-b-lg shadow-2xl">
-                        <div className="absolute top-4 left-1/2 -translate-x-1/2 w-12 h-2 bg-slate-600 rounded" />
-                        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
-                          <div className="text-xs font-bold text-white/80 tracking-wider">GAUDON</div>
-                          <div className="text-[10px] text-white/60 mt-1">{currentProduct.model.split(' ')[1]}</div>
-                        </div>
-                      </div>
-                      <div className="w-10 h-12 mx-auto bg-gradient-to-b from-slate-600 to-slate-800 -mt-1 rounded-b-lg" />
-                    </div>
-                  </div>
+                  {/* Product Image */}
+                  <img
+                    src={currentProduct.image}
+                    alt={currentProduct.name}
+                    className="h-[85%] w-auto object-contain drop-shadow-xl"
+                  />
 
                   {/* Warranty Badge */}
                   <div className="absolute top-6 right-6">

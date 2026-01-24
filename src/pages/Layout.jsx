@@ -70,9 +70,8 @@ function LayoutContent({ children, currentPageName }) {
                 <img
                   src="/gaudon-logo.png"
                   alt="GAUDON Logo"
-                  className={`transition-all duration-300 ${isScrolled ? 'h-16' : 'h-24'} w-auto object-contain ${
-                    !isScrolled && !hasLightBackground ? 'brightness-0 invert' : ''
-                  }`}
+                  className={`transition-all duration-300 ${isScrolled ? 'h-10' : 'h-14'} w-auto object-contain`}
+                  style={!isScrolled && !hasLightBackground ? { filter: 'drop-shadow(0 0 1px white) drop-shadow(0 0 1px white) drop-shadow(0 0 2px white)' } : {}}
                 />
               </motion.div>
             </Link>
@@ -176,7 +175,7 @@ function LayoutContent({ children, currentPageName }) {
                 <img
                   src="/gaudon-logo.png"
                   alt="GAUDON Logo"
-                  className="h-12 w-auto object-contain brightness-0 invert"
+                  className="h-12 w-auto object-contain"
                 />
               </Link>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">

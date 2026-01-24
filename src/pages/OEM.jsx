@@ -31,10 +31,10 @@ const customizationSteps = [
 ];
 
 const products = [
-  { name: 'GAUDON 20000', type: 'Structural Sealant', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693f3302d24da57442c2c3ab/bb17d4abc_20000.png' },
-  { name: 'GAUDON 999', type: 'Weatherproof', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693f3302d24da57442c2c3ab/7caa80b60_999.png' },
-  { name: 'GAUDON 777', type: 'All-Purpose', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693f3302d24da57442c2c3ab/af66c9ac4_777.png' },
-  { name: 'GAUDON 9900', type: 'Acidic Glass', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693f3302d24da57442c2c3ab/c59ff6c5e_9900.png' }
+  { name: 'GAUDON G1', type: 'Kitchen & Bath', image: '/images/products/gaudon-g1-kitchen-bath.png' },
+  { name: 'GAUDON G2', type: 'Window & Door', image: '/images/products/gaudon-g2-window-door.png' },
+  { name: 'GAUDON D1', type: 'All-Purpose', image: '/images/products/gaudon-d1-silicone.png' },
+  { name: 'GAUDON D2', type: 'Heavy Duty', image: '/images/products/gaudon-d2-heavy-duty.png' }
 ];
 
 const oemBenefits = [
@@ -459,7 +459,7 @@ export default function OEM() {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section
-        className="relative pt-28 pb-20 overflow-hidden"
+        className="relative pt-36 md:pt-40 pb-20 overflow-hidden"
         style={{ background: 'linear-gradient(to bottom, #000000 0%, #111111 100%)' }}
       >
         <div className="absolute inset-0 pattern-grid" />
@@ -512,22 +512,53 @@ export default function OEM() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="relative hidden lg:block"
+              className="relative hidden lg:flex items-center justify-center"
             >
-              <img
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693f3302d24da57442c2c3ab/bb17d4abc_20000.png"
+              {/* Main product - center with float animation */}
+              <motion.img
+                src="/images/products/gaudon-g1-kitchen-bath.png"
                 alt="GAUDON Silicone Products"
-                className="w-64 h-auto mx-auto drop-shadow-2xl"
+                className="h-80 w-auto drop-shadow-2xl z-10"
+                animate={{
+                  y: [0, -15, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
               />
-              <img
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693f3302d24da57442c2c3ab/7caa80b60_999.png"
+              {/* Left product - with delayed float */}
+              <motion.img
+                src="/images/products/gaudon-d1-silicone.png"
                 alt="GAUDON Product"
-                className="absolute -left-4 top-1/2 w-40 h-auto drop-shadow-xl"
+                className="absolute left-0 top-1/2 h-56 w-auto drop-shadow-xl opacity-90"
+                animate={{
+                  y: ["-50%", "calc(-50% - 10px)", "-50%"],
+                  x: [-16, -20, -16],
+                }}
+                transition={{
+                  duration: 3.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5
+                }}
               />
-              <img
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693f3302d24da57442c2c3ab/af66c9ac4_777.png"
+              {/* Right product - with different timing */}
+              <motion.img
+                src="/images/products/gaudon-g2-window-door.png"
                 alt="GAUDON Product"
-                className="absolute -right-4 top-1/3 w-40 h-auto drop-shadow-xl"
+                className="absolute right-0 top-1/2 h-56 w-auto drop-shadow-xl opacity-90"
+                animate={{
+                  y: ["-50%", "calc(-50% - 12px)", "-50%"],
+                  x: [16, 20, 16],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1
+                }}
               />
             </motion.div>
           </div>
@@ -576,7 +607,7 @@ export default function OEM() {
                   className="text-center"
                 >
                   <img
-                    src="/images/products/gaudon-g1-cartridge.png"
+                    src="/images/products/gaudon-b1-acrylic-latex.png"
                     alt="GAUDON Silicone Sealant"
                     className="h-64 md:h-80 w-auto mx-auto"
                   />
