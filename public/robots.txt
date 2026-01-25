@@ -1,0 +1,11 @@
+# Robots.txt for GAUDON USA
+# https://www.gaudon.store
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.gaudon.store/sitemap.xml
+
+# Crawl-delay (optional, helps prevent server overload)
+Crawl-delay: 1
