@@ -94,7 +94,7 @@ export default function Contact() {
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-4 text-display-lg">
               Let's Build Something{' '}
-              <span className="gradient-text">Great Together</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-green-400 via-yellow-400 via-red-400 to-pink-400">Great Together</span>
             </h1>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto">
               Whether you need bulk orders, custom formulations, or technical support,
@@ -160,18 +160,18 @@ export default function Contact() {
                         onClick={() => setSelectedType(type)}
                         className={`w-full p-4 rounded-xl border text-left transition-all duration-200 ${
                           selectedType?.id === type.id
-                            ? 'border-[#000000] bg-slate-50'
+                            ? 'border-emerald-600 bg-emerald-50'
                             : 'border-slate-200 hover:border-slate-300 bg-white'
                         }`}
                       >
                         <div className="flex items-center gap-3">
                           <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${
-                            selectedType?.id === type.id ? 'bg-[#000000] text-white' : 'bg-slate-100 text-slate-600'
+                            selectedType?.id === type.id ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-600'
                           }`}>
                             <type.icon className="w-5 h-5" />
                           </div>
                           <div>
-                            <p className={`font-medium text-sm ${selectedType?.id === type.id ? 'text-[#000000]' : 'text-slate-700'}`}>
+                            <p className={`font-medium text-sm ${selectedType?.id === type.id ? 'text-emerald-700' : 'text-slate-700'}`}>
                               {type.label}
                             </p>
                             <p className="text-xs text-slate-500">{type.desc}</p>
@@ -358,7 +358,7 @@ export default function Contact() {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full h-12 bg-[#000000] hover:bg-[#111111] text-white rounded-full font-medium transition-all duration-200"
+                      className="w-full h-12 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full font-medium transition-all duration-200"
                     >
                       {isSubmitting ? (
                         <span className="flex items-center gap-2">

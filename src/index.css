@@ -50,9 +50,10 @@
     --gd-border: #e5e5e5;
     --gd-border-dark: #333333;
 
-    /* Accent - neutral, no blue */
-    --gd-accent: #000000;
-    --gd-accent-soft: rgba(0, 0, 0, 0.05);
+    /* Accent - Emerald green */
+    --gd-accent: #059669;
+    --gd-accent-hover: #047857;
+    --gd-accent-soft: rgba(5, 150, 105, 0.1);
   }
 
   .dark {

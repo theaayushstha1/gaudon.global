@@ -22,6 +22,10 @@ function LayoutContent({ children, currentPageName }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
+  // Pages with light backgrounds that need dark navbar text from the start
+  const lightBackgroundPages = ['ProductDetail'];
+  const hasLightBackground = lightBackgroundPages.includes(currentPageName);
+
   useEffect(() => {
     const handleScroll = () => {
       // Show solid navbar after scrolling 100px
@@ -47,15 +51,12 @@ function LayoutContent({ children, currentPageName }) {
 
       {/* Main Navigation - Clean, professional */}
       <header
-        className={`fixed left-0 right-0 transition-all duration-300 ease-out ${
-          isScrolled
-            ? 'top-0 bg-slate-950 border-b border-slate-800 shadow-lg z-[100]'
-            : 'top-0 lg:top-6 bg-transparent z-[100]'
+        className={`fixed left-0 right-0 z-[100] ${
+          isScrolled || hasLightBackground
+            ? 'top-0 bg-white border-b border-slate-200 shadow-sm'
+            : 'top-0 lg:top-6 bg-transparent'
         }`}
-        style={isScrolled ? {
-          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)',
-          backgroundSize: '24px 24px'
-        } : {}}
+        style={{ transition: 'top 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out' }}
       >
         <div className="container mx-auto px-4">
           <nav className="flex items-center justify-between h-16 lg:h-20">
@@ -68,8 +69,8 @@ function LayoutContent({ children, currentPageName }) {
                 <img
                   src="/gaudon-logo.png"
                   alt="GAUDON Logo"
-                  className={`transition-all duration-300 ${isScrolled ? 'h-10' : 'h-12'} w-auto object-contain`}
-                  style={{ filter: 'drop-shadow(0 0 1px rgba(255,255,255,0.5)) drop-shadow(0 0 2px rgba(255,255,255,0.3))' }}
+                  className={`transition-all duration-300 ${isScrolled || hasLightBackground ? 'h-10' : 'h-12'} w-auto object-contain`}
+                  style={isScrolled || hasLightBackground ? {} : { filter: 'drop-shadow(0 0 1px rgba(255,255,255,0.5)) drop-shadow(0 0 2px rgba(255,255,255,0.3))' }}
                 />
               </motion.div>
             </Link>
@@ -82,11 +83,11 @@ function LayoutContent({ children, currentPageName }) {
                   to={createPageUrl(link.page)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                     currentPageName === link.page
-                      ? (isScrolled
-                          ? 'text-white bg-white/15'
+                      ? (isScrolled || hasLightBackground
+                          ? 'text-slate-900 bg-slate-100'
                           : 'text-white bg-white/10')
-                      : (isScrolled
-                          ? 'text-slate-300 hover:text-white hover:bg-white/10'
+                      : (isScrolled || hasLightBackground
+                          ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                           : 'text-slate-300 hover:text-white hover:bg-white/5')
                   }`}
                 >
@@ -100,8 +101,8 @@ function LayoutContent({ children, currentPageName }) {
               <Link to={createPageUrl('Contact')}>
                 <Button
                   className={`rounded-full px-6 font-medium text-sm transition-all duration-200 ${
-                    isScrolled
-                      ? 'bg-white hover:bg-slate-100 text-slate-900'
+                    isScrolled || hasLightBackground
+                      ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
                       : 'bg-white hover:bg-slate-100 text-slate-900'
                   }`}
                 >
@@ -113,7 +114,11 @@ function LayoutContent({ children, currentPageName }) {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg transition-colors text-white hover:bg-white/10"
+              className={`lg:hidden p-2 rounded-lg transition-colors ${
+                isScrolled || hasLightBackground
+                  ? 'text-slate-700 hover:bg-slate-100'
+                  : 'text-white hover:bg-white/10'
+              }`}
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -128,7 +133,7 @@ function LayoutContent({ children, currentPageName }) {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="lg:hidden bg-slate-950 border-t border-slate-800"
+              className={`lg:hidden ${isScrolled ? 'bg-white border-t border-slate-200' : 'bg-slate-950 border-t border-slate-800'}`}
             >
               <div className="container mx-auto px-4 py-4 space-y-1">
                 {navLinks.map((link) => (
@@ -138,15 +143,15 @@ function LayoutContent({ children, currentPageName }) {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`block px-4 py-3 rounded-xl font-medium text-sm transition-all duration-200 ${
                       currentPageName === link.page
-                        ? 'bg-white/10 text-white'
-                        : 'text-slate-300 hover:bg-white/5 hover:text-white'
+                        ? (isScrolled ? 'bg-slate-100 text-slate-900' : 'bg-white/10 text-white')
+                        : (isScrolled ? 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' : 'text-slate-300 hover:bg-white/5 hover:text-white')
                     }`}
                   >
                     {link.name}
                   </Link>
                 ))}
                 <Link to={createPageUrl('Contact')} onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button className="w-full mt-4 bg-white hover:bg-slate-100 text-slate-900 rounded-xl font-medium">
+                  <Button className={`w-full mt-4 rounded-xl font-medium ${isScrolled ? 'bg-emerald-600 hover:bg-emerald-700 text-white' : 'bg-white hover:bg-slate-100 text-slate-900'}`}>
                     {t('getQuote')}
                   </Button>
                 </Link>

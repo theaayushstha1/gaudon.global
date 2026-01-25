@@ -79,7 +79,8 @@ export default function Achievements() {
             className="text-center max-w-3xl mx-auto"
           >
             <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-              Certifications & Credentials
+              Certifications &{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-green-400 via-yellow-400 via-red-400 to-pink-400">Credentials</span>
             </h1>
             <p className="text-lg text-gray-400">
               Quality assured through internationally recognized standards

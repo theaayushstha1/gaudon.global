@@ -472,7 +472,7 @@ export default function OEM() {
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 leading-tight text-display-lg">
                 Premium Quality,<br />
-                <span className="gradient-text">Your Label</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-green-400 via-yellow-400 via-red-400 to-pink-400">Your Label</span>
               </h1>
               <p className="text-lg text-slate-400 mb-8 max-w-lg">
                 Premium silicone sealants manufactured under your brand.

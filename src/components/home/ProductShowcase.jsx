@@ -195,9 +195,9 @@ export default function ProductShowcase() {
                   </div>
 
                   {/* CTA */}
-                  <Link to={createPageUrl('Products')}>
+                  <Link to={createPageUrl(`ProductDetail?id=${currentProduct.id}`)}>
                     <Button className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-6 rounded-full font-medium text-base">
-                      Learn More
+                      View Product Details
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </Link>
@@ -212,7 +212,7 @@ export default function ProductShowcase() {
                     onClick={() => setCurrentIndex(idx)}
                     className={`transition-all ${
                       idx === currentIndex
-                        ? 'w-10 h-3 bg-slate-900 rounded-full'
+                        ? 'w-10 h-3 bg-emerald-600 rounded-full'
                         : 'w-3 h-3 bg-slate-300 rounded-full hover:bg-slate-400'
                     }`}
                   />

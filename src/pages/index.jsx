@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Layout from "./Layout.jsx";
 
 import About from "./About";
@@ -19,6 +20,17 @@ import ProductDetail from "./ProductDetail";
 import Products from "./Products";
 
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+
+// Scroll to top on route change
+function ScrollToTop() {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
+    return null;
+}
 
 const PAGES = {
 
@@ -61,8 +73,10 @@ function PagesContent() {
     const currentPage = _getCurrentPage(location.pathname);
 
     return (
-        <Layout currentPageName={currentPage}>
-            <Routes>
+        <>
+            <ScrollToTop />
+            <Layout currentPageName={currentPage}>
+                <Routes>
 
                 <Route path="/" element={<Home />} />
 
@@ -86,7 +100,8 @@ function PagesContent() {
                 <Route path="/Products" element={<Products />} />
 
             </Routes>
-        </Layout>
+            </Layout>
+        </>
     );
 }
 

@@ -43,24 +43,10 @@ export default function Products() {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* Hero Section - Dynamic and engaging */}
-      <section className="relative bg-slate-950 pt-24 pb-16 overflow-hidden">
-        {/* Animated gradient orbs */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] opacity-30">
-          <div className="absolute top-10 right-10 w-72 h-72 bg-blue-500 rounded-full blur-[120px] animate-pulse" />
-          <div className="absolute top-40 right-40 w-64 h-64 bg-emerald-500 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-20 right-60 w-48 h-48 bg-amber-500 rounded-full blur-[80px] animate-pulse" style={{ animationDelay: '2s' }} />
-        </div>
-
-        {/* Grid pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px'
-          }}
-        />
+      {/* Hero Section - Matching other pages */}
+      <section className="relative pt-32 pb-20 overflow-hidden" style={{ background: 'linear-gradient(to bottom, #000000 0%, #111111 100%)' }}>
+        {/* Grid pattern - same as other pages */}
+        <div className="absolute inset-0 pattern-grid opacity-20" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -81,122 +67,105 @@ export default function Products() {
               </motion.div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 leading-[1.1]">
-                Professional
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-emerald-400 to-amber-400">
-                  Silicone Sealants
+                Find Your Perfect
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-green-400 via-yellow-400 via-red-400 to-pink-400">
+                  Sealant Solution
                 </span>
               </h1>
 
-              <p className="text-base md:text-lg text-slate-400 mb-8 max-w-lg leading-relaxed">
-                Engineered for excellence. Trusted by professionals worldwide with our 30-year warranty guarantee.
+              <p className="text-base md:text-lg text-slate-400 mb-6 max-w-lg leading-relaxed">
+                Browse our complete range of professional-grade silicone sealants. From structural bonding to weatherproofing — we have the right product for every project.
               </p>
 
-              {/* Search Bar - Enhanced */}
-              <div className="relative max-w-md group">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/20 via-emerald-500/20 to-amber-500/20 rounded-2xl blur opacity-0 group-focus-within:opacity-100 transition-opacity" />
-                <div className="relative">
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
-                  <input
-                    type="text"
-                    placeholder="Search by name, model, or application..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-12 pr-12 py-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all text-sm"
-                  />
-                  {searchQuery ? (
-                    <button
-                      onClick={() => setSearchQuery('')}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white transition-colors"
-                    >
-                      <X className="w-4 h-4" />
-                    </button>
-                  ) : (
-                    <kbd className="absolute right-4 top-1/2 -translate-y-1/2 text-[10px] text-slate-600 bg-white/5 px-2 py-1 rounded border border-white/10">
-                      ⌘K
-                    </kbd>
-                  )}
-                </div>
-              </div>
-
-              {/* Quick Stats */}
-              <div className="flex items-center gap-6 mt-8">
-                {[
-                  { value: '30', label: 'Year Warranty' },
-                  { value: '100+', label: 'Countries' },
-                  { value: '25+', label: 'Years Exp.' }
-                ].map((stat, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 + i * 0.1 }}
-                    className="text-center"
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap gap-4">
+                <Link to={createPageUrl('Contact')}>
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-5 text-sm rounded-full font-medium transition-all duration-200 hover:-translate-y-0.5"
                   >
-                    <p className="text-2xl font-bold text-white">{stat.value}</p>
-                    <p className="text-[10px] text-slate-500 uppercase tracking-wider">{stat.label}</p>
-                  </motion.div>
-                ))}
+                    Request a Quote
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
+                </Link>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border border-white/30 text-white hover:bg-white/10 hover:border-white/50 px-6 py-5 text-sm rounded-full font-medium bg-transparent transition-all duration-200"
+                  onClick={() => document.getElementById('product-grid').scrollIntoView({ behavior: 'smooth' })}
+                >
+                  View All Products
+                </Button>
               </div>
             </motion.div>
 
-            {/* Right - Floating Products Preview */}
+            {/* Right - Product Showcase */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="hidden lg:flex items-center justify-center relative h-[320px]"
+              className="hidden lg:block relative"
             >
-              {/* Product images floating */}
-              {products.slice(0, 3).map((product, i) => (
-                <motion.div
-                  key={product.id}
-                  className="absolute"
-                  style={{
-                    left: `${15 + i * 28}%`,
-                    top: i === 1 ? '10%' : '25%',
-                    zIndex: 3 - i
-                  }}
-                  initial={{ opacity: 0, y: 20, rotate: -5 + i * 5 }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                    rotate: -5 + i * 5
-                  }}
-                  transition={{ delay: 0.4 + i * 0.15 }}
-                  whileHover={{ scale: 1.05, rotate: 0, zIndex: 10 }}
-                >
-                  <div
-                    className="w-28 h-40 rounded-2xl p-3 backdrop-blur-sm border border-white/10 shadow-2xl"
-                    style={{
-                      background: `linear-gradient(135deg, ${product.color}20 0%, transparent 100%)`,
-                    }}
+              {/* Horizontal scrolling product showcase */}
+              <div className="flex items-end gap-4">
+                {products.slice(0, 6).map((product, i) => (
+                  <motion.div
+                    key={product.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 + i * 0.08 }}
+                    whileHover={{ y: -10, scale: 1.02 }}
+                    className="group cursor-pointer"
                   >
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-contain drop-shadow-lg"
-                    />
-                  </div>
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-white/10 backdrop-blur-sm rounded-full border border-white/10">
-                    <span className="text-[9px] font-medium text-white">{product.model}</span>
-                  </div>
-                </motion.div>
-              ))}
-
-              {/* Decorative ring */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-64 h-64 rounded-full border border-white/5" />
-                <div className="absolute w-80 h-80 rounded-full border border-dashed border-white/5" />
+                    <Link to={createPageUrl(`ProductDetail?id=${product.id}`)}>
+                      <div
+                        className="relative"
+                        style={{ height: i % 2 === 0 ? '160px' : '140px' }}
+                      >
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="h-full w-auto object-contain drop-shadow-2xl group-hover:drop-shadow-[0_20px_40px_rgba(255,255,255,0.15)] transition-all duration-300"
+                        />
+                      </div>
+                    </Link>
+                  </motion.div>
+                ))}
               </div>
+
+              {/* Subtle reflection/glow effect */}
+              <div className="absolute -bottom-4 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent blur-xl" />
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Filter Bar */}
-      <section className="sticky top-16 z-30 bg-white/80 backdrop-blur-lg border-b border-slate-200">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center gap-2 py-3 overflow-x-auto scrollbar-hide">
+      {/* Filter Bar with Search */}
+      <section className="sticky top-16 z-30 bg-white border-b border-slate-200 shadow-sm">
+        <div className="container mx-auto px-4 py-5">
+          {/* Search Bar - Full Width & Bigger */}
+          <div className="relative mb-5">
+            <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-6 h-6 text-slate-400" />
+            <input
+              type="text"
+              placeholder="Search products by name, model, category, or application..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-14 pr-14 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 placeholder-slate-400 focus:outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all text-base"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors p-1"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            )}
+          </div>
+
+          {/* Category Filters */}
+          <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide">
+            <SlidersHorizontal className="w-4 h-4 text-slate-400 mr-1 flex-shrink-0" />
             {categoryFilters.map((cat) => (
               <button
                 key={cat.id}
@@ -214,10 +183,10 @@ export default function Products() {
             {(searchQuery || activeCategory !== 'all') && (
               <button
                 onClick={() => { setSearchQuery(''); setActiveCategory('all'); }}
-                className="px-3 py-2 text-sm text-slate-500 hover:text-slate-700 flex items-center gap-1"
+                className="px-3 py-2 text-sm text-slate-500 hover:text-red-500 flex items-center gap-1 transition-colors"
               >
                 <X className="w-3.5 h-3.5" />
-                Clear
+                Clear All
               </button>
             )}
           </div>
@@ -225,7 +194,7 @@ export default function Products() {
       </section>
 
       {/* Products Grid */}
-      <section className="py-10">
+      <section id="product-grid" className="py-10">
         <div className="container mx-auto px-4">
           {/* Results count */}
           <div className="mb-6 flex items-center justify-between">

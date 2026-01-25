@@ -63,7 +63,7 @@ export default function Calculator() {
                         </span>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-4 text-display-lg">
                             Sealant Coverage{' '}
-                            <span className="gradient-text">Calculator</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-green-400 via-yellow-400 via-red-400 to-pink-400">Calculator</span>
                         </h1>
                         <p className="text-lg text-slate-400 max-w-2xl mx-auto">
                             Calculate exactly how many cartridges or sausages you need for your project.

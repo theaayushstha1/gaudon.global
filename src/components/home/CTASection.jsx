@@ -36,7 +36,7 @@ export default function CTASection() {
               <Link to={createPageUrl('Contact')}>
                 <Button
                   size="lg"
-                  className="bg-white text-[#000000] hover:bg-gray-100 px-8 py-5 text-base rounded-full font-medium transition-all duration-200"
+                  className="bg-emerald-600 text-white hover:bg-emerald-700 px-8 py-5 text-base rounded-full font-medium transition-all duration-200"
                 >
                   <Mail className="mr-2 w-4 h-4" />
                   {t('requestQuote')}

@@ -10,34 +10,74 @@ import { products } from '@/data/products';
 
 const industries = [
   { value: 'construction', label: 'Construction & Building' },
-  { value: 'automotive', label: 'Automotive' },
-  { value: 'medical', label: 'Medical & Healthcare' },
-  { value: 'electronics', label: 'Electronics' },
-  { value: 'marine', label: 'Marine & Offshore' },
-  { value: 'glass', label: 'Glass & Glazing' }
+  { value: 'kitchen_bath', label: 'Kitchen & Bath' },
+  { value: 'automotive', label: 'Automotive & HVAC' },
+  { value: 'marine', label: 'Marine & Outdoor' },
+  { value: 'glass', label: 'Glass & Aquarium' },
+  { value: 'interior', label: 'Interior & Painting' }
 ];
 
 const properties = [
-  { value: 'high_temp', label: 'High Temperature Resistance' },
   { value: 'weatherproof', label: 'Weatherproof & UV Resistant' },
+  { value: 'mold_resistant', label: 'Mold & Mildew Resistant' },
+  { value: 'high_temp', label: 'High Temperature Resistance' },
   { value: 'fast_cure', label: 'Fast Curing' },
-  { value: 'food_grade', label: 'Food Grade Safe' },
-  { value: 'structural', label: 'High Strength Structural' },
-  { value: 'flexible', label: 'High Flexibility' }
+  { value: 'heavy_duty', label: 'Heavy Duty / Industrial' },
+  { value: 'paintable', label: 'Paintable' }
 ];
 
+// Mapping to actual GAUDON product models
 const recommendations = {
-  'construction-high_temp': ['GAUDON 7900', 'GAUDON 7800', 'GAUDON 7600'],
-  'construction-weatherproof': ['GAUDON 999', 'GAUDON 777', 'GAUDON 20000'],
-  'construction-structural': ['GAUDON 9009', 'GAUDON 20000', 'GAUDON 10000'],
-  'automotive-high_temp': ['GAUDON 7900', 'GAUDON 7800', 'GAUDON 7600'],
-  'automotive-fast_cure': ['GAUDON 7800', 'GAUDON 7600', 'GAUDON 793-A'],
-  'medical-food_grade': ['GAUDON 9900', 'GAUDON 9000', 'GAUDON 8000'],
-  'electronics-high_temp': ['GAUDON 7900', 'GAUDON 7800', 'GAUDON 7600'],
-  'glass-weatherproof': ['GAUDON 999', 'GAUDON 777', 'GAUDON 20000'],
-  'glass-structural': ['GAUDON 9009', 'GAUDON 20000', 'GAUDON 10000'],
-  'marine-weatherproof': ['GAUDON 999', 'GAUDON 777', 'GAUDON 20000'],
-  'default': ['GAUDON 9700-A', 'GAUDON 999', 'GAUDON 9009']
+  // Construction
+  'construction-weatherproof': ['G2', 'D2', 'G1'],
+  'construction-mold_resistant': ['G1', 'G2', 'D2'],
+  'construction-high_temp': ['D2', 'G2', 'D1'],
+  'construction-fast_cure': ['B1 Premium', 'B1', 'D2'],
+  'construction-heavy_duty': ['D2', 'G2', 'D1'],
+  'construction-paintable': ['B1', 'B1 Premium', 'G2'],
+
+  // Kitchen & Bath
+  'kitchen_bath-weatherproof': ['G1', 'G2', 'D2'],
+  'kitchen_bath-mold_resistant': ['G1', 'D1', 'G2'],
+  'kitchen_bath-high_temp': ['G1', 'D2', 'G2'],
+  'kitchen_bath-fast_cure': ['G1', 'B1 Premium', 'D1'],
+  'kitchen_bath-heavy_duty': ['G1', 'D2', 'G2'],
+  'kitchen_bath-paintable': ['B1', 'B1 Premium', 'G1'],
+
+  // Automotive & HVAC
+  'automotive-weatherproof': ['D2', 'G2', 'D1'],
+  'automotive-mold_resistant': ['D2', 'G1', 'G2'],
+  'automotive-high_temp': ['D2', 'G2', 'D1'],
+  'automotive-fast_cure': ['D2', 'B1 Premium', 'G2'],
+  'automotive-heavy_duty': ['D2', 'G2', 'D1'],
+  'automotive-paintable': ['B1 Premium', 'B1', 'D2'],
+
+  // Marine & Outdoor
+  'marine-weatherproof': ['G2', 'D2', 'D1'],
+  'marine-mold_resistant': ['G2', 'G1', 'D2'],
+  'marine-high_temp': ['D2', 'G2', 'D1'],
+  'marine-fast_cure': ['G2', 'D2', 'B1 Premium'],
+  'marine-heavy_duty': ['D2', 'G2', 'D1'],
+  'marine-paintable': ['B1 Premium', 'B1', 'G2'],
+
+  // Glass & Aquarium
+  'glass-weatherproof': ['G2', 'D1', 'D2'],
+  'glass-mold_resistant': ['D1', 'G1', 'G2'],
+  'glass-high_temp': ['D1', 'D2', 'G2'],
+  'glass-fast_cure': ['D1', 'G2', 'B1 Premium'],
+  'glass-heavy_duty': ['D1', 'D2', 'G2'],
+  'glass-paintable': ['B1', 'B1 Premium', 'G2'],
+
+  // Interior & Painting
+  'interior-weatherproof': ['G2', 'G1', 'B1 Premium'],
+  'interior-mold_resistant': ['G1', 'B1 Premium', 'G2'],
+  'interior-high_temp': ['D2', 'G2', 'B1 Premium'],
+  'interior-fast_cure': ['B1 Premium', 'B1', 'G1'],
+  'interior-heavy_duty': ['D2', 'B1 Premium', 'G2'],
+  'interior-paintable': ['B1', 'B1 Premium', 'G1'],
+
+  // Default fallback
+  'default': ['G1', 'G2', 'D2']
 };
 
 export default function SmartProductFinder() {
@@ -134,7 +174,7 @@ export default function SmartProductFinder() {
             <Button
               onClick={handleFind}
               disabled={!industry || !property}
-              className="w-full bg-slate-900 hover:bg-slate-800 text-white rounded-full h-12 font-medium disabled:opacity-50 disabled:cursor-not-allowed group transition-all"
+              className="w-full bg-emerald-600 hover:bg-emerald-700 text-white rounded-full h-12 font-medium disabled:opacity-50 disabled:cursor-not-allowed group transition-all"
             >
               Find Product
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -168,21 +208,47 @@ export default function SmartProductFinder() {
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: idx * 0.1 }}
                           whileHover={{ y: -2 }}
-                          className="bg-white rounded-xl p-4 hover:shadow-lg transition-all"
+                          className="bg-white rounded-xl overflow-hidden hover:shadow-lg transition-all flex flex-col h-full"
                         >
-                          {idx === 0 && (
-                            <Badge className="bg-slate-900 text-white mb-2 text-xs">
-                              Best Match
-                            </Badge>
-                          )}
-                          <h4 className="font-semibold text-slate-900 mb-1">{product.model}</h4>
-                          <p className="text-xs text-slate-500 mb-3 line-clamp-2">{product.name}</p>
-                          <Link to={createPageUrl('ProductDetail') + `?id=${product.id}`}>
-                            <Button variant="outline" size="sm" className="w-full border border-slate-200 text-slate-700 hover:bg-slate-50 rounded-lg text-sm">
-                              View Details
-                              <ArrowRight className="w-3 h-3 ml-1" />
-                            </Button>
-                          </Link>
+                          {/* Product Image */}
+                          <div className="relative bg-slate-100 p-4 h-32 flex items-center justify-center flex-shrink-0">
+                            {idx === 0 && (
+                              <Badge className="absolute top-2 left-2 bg-emerald-600 text-white text-xs">
+                                Best Match
+                              </Badge>
+                            )}
+                            <img
+                              src={product.image}
+                              alt={product.name}
+                              className="h-full w-auto object-contain"
+                              onError={(e) => {
+                                e.target.style.display = 'none';
+                              }}
+                            />
+                          </div>
+                          <div className="p-4 flex flex-col flex-1">
+                            <div className="flex items-center gap-2 mb-1">
+                              <h4 className="font-semibold text-slate-900">GAUDON {product.model}</h4>
+                              {product.badge && (
+                                <span
+                                  className="text-xs px-2 py-0.5 rounded-full font-medium"
+                                  style={{
+                                    backgroundColor: `${product.color}20`,
+                                    color: product.color
+                                  }}
+                                >
+                                  {product.badge}
+                                </span>
+                              )}
+                            </div>
+                            <p className="text-xs text-slate-500 mb-3 line-clamp-2 flex-1">{product.name}</p>
+                            <Link to={createPageUrl('ProductDetail') + `?id=${product.id}`}>
+                              <Button variant="outline" size="sm" className="w-full border border-slate-200 text-slate-700 hover:bg-slate-50 rounded-lg text-sm">
+                                View Details
+                                <ArrowRight className="w-3 h-3 ml-1" />
+                              </Button>
+                            </Link>
+                          </div>
                         </motion.div>
                       ))}
                     </div>
