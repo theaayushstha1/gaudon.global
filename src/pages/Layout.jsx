@@ -13,7 +13,7 @@ function LayoutContent({ children, currentPageName }) {
     { name: t('home'), page: 'Home' },
     { name: t('products'), page: 'Products' },
     { name: 'OEM Services', page: 'OEM' },
-    { name: t('achievements'), page: 'Achievements' },
+    { name: 'About Us', page: 'Achievements' },
     { name: 'Calculator', page: 'Calculator' },
     { name: t('contact'), page: 'Contact' }
   ];
@@ -51,15 +51,15 @@ function LayoutContent({ children, currentPageName }) {
 
       {/* Main Navigation - Clean, professional */}
       <header
-        className={`fixed left-0 right-0 z-[100] ${
+        className={`fixed left-0 right-0 z-[100] top-0 ${
           isScrolled || hasLightBackground
-            ? 'top-0 bg-white border-b border-slate-200 shadow-sm'
-            : 'top-0 lg:top-6 bg-transparent'
+            ? 'bg-white border-b border-slate-200 shadow-sm'
+            : 'bg-transparent'
         }`}
-        style={{ transition: 'top 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out' }}
+        style={{ transition: 'background-color 0.3s ease-out, box-shadow 0.3s ease-out' }}
       >
         <div className="container mx-auto px-4">
-          <nav className="flex items-center justify-between h-16 lg:h-20">
+          <nav className={`flex items-center justify-between transition-all duration-300 ${isScrolled || hasLightBackground ? 'h-20' : 'h-32'}`}>
             {/* Logo */}
             <Link to={createPageUrl('Home')} className="flex items-center gap-3 group">
               <motion.div
@@ -67,10 +67,9 @@ function LayoutContent({ children, currentPageName }) {
                 transition={{ duration: 0.2 }}
               >
                 <img
-                  src="/gaudon-logo.png"
+                  src="/gaudon-mascot-logo.png"
                   alt="GAUDON Logo"
-                  className={`transition-all duration-300 ${isScrolled || hasLightBackground ? 'h-10' : 'h-12'} w-auto object-contain`}
-                  style={isScrolled || hasLightBackground ? {} : { filter: 'drop-shadow(0 0 1px rgba(255,255,255,0.5)) drop-shadow(0 0 2px rgba(255,255,255,0.3))' }}
+                  className={`transition-all duration-300 ${isScrolled || hasLightBackground ? 'h-16' : 'h-28'} w-auto object-contain`}
                 />
               </motion.div>
             </Link>
@@ -174,7 +173,7 @@ function LayoutContent({ children, currentPageName }) {
             <div className="lg:col-span-1">
               <Link to={createPageUrl('Home')} className="flex items-center gap-3 mb-6">
                 <img
-                  src="/gaudon-logo.png"
+                  src="/gaudon-mascot-logo.png"
                   alt="GAUDON Logo"
                   className="h-12 w-auto object-contain"
                 />

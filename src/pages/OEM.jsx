@@ -458,109 +458,63 @@ export default function OEM() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section
-        className="relative pt-36 md:pt-40 pb-20 overflow-hidden"
-        style={{ background: 'linear-gradient(to bottom, #000000 0%, #111111 100%)' }}
-      >
-        <div className="absolute inset-0 pattern-grid" />
+      <section className="relative pt-36 md:pt-40 pb-20 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="/images/oem-bg.png"
+            alt="Manufacturing facility"
+            className="w-full h-full object-cover scale-[1.3]"
+            style={{ objectPosition: 'center bottom' }}
+          />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="max-w-2xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 leading-tight text-display-lg">
-                Premium Quality,<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-green-400 via-yellow-400 via-red-400 to-pink-400">Your Label</span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                <span className="text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">Premium Quality,</span><br />
+                <span className="text-amber-400 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">Your Label</span>
               </h1>
-              <p className="text-lg text-slate-400 mb-8 max-w-lg">
+              <p className="text-lg text-white/90 mb-8 max-w-lg drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] leading-relaxed">
                 Premium silicone sealants manufactured under your brand.
                 25+ years of expertise, professional grade quality, flexible MOQ.
               </p>
 
               <div className="flex flex-wrap gap-4 mb-8">
                 <Link to={createPageUrl('Contact')}>
-                  <Button className="bg-white text-[#000000] hover:bg-slate-100 px-8 py-6 rounded-full font-medium">
+                  <Button className="bg-amber-500 text-white hover:bg-amber-600 px-8 py-6 rounded-full font-semibold shadow-lg">
                     Get OEM Quote
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <a href="mailto:gaudonusallc@gmail.com">
-                  <Button className="bg-transparent border border-white/30 text-white hover:bg-white/5 px-8 py-6 rounded-full font-medium">
+                  <Button className="bg-white/10 backdrop-blur-sm border border-white/40 text-white hover:bg-white/20 px-8 py-6 rounded-full font-semibold">
                     <Mail className="w-5 h-5 mr-2" />
                     Email Us
                   </Button>
                 </a>
               </div>
 
-              <div className="flex flex-wrap gap-6 text-sm text-slate-400">
+              <div className="flex flex-wrap gap-6 text-sm">
                 {[
                   { icon: Award, text: 'Professional Grade' },
                   { icon: Globe, text: 'Export to 100+ Countries' },
                   { icon: Clock, text: '25+ Years Experience' },
                 ].map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-2">
-                    <item.icon className="w-4 h-4 text-white" />
-                    <span>{item.text}</span>
+                  <div key={idx} className="flex items-center gap-2 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                    <item.icon className="w-4 h-4 text-amber-400" />
+                    <span className="text-white font-medium">{item.text}</span>
                   </div>
                 ))}
               </div>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-              className="relative hidden lg:flex items-center justify-center"
-            >
-              {/* Main product - center with float animation */}
-              <motion.img
-                src="/images/products/gaudon-g1-kitchen-bath.png"
-                alt="GAUDON Silicone Products"
-                className="h-80 w-auto drop-shadow-2xl z-10"
-                animate={{
-                  y: [0, -15, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              {/* Left product - with delayed float */}
-              <motion.img
-                src="/images/products/gaudon-d1-silicone.png"
-                alt="GAUDON Product"
-                className="absolute left-0 top-1/2 h-56 w-auto drop-shadow-xl opacity-90"
-                animate={{
-                  y: ["-50%", "calc(-50% - 10px)", "-50%"],
-                  x: [-16, -20, -16],
-                }}
-                transition={{
-                  duration: 3.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.5
-                }}
-              />
-              {/* Right product - with different timing */}
-              <motion.img
-                src="/images/products/gaudon-g2-window-door.png"
-                alt="GAUDON Product"
-                className="absolute right-0 top-1/2 h-56 w-auto drop-shadow-xl opacity-90"
-                animate={{
-                  y: ["-50%", "calc(-50% - 12px)", "-50%"],
-                  x: [16, 20, 16],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1
-                }}
-              />
-            </motion.div>
           </div>
         </div>
       </section>

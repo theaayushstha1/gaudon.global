@@ -43,10 +43,18 @@ export default function Products() {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* Hero Section - Matching other pages */}
-      <section className="relative pt-32 pb-20 overflow-hidden" style={{ background: 'linear-gradient(to bottom, #000000 0%, #111111 100%)' }}>
-        {/* Grid pattern - same as other pages */}
-        <div className="absolute inset-0 pattern-grid opacity-20" />
+      {/* Hero Section - Dark prism background */}
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="/images/product-bg.jpg"
+            alt="Product background"
+            className="w-full h-full object-cover"
+          />
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -60,20 +68,20 @@ export default function Products() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 }}
-                className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full mb-6"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/20 backdrop-blur-sm border border-amber-400/30 rounded-full mb-6"
               >
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="text-xs text-slate-400 font-medium">{products.length} Products Available</span>
+                <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                <span className="text-sm text-amber-300 font-medium">{products.length} Products Available</span>
               </motion.div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 leading-[1.1]">
-                Find Your Perfect
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-green-400 via-yellow-400 via-red-400 to-pink-400">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 leading-[1.1]">
+                <span className="text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">Find Your Perfect</span>
+                <span className="block text-amber-400 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
                   Sealant Solution
                 </span>
               </h1>
 
-              <p className="text-base md:text-lg text-slate-400 mb-6 max-w-lg leading-relaxed">
+              <p className="text-base md:text-lg text-white/90 mb-6 max-w-lg leading-relaxed drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
                 Browse our complete range of professional-grade silicone sealants. From structural bonding to weatherproofing — we have the right product for every project.
               </p>
 

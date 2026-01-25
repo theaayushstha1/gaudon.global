@@ -44,12 +44,19 @@ const tips = [
 export default function Calculator() {
     return (
         <div className="min-h-screen bg-white">
-            {/* Hero Section - Black */}
-            <section
-                className="relative pt-32 pb-16 overflow-hidden"
-                style={{ background: 'linear-gradient(to bottom, #000000 0%, #111111 100%)' }}
-            >
-                <div className="absolute inset-0 pattern-grid" />
+            {/* Hero Section */}
+            <section className="relative pt-32 pb-16 overflow-hidden">
+                {/* Background Image */}
+                <div className="absolute inset-0">
+                    <img
+                        src="/images/calculator-bg.jpg"
+                        alt="Modern architecture"
+                        className="w-full h-full object-cover scale-110"
+                        style={{ objectPosition: 'center center' }}
+                    />
+                    {/* Dark overlay */}
+                    <div className="absolute inset-0 bg-black/60" />
+                </div>
                 <div className="container mx-auto px-4 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -57,15 +64,16 @@ export default function Calculator() {
                         transition={{ duration: 0.5 }}
                         className="text-center max-w-3xl mx-auto"
                     >
-                        <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full text-slate-400 text-sm mb-6">
+                        <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500/20 backdrop-blur-sm border border-amber-400/30 rounded-full text-amber-300 text-sm font-medium mb-6">
                             <CalculatorIcon className="w-4 h-4" />
                             Free Professional Tool
                         </span>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-4 text-display-lg">
-                            Sealant Coverage{' '}
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-green-400 via-yellow-400 via-red-400 to-pink-400">Calculator</span>
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5">
+                            <span className="text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">Sealant Coverage</span>
+                            <br />
+                            <span className="text-amber-400 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">Calculator</span>
                         </h1>
-                        <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+                        <p className="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
                             Calculate exactly how many cartridges or sausages you need for your project.
                             Reduce waste, save money, and order the right amount every time.
                         </p>

@@ -74,12 +74,18 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section - Clean dark */}
-      <section
-        className="relative pt-32 pb-16 overflow-hidden"
-        style={{ background: 'linear-gradient(to bottom, #000000 0%, #111111 100%)' }}
-      >
-        <div className="absolute inset-0 pattern-grid" />
+      {/* Hero Section - Glass Background */}
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="/images/contact-bg.jpg"
+            alt="Modern glass interior"
+            className="w-full h-full object-cover"
+          />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+        </div>
 
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
@@ -88,15 +94,24 @@ export default function Contact() {
             transition={{ duration: 0.5 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full text-slate-400 text-sm mb-6">
+            <span
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white text-sm mb-6"
+              style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}
+            >
               <Clock className="w-4 h-4" />
               Response within 24 hours
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-4 text-display-lg">
+            <h1
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4"
+              style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5)' }}
+            >
               Let's Build Something{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-green-400 via-yellow-400 via-red-400 to-pink-400">Great Together</span>
+              <span className="text-amber-400">Great Together</span>
             </h1>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+            <p
+              className="text-lg text-white/90 max-w-2xl mx-auto"
+              style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.8)' }}
+            >
               Whether you need bulk orders, custom formulations, or technical support,
               our team is ready to help.
             </p>
