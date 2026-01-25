@@ -57,12 +57,12 @@ export default function Contact() {
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
-        { ...formData, inquiry_type: selectedType?.label || 'General', to_email: 'info@gaudon.com' },
+        { ...formData, inquiry_type: selectedType?.label || 'General', to_email: 'gaudonusallc@gmail.com' },
         EMAILJS_PUBLIC_KEY
       );
       setSubmitted(true);
     } catch {
-      alert('Error submitting form. Please email info@gaudon.com directly.');
+      alert('Error submitting form. Please email gaudonusallc@gmail.com directly.');
     } finally {
       setIsSubmitting(false);
     }
@@ -109,8 +109,8 @@ export default function Contact() {
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
             {[
-              { icon: Mail, label: 'Email Us', value: 'info@gaudon.com', href: 'mailto:info@gaudon.com' },
-              { icon: Phone, label: 'Call Us', value: '+86 757 2566 8888', href: 'tel:+8675725668888' },
+              { icon: Mail, label: 'Email Us', value: 'gaudonusallc@gmail.com', href: 'mailto:gaudonusallc@gmail.com' },
+              { icon: Phone, label: 'Call / WhatsApp', value: '+1 626-778-9568', href: 'tel:+16267789568' },
               { icon: Clock, label: 'Business Hours', value: 'Mon-Fri 8:30AM - 5:30PM CST', href: null },
             ].map((item, index) => (
               <div key={index} className="flex items-center gap-3 py-2">
@@ -189,8 +189,8 @@ export default function Contact() {
                       <Shield className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <p className="font-medium mb-1">ISO 9001:2015 Certified</p>
-                      <p className="text-sm text-slate-400">Quality management you can trust</p>
+                      <p className="font-medium mb-1">Professional Grade Quality</p>
+                      <p className="text-sm text-slate-400">30-year warranty you can trust</p>
                     </div>
                   </div>
                   <div className="grid grid-cols-2 gap-3 mt-4">

@@ -180,7 +180,7 @@ export default function HeroSection() {
                 transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
                 className="mt-10 flex flex-wrap gap-3"
               >
-                {['ISO 9001:2015', '100+ Countries', '30 Year Warranty'].map((label, i) => (
+                {['25+ Years Experience', '100+ Countries', '30 Year Warranty'].map((label, i) => (
                   <span
                     key={i}
                     className="flex items-center gap-2 text-xs text-gray-400 px-3 py-1.5 rounded-full border border-white/15 bg-white/5"
@@ -205,7 +205,7 @@ export default function HeroSection() {
             Order Today
           </p>
           <p className="text-gray-400 text-base md:text-lg mb-8 leading-relaxed">
-            25+ years of excellence. Trusted by professionals in 100+ countries with our ISO-certified silicone sealants.
+            25+ years of excellence. Trusted by professionals in 100+ countries with our premium silicone sealants.
           </p>
           <div className="flex flex-col gap-3">
             <Link to={createPageUrl('Products')}>

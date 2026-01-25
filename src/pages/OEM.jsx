@@ -40,7 +40,7 @@ const products = [
 const oemBenefits = [
   { title: 'OEM Processing', desc: 'Product customization with your brand identity', image: '/images/factory-new/filling-line.jpg' },
   { title: 'Raw Material Quality', desc: 'Premium grade silicone from certified suppliers', image: '/images/factory-new/raw-material-silos.jpg' },
-  { title: 'Quality Assurance', desc: 'ISO 9001 certified manufacturing processes', image: '/images/factory-new/processing-equipment.jpg' },
+  { title: 'Quality Assurance', desc: 'Rigorous quality control manufacturing processes', image: '/images/factory-new/processing-equipment.jpg' },
   { title: 'Global Shipping', desc: 'Fast delivery to 100+ countries worldwide', image: '/images/factory-new/warehouse.jpg' }
 ];
 
@@ -476,7 +476,7 @@ export default function OEM() {
               </h1>
               <p className="text-lg text-slate-400 mb-8 max-w-lg">
                 Premium silicone sealants manufactured under your brand.
-                25+ years of expertise, ISO certified quality, flexible MOQ.
+                25+ years of expertise, professional grade quality, flexible MOQ.
               </p>
 
               <div className="flex flex-wrap gap-4 mb-8">
@@ -486,7 +486,7 @@ export default function OEM() {
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
-                <a href="mailto:info@gaudon.com">
+                <a href="mailto:gaudonusallc@gmail.com">
                   <Button className="bg-transparent border border-white/30 text-white hover:bg-white/5 px-8 py-6 rounded-full font-medium">
                     <Mail className="w-5 h-5 mr-2" />
                     Email Us
@@ -496,7 +496,7 @@ export default function OEM() {
 
               <div className="flex flex-wrap gap-6 text-sm text-slate-400">
                 {[
-                  { icon: Award, text: 'ISO 9001 Certified' },
+                  { icon: Award, text: 'Professional Grade' },
                   { icon: Globe, text: 'Export to 100+ Countries' },
                   { icon: Clock, text: '25+ Years Experience' },
                 ].map((item, idx) => (
@@ -613,7 +613,7 @@ export default function OEM() {
                   />
                   <p className="text-slate-700 font-semibold mt-4">Our Quality</p>
                   <p className="text-slate-400 text-sm">25+ years expertise</p>
-                  <p className="text-slate-400 text-sm">ISO 9001 certified</p>
+                  <p className="text-slate-400 text-sm">Professional grade</p>
                 </motion.div>
 
                 {/* Middle - Arrow + Text */}
@@ -740,9 +740,9 @@ export default function OEM() {
                   highlight: '25+'
                 },
                 {
-                  title: 'ISO 9001:2015 Certified Quality',
-                  desc: 'Every batch tested. Every product certified. No compromises on quality.',
-                  highlight: 'ISO'
+                  title: 'Professional Grade Quality',
+                  desc: 'Every batch tested. Every product inspected. No compromises on quality.',
+                  highlight: 'PRO'
                 },
                 {
                   title: 'Exported to 100+ Countries',
@@ -785,7 +785,7 @@ export default function OEM() {
             >
               <p className="text-center text-slate-600 mb-6 font-medium">Trusted By Businesses Worldwide</p>
               <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12">
-                {['ISO 9001:2015', 'CNAS Accredited', 'CBDA Member', 'National Certified'].map((cert, idx) => (
+                {['30 Year Warranty', 'Quality Tested', '25+ Years Experience', 'USA Based'].map((cert, idx) => (
                   <div key={idx} className="flex items-center gap-2 text-slate-500">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                     <span className="text-sm">{cert}</span>

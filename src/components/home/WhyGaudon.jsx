@@ -14,9 +14,9 @@ const advantages = [
   },
   {
     icon: Award,
-    title: 'ISO 9001:2015',
-    description: 'Full quality management certification ensuring consistent product excellence',
-    highlight: 'Certified'
+    title: 'Quality Assured',
+    description: 'Rigorous quality management ensuring consistent product excellence',
+    highlight: 'Premium'
   },
   {
     icon: DollarSign,
@@ -47,7 +47,7 @@ const advantages = [
 const comparisonPoints = [
   { feature: '30-Year Warranty', gaudon: true, others: false },
   { feature: 'Direct Factory Pricing', gaudon: true, others: false },
-  { feature: 'ISO 9001:2015 Certified', gaudon: true, others: true },
+  { feature: 'Professional Grade Quality', gaudon: true, others: true },
   { feature: '500 Unit MOQ', gaudon: true, others: false },
   { feature: 'OEM/Private Label', gaudon: true, others: true },
   { feature: 'Free Samples', gaudon: true, others: false },

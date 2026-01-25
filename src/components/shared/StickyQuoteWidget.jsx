@@ -33,7 +33,7 @@ export default function StickyQuoteWidget() {
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
-        { ...formData, to_email: 'info@gaudon.com' },
+        { ...formData, to_email: 'gaudonusallc@gmail.com' },
         EMAILJS_PUBLIC_KEY
       );
       setSubmitted(true);
@@ -50,7 +50,7 @@ export default function StickyQuoteWidget() {
         });
       }, 3000);
     } catch {
-      alert('Error submitting quote request. Please email info@gaudon.com directly.');
+      alert('Error submitting quote request. Please email gaudonusallc@gmail.com directly.');
     } finally {
       setIsSubmitting(false);
     }

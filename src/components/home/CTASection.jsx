@@ -42,7 +42,7 @@ export default function CTASection() {
                   {t('requestQuote')}
                 </Button>
               </Link>
-              <a href="mailto:info@gaudon.com">
+              <a href="mailto:gaudonusallc@gmail.com">
                 <Button
                   size="lg"
                   className="bg-transparent border border-white/30 text-white hover:bg-white/10 hover:border-white/50 px-8 py-5 text-base rounded-full font-medium transition-all duration-200"

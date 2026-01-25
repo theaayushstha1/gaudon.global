@@ -9,10 +9,6 @@ import { LanguageProvider, useLanguage } from '../components/shared/LanguageCont
 function LayoutContent({ children, currentPageName }) {
   const { t } = useLanguage();
 
-  // Pages with light backgrounds (need dark nav text when not scrolled)
-  const lightBackgroundPages = ['Certifications', 'About'];
-  const hasLightBackground = lightBackgroundPages.includes(currentPageName);
-
   const navLinks = [
     { name: t('home'), page: 'Home' },
     { name: t('products'), page: 'Products' },
@@ -28,13 +24,13 @@ function LayoutContent({ children, currentPageName }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Hero section is 200vh, change navbar after scrolling past
-      const heroScrollEnd = window.innerHeight * 1.8;
-      setIsScrolled(window.scrollY > heroScrollEnd);
+      // Show solid navbar after scrolling 100px
+      setIsScrolled(window.scrollY > 100);
       setShowScrollTop(window.scrollY > 500);
     };
 
     document.documentElement.style.scrollBehavior = 'smooth';
+    handleScroll(); // Check initial state
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
@@ -51,13 +47,15 @@ function LayoutContent({ children, currentPageName }) {
 
       {/* Main Navigation - Clean, professional */}
       <header
-        className={`fixed z-50 left-0 right-0 transition-all duration-300 ease-out ${
+        className={`fixed left-0 right-0 transition-all duration-300 ease-out ${
           isScrolled
-            ? 'top-0 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm'
-            : hasLightBackground
-              ? 'top-0 bg-white/95 backdrop-blur-md border-b border-slate-200'
-              : 'top-0 lg:top-10 bg-transparent'
+            ? 'top-0 bg-slate-950 border-b border-slate-800 shadow-lg z-[100]'
+            : 'top-0 lg:top-6 bg-transparent z-[100]'
         }`}
+        style={isScrolled ? {
+          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)',
+          backgroundSize: '24px 24px'
+        } : {}}
       >
         <div className="container mx-auto px-4">
           <nav className="flex items-center justify-between h-16 lg:h-20">
@@ -70,8 +68,8 @@ function LayoutContent({ children, currentPageName }) {
                 <img
                   src="/gaudon-logo.png"
                   alt="GAUDON Logo"
-                  className={`transition-all duration-300 ${isScrolled ? 'h-10' : 'h-14'} w-auto object-contain`}
-                  style={!isScrolled && !hasLightBackground ? { filter: 'drop-shadow(0 0 1px white) drop-shadow(0 0 1px white) drop-shadow(0 0 2px white)' } : {}}
+                  className={`transition-all duration-300 ${isScrolled ? 'h-10' : 'h-12'} w-auto object-contain`}
+                  style={{ filter: 'drop-shadow(0 0 1px rgba(255,255,255,0.5)) drop-shadow(0 0 2px rgba(255,255,255,0.3))' }}
                 />
               </motion.div>
             </Link>
@@ -84,11 +82,11 @@ function LayoutContent({ children, currentPageName }) {
                   to={createPageUrl(link.page)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                     currentPageName === link.page
-                      ? (isScrolled || hasLightBackground
-                          ? 'text-[#000000] bg-slate-100'
+                      ? (isScrolled
+                          ? 'text-white bg-white/15'
                           : 'text-white bg-white/10')
-                      : (isScrolled || hasLightBackground
-                          ? 'text-slate-600 hover:text-[#000000] hover:bg-slate-50'
+                      : (isScrolled
+                          ? 'text-slate-300 hover:text-white hover:bg-white/10'
                           : 'text-slate-300 hover:text-white hover:bg-white/5')
                   }`}
                 >
@@ -102,9 +100,9 @@ function LayoutContent({ children, currentPageName }) {
               <Link to={createPageUrl('Contact')}>
                 <Button
                   className={`rounded-full px-6 font-medium text-sm transition-all duration-200 ${
-                    isScrolled || hasLightBackground
-                      ? 'bg-[#000000] hover:bg-[#111111] text-white'
-                      : 'bg-white hover:bg-slate-100 text-[#000000]'
+                    isScrolled
+                      ? 'bg-white hover:bg-slate-100 text-slate-900'
+                      : 'bg-white hover:bg-slate-100 text-slate-900'
                   }`}
                 >
                   {t('getQuote')}
@@ -115,9 +113,7 @@ function LayoutContent({ children, currentPageName }) {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`lg:hidden p-2 rounded-lg transition-colors ${
-                isScrolled || hasLightBackground ? 'text-[#000000] hover:bg-slate-100' : 'text-white hover:bg-white/10'
-              }`}
+              className="lg:hidden p-2 rounded-lg transition-colors text-white hover:bg-white/10"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -132,7 +128,7 @@ function LayoutContent({ children, currentPageName }) {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="lg:hidden bg-white border-t border-slate-200"
+              className="lg:hidden bg-slate-950 border-t border-slate-800"
             >
               <div className="container mx-auto px-4 py-4 space-y-1">
                 {navLinks.map((link) => (
@@ -142,15 +138,15 @@ function LayoutContent({ children, currentPageName }) {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`block px-4 py-3 rounded-xl font-medium text-sm transition-all duration-200 ${
                       currentPageName === link.page
-                        ? 'bg-slate-100 text-[#000000]'
-                        : 'text-slate-600 hover:bg-slate-50 hover:text-[#000000]'
+                        ? 'bg-white/10 text-white'
+                        : 'text-slate-300 hover:bg-white/5 hover:text-white'
                     }`}
                   >
                     {link.name}
                   </Link>
                 ))}
                 <Link to={createPageUrl('Contact')} onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button className="w-full mt-4 bg-[#000000] hover:bg-[#111111] text-white rounded-xl font-medium">
+                  <Button className="w-full mt-4 bg-white hover:bg-slate-100 text-slate-900 rounded-xl font-medium">
                     {t('getQuote')}
                   </Button>
                 </Link>
@@ -180,7 +176,7 @@ function LayoutContent({ children, currentPageName }) {
               </Link>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
                 Professional silicone sealant manufacturer since 1999.
-                ISO 9001:2015 certified, serving 100+ countries worldwide.
+                Serving 100+ countries worldwide.
               </p>
             </div>
 
@@ -218,20 +214,20 @@ function LayoutContent({ children, currentPageName }) {
               <h4 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">{t('contactUs')}</h4>
               <ul className="space-y-4 text-sm text-slate-400">
                 <li>
-                  <span className="text-slate-500 block mb-1">{t('address')}</span>
-                  <span>Foshan City, Guangdong Province, China</span>
+                  <span className="text-slate-500 block mb-1">Contact / WhatsApp</span>
+                  <a href="tel:+16267789568" className="hover:text-white transition-colors">
+                    +1 626-778-9568
+                  </a>
                 </li>
                 <li>
                   <span className="text-slate-500 block mb-1">Email</span>
-                  <a href="mailto:info@gaudon.com" className="hover:text-white transition-colors">
-                    info@gaudon.com
+                  <a href="mailto:gaudonusallc@gmail.com" className="hover:text-white transition-colors">
+                    gaudonusallc@gmail.com
                   </a>
                 </li>
                 <li>
-                  <span className="text-slate-500 block mb-1">Website</span>
-                  <a href="https://gaudon.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                    gaudon.com
-                  </a>
+                  <span className="text-slate-500 block mb-1">Location</span>
+                  <span>USA</span>
                 </li>
               </ul>
             </div>
@@ -240,17 +236,15 @@ function LayoutContent({ children, currentPageName }) {
           {/* Bottom bar */}
           <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-slate-500 text-sm">
-              &copy; {new Date().getFullYear()} GAUDON. All rights reserved.
+              &copy; {new Date().getFullYear()} GAUDON USA LLC. All rights reserved.
             </p>
             <div className="flex items-center gap-3">
-              {['ISO 9001:2015', 'CNAS', 'IAF'].map((cert, index) => (
-                <span
-                  key={index}
-                  className="text-xs text-slate-500 px-3 py-1.5 rounded-full border border-white/20"
-                >
-                  {cert}
-                </span>
-              ))}
+              <span className="text-xs text-slate-500 px-3 py-1.5 rounded-full border border-white/20">
+                Professional Grade
+              </span>
+              <span className="text-xs text-slate-500 px-3 py-1.5 rounded-full border border-white/20">
+                30 Year Warranty
+              </span>
             </div>
           </div>
         </div>

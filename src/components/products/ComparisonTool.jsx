@@ -179,7 +179,7 @@ export default function ComparisonTool({ products, selectedIds, onToggle, onClea
               {/* Footer */}
               <div className="bg-slate-50 p-6 flex justify-between items-center">
                 <p className="text-neutral-600">
-                  Need help choosing? <a href="mailto:info@gaudon.com" className="text-black hover:underline font-semibold">Contact our technical team</a>
+                  Need help choosing? <a href="mailto:gaudonusallc@gmail.com" className="text-black hover:underline font-semibold">Contact our technical team</a>
                 </p>
                 <Button
                   onClick={() => setIsExpanded(false)}

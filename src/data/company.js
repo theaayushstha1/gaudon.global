@@ -17,17 +17,14 @@ export const company = {
 
   contact: {
     address: {
-      full: "Foshan City, Guangdong Province, China",
-      city: "Foshan",
-      province: "Guangdong",
-      country: "China",
-      zip: "528322"
+      full: "USA",
+      country: "USA"
     },
-    email: "info@gaudon.com",
-    phone: "+86 757 2566 8888",
+    email: "gaudonusallc@gmail.com",
+    phone: "+1 626-778-9568",
+    whatsapp: "+1 626-778-9568",
     website: {
-      usa: "https://gaudon.com",
-      china: "https://gaudon.com"
+      usa: "https://gaudon.com"
     }
   },
 

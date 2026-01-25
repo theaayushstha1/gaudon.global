@@ -26,7 +26,7 @@ export default function TechnicalLibraryModal({ isOpen, onClose, product }) {
       company_name: company,
       product_interest: product?.name,
       message: `TDS Download Request for ${product?.model}`,
-      to_email: 'info@gaudon.com'
+      to_email: 'gaudonusallc@gmail.com'
     };
 
     try {
@@ -46,7 +46,7 @@ export default function TechnicalLibraryModal({ isOpen, onClose, product }) {
         setCompany('');
       }, 3000);
     } catch (error) {
-      alert('Error submitting request. Please contact info@gaudon.com directly.');
+      alert('Error submitting request. Please contact gaudonusallc@gmail.com directly.');
     } finally {
       setIsSubmitting(false);
     }
