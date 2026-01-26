@@ -175,7 +175,7 @@ function LayoutContent({ children, currentPageName }) {
                 <img
                   src="/gaudon-mascot-logo.png"
                   alt="GAUDON Logo"
-                  className="h-12 w-auto object-contain"
+                  className="h-24 w-auto object-contain"
                 />
               </Link>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
