@@ -44,16 +44,56 @@ const oemBenefits = [
   { title: 'Global Shipping', desc: 'Fast delivery to 100+ countries worldwide', image: '/images/factory-new/warehouse.jpg' }
 ];
 
-// Factory gallery images with proper labels
+// Factory gallery images with proper labels - 28 images organized by category
 const factoryImages = [
-  { src: '/images/factory-new/headquarters.jpg', title: 'GAUDON Headquarters', desc: 'Foshan City, Guangdong Province, China', category: 'Facility' },
-  { src: '/images/factory-new/raw-material-silos.jpg', title: 'Raw Material Storage', desc: 'Industrial-grade storage silos for premium silicone materials', category: 'Storage' },
-  { src: '/images/factory-new/chemical-storage.jpg', title: 'Chemical Processing Area', desc: 'Quality controlled material handling and storage', category: 'Processing' },
-  { src: '/images/factory-new/processing-equipment.jpg', title: 'Mixing & Blending Equipment', desc: 'Precision industrial machinery for consistent formulations', category: 'Production' },
-  { src: '/images/factory-new/production-hall.jpg', title: 'Main Production Hall', desc: 'Large-scale manufacturing operations', category: 'Production' },
-  { src: '/images/factory-new/filling-line.jpg', title: 'Automated Filling Lines', desc: 'High-precision filling and packaging systems', category: 'Packaging' },
-  { src: '/images/factory-new/warehouse.jpg', title: 'Distribution Warehouse', desc: 'Ready for worldwide shipping to 100+ countries', category: 'Logistics' },
+  // Facility (6 images)
+  { src: '/images/factory-new/headquarters-building.png', title: 'GAUDON Headquarters', desc: 'Modern manufacturing facility in Foshan, China', category: 'Facility' },
+  { src: '/images/factory-new/production-hall-01.png', title: 'Main Production Hall', desc: 'Spacious manufacturing floor with advanced equipment', category: 'Facility' },
+  { src: '/images/factory-new/production-hall-02.png', title: 'Production Area', desc: 'Clean and organized production environment', category: 'Facility' },
+  { src: '/images/factory-new/production-floor-01.png', title: 'Factory Floor', desc: 'State-of-the-art production facility', category: 'Facility' },
+  { src: '/images/factory-new/production-floor-02.png', title: 'Manufacturing Space', desc: 'Large-scale production capabilities', category: 'Facility' },
+  { src: '/images/factory-new/facility-overview.png', title: 'Facility Overview', desc: 'Complete view of our manufacturing complex', category: 'Facility' },
+
+  // Production (10 images)
+  { src: '/images/factory-new/production-machinery-01.png', title: 'Production Machinery', desc: 'Advanced industrial equipment for silicone processing', category: 'Production' },
+  { src: '/images/factory-new/production-machinery-02.png', title: 'Processing Equipment', desc: 'Precision machinery for consistent quality', category: 'Production' },
+  { src: '/images/factory-new/production-line-01.png', title: 'Production Line', desc: 'Automated manufacturing systems', category: 'Production' },
+  { src: '/images/factory-new/production-line-02.png', title: 'Assembly Line', desc: 'Efficient production workflow', category: 'Production' },
+  { src: '/images/factory-new/production-line-03.png', title: 'Manufacturing Line', desc: 'High-capacity production setup', category: 'Production' },
+  { src: '/images/factory-new/production-equipment-01.png', title: 'Industrial Equipment', desc: 'Heavy-duty manufacturing machinery', category: 'Production' },
+  { src: '/images/factory-new/mixing-equipment-01.png', title: 'Mixing Equipment', desc: 'Precision blending systems for formulations', category: 'Production' },
+  { src: '/images/factory-new/mixing-equipment-02.png', title: 'Blending Systems', desc: 'Advanced mixing technology', category: 'Production' },
+  { src: '/images/factory-new/worker-operating-01.png', title: 'Skilled Operators', desc: 'Experienced technicians ensuring quality', category: 'Production' },
+  { src: '/images/factory-new/equipment-detail-01.png', title: 'Equipment Detail', desc: 'Close-up of precision machinery', category: 'Production' },
+
+  // Packaging (8 images)
+  { src: '/images/factory-new/filling-line-automated.png', title: 'Automated Filling', desc: 'High-speed automated filling systems', category: 'Packaging' },
+  { src: '/images/factory-new/filling-equipment-01.png', title: 'Filling Equipment', desc: 'Precision dispensing technology', category: 'Packaging' },
+  { src: '/images/factory-new/filling-line-02.png', title: 'Filling Line', desc: 'Efficient packaging operations', category: 'Packaging' },
+  { src: '/images/factory-new/filling-line-03.png', title: 'Packaging Station', desc: 'Quality-controlled filling process', category: 'Packaging' },
+  { src: '/images/factory-new/filling-precision-01.png', title: 'Precision Filling', desc: 'Accurate volume dispensing systems', category: 'Packaging' },
+  { src: '/images/factory-new/packaging-machine-01.png', title: 'Packaging Machine', desc: 'Automated cartridge packaging', category: 'Packaging' },
+  { src: '/images/factory-new/packaging-machine-02.png', title: 'Sealing Equipment', desc: 'Product sealing and finishing', category: 'Packaging' },
+  { src: '/images/factory-new/packaging-line-full.png', title: 'Complete Packaging Line', desc: 'Full packaging production workflow', category: 'Packaging' },
+
+  // Storage (3 images)
+  { src: '/images/factory-new/raw-material-storage.png', title: 'Raw Material Storage', desc: 'Organized chemical storage with safety protocols', category: 'Storage' },
+  { src: '/images/factory-new/chemical-storage-01.png', title: 'Chemical Warehouse', desc: 'Temperature-controlled material storage', category: 'Storage' },
+  { src: '/images/factory-new/chemical-storage-02.png', title: 'Material Handling', desc: 'Safe storage and handling systems', category: 'Storage' },
+
+  // Quality (2 images)
+  { src: '/images/factory-new/quality-control-01.png', title: 'Quality Control', desc: 'Rigorous testing and inspection standards', category: 'Quality' },
+  { src: '/images/factory-new/product-in-action.png', title: 'Product In Action', desc: 'GAUDON D2 Heavy Duty Silicone Sealant on the job site', category: 'Quality' },
+
+  // Products In Use (4 images)
+  { src: '/images/factory-new/jobsite-window-install.png', title: 'Window Installation', desc: 'Weather Tough sealant in professional use', category: 'Products' },
+  { src: '/images/factory-new/jobsite-workbench.png', title: 'Professional Workbench', desc: 'Mold Free sealant ready for application', category: 'Products' },
+  { src: '/images/factory-new/jobsite-sliding-door.png', title: 'Door Frame Sealing', desc: 'D2 Heavy Duty at sliding door installation', category: 'Products' },
+  { src: '/images/factory-new/jobsite-toolbox.png', title: 'Ready For Work', desc: 'GAUDON products with professional tools', category: 'Products' },
 ];
+
+// Gallery categories for filtering
+const galleryCategories = ['All', 'Facility', 'Production', 'Packaging', 'Storage', 'Quality', 'Products'];
 
 // Animated Counter Component - All counters finish at the same time
 function AnimatedCounter({ value, suffix = '', duration = 1.5 }) {
@@ -155,13 +195,25 @@ function ImageLightbox({ images, currentIndex, onClose, onNext, onPrev }) {
   );
 }
 
-// Factory Gallery Section - 3 Rows: 1 + 3 + 3
+// Factory Gallery Section - Enhanced with 28 images, filters, and show more
 function FactoryGallerySection() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [showAll, setShowAll] = useState(false);
+
+  // Filter images based on selected category
+  const filteredImages = selectedCategory === 'All'
+    ? factoryImages
+    : factoryImages.filter(img => img.category === selectedCategory);
+
+  // Show 17 images initially (1 hero + 16 grid = 4 full rows), or all if showAll is true
+  const displayedImages = showAll ? filteredImages : filteredImages.slice(0, 17);
 
   const openLightbox = (index) => {
-    setCurrentImageIndex(index);
+    // Find the actual index in the full filtered array
+    const actualIndex = filteredImages.findIndex(img => img.src === displayedImages[index].src);
+    setCurrentImageIndex(actualIndex);
     setLightboxOpen(true);
     document.body.style.overflow = 'hidden';
   };
@@ -172,11 +224,11 @@ function FactoryGallerySection() {
   };
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % factoryImages.length);
+    setCurrentImageIndex((prev) => (prev + 1) % filteredImages.length);
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + factoryImages.length) % factoryImages.length);
+    setCurrentImageIndex((prev) => (prev - 1 + filteredImages.length) % filteredImages.length);
   };
 
   return (
@@ -186,58 +238,88 @@ function FactoryGallerySection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-10"
+          className="text-center mb-8"
         >
           <span className="text-[#000000] text-sm font-medium uppercase tracking-wider mb-2 block">Manufacturing Excellence</span>
           <h2 className="text-3xl md:text-4xl font-semibold text-[#000000] mb-3">
             Our Production Facility
           </h2>
           <p className="text-slate-500 max-w-2xl mx-auto">
-            State-of-the-art manufacturing base in Foshan, China
+            State-of-the-art manufacturing base in Foshan, China with 20,000+ sqm of production space
           </p>
         </motion.div>
 
-        {/* 3 Row Gallery with gaps - Compact */}
-        <div className="max-w-4xl mx-auto space-y-2">
+        {/* Category Filter Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-wrap justify-center gap-2 mb-8"
+        >
+          {galleryCategories.map((category) => (
+            <button
+              key={category}
+              onClick={() => {
+                setSelectedCategory(category);
+                setShowAll(false);
+              }}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                selectedCategory === category
+                  ? 'bg-[#000000] text-white'
+                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              }`}
+            >
+              {category}
+              <span className="ml-1.5 text-xs opacity-70">
+                ({category === 'All' ? factoryImages.length : factoryImages.filter(img => img.category === category).length})
+              </span>
+            </button>
+          ))}
+        </motion.div>
 
-          {/* Row 1: Full Width Hero - Full image visible */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="relative cursor-pointer overflow-hidden rounded-xl group"
-            onClick={() => openLightbox(0)}
-          >
-            <div className="bg-slate-100">
-              <img
-                src={factoryImages[0].src}
-                alt={factoryImages[0].title}
-                className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-700"
-              />
-            </div>
-            {/* Always visible title */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-            <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6">
-              <h3 className="text-white font-bold text-lg md:text-2xl">{factoryImages[0].title}</h3>
-              <p className="text-white/80 text-sm mt-1">{factoryImages[0].desc}</p>
-            </div>
-            {/* Zoom icon */}
-            <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-              <div className="w-10 h-10 rounded-full bg-black/30 backdrop-blur flex items-center justify-center">
-                <ZoomIn className="w-5 h-5 text-white" />
+        {/* Gallery Grid */}
+        <div className="max-w-6xl mx-auto">
+          {/* Hero Image - First image full width */}
+          {displayedImages.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="relative cursor-pointer overflow-hidden rounded-xl group mb-3"
+              onClick={() => openLightbox(0)}
+            >
+              <div className="aspect-[21/9] bg-slate-100">
+                <img
+                  src={displayedImages[0].src}
+                  alt={displayedImages[0].title}
+                  className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                />
               </div>
-            </div>
-          </motion.div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6">
+                <span className="inline-block px-2 py-1 bg-white/20 backdrop-blur-sm rounded text-xs text-white mb-2">
+                  {displayedImages[0].category}
+                </span>
+                <h3 className="text-white font-bold text-lg md:text-2xl">{displayedImages[0].title}</h3>
+                <p className="text-white/80 text-sm mt-1">{displayedImages[0].desc}</p>
+              </div>
+              <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="w-10 h-10 rounded-full bg-black/30 backdrop-blur flex items-center justify-center">
+                  <ZoomIn className="w-5 h-5 text-white" />
+                </div>
+              </div>
+            </motion.div>
+          )}
 
-          {/* Row 2: 3 Equal Columns */}
-          <div className="grid grid-cols-3 gap-2">
-            {factoryImages.slice(1, 4).map((image, idx) => (
+          {/* Grid of remaining images - 4 columns on desktop, 2 on mobile */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            {displayedImages.slice(1).map((image, idx) => (
               <motion.div
-                key={idx}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                key={image.src}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
+                transition={{ delay: Math.min(idx * 0.05, 0.3) }}
                 className="relative cursor-pointer overflow-hidden rounded-xl group"
                 onClick={() => openLightbox(idx + 1)}
               >
@@ -248,12 +330,13 @@ function FactoryGallerySection() {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
-                {/* Always visible title */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                 <div className="absolute bottom-2 left-2 md:bottom-3 md:left-3 right-2">
-                  <h3 className="text-white font-semibold text-xs md:text-sm">{image.title}</h3>
+                  <span className="inline-block px-1.5 py-0.5 bg-white/20 backdrop-blur-sm rounded text-[10px] text-white mb-1">
+                    {image.category}
+                  </span>
+                  <h3 className="text-white font-semibold text-xs md:text-sm line-clamp-1">{image.title}</h3>
                 </div>
-                {/* Zoom icon on hover */}
                 <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   <div className="w-8 h-8 rounded-full bg-black/30 backdrop-blur flex items-center justify-center">
                     <ZoomIn className="w-4 h-4 text-white" />
@@ -263,39 +346,32 @@ function FactoryGallerySection() {
             ))}
           </div>
 
-          {/* Row 3: 3 Equal Columns */}
-          <div className="grid grid-cols-3 gap-2">
-            {factoryImages.slice(4, 7).map((image, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="relative cursor-pointer overflow-hidden rounded-xl group"
-                onClick={() => openLightbox(idx + 4)}
+          {/* Show More / Show Less Button */}
+          {filteredImages.length > 17 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-center mt-8"
+            >
+              <button
+                onClick={() => setShowAll(!showAll)}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full font-medium transition-colors"
               >
-                <div className="aspect-[4/3] bg-slate-100">
-                  <img
-                    src={image.src}
-                    alt={image.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                {/* Always visible title */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                <div className="absolute bottom-2 left-2 md:bottom-3 md:left-3 right-2">
-                  <h3 className="text-white font-semibold text-xs md:text-sm">{image.title}</h3>
-                </div>
-                {/* Zoom icon on hover */}
-                <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="w-8 h-8 rounded-full bg-black/30 backdrop-blur flex items-center justify-center">
-                    <ZoomIn className="w-4 h-4 text-white" />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                {showAll ? (
+                  <>
+                    Show Less
+                    <ChevronLeft className="w-4 h-4 rotate-90" />
+                  </>
+                ) : (
+                  <>
+                    Show All {filteredImages.length} Photos
+                    <ChevronRight className="w-4 h-4 -rotate-90" />
+                  </>
+                )}
+              </button>
+            </motion.div>
+          )}
         </div>
 
         {/* Stats bar */}
@@ -303,7 +379,7 @@ function FactoryGallerySection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-10 flex flex-wrap justify-center gap-8 md:gap-16"
+          className="mt-12 flex flex-wrap justify-center gap-8 md:gap-16"
         >
           {[
             { value: 20000, suffix: '+', label: 'sqm Factory' },
@@ -324,7 +400,7 @@ function FactoryGallerySection() {
         <AnimatePresence>
           {lightboxOpen && (
             <ImageLightbox
-              images={factoryImages}
+              images={filteredImages}
               currentIndex={currentImageIndex}
               onClose={closeLightbox}
               onNext={nextImage}
