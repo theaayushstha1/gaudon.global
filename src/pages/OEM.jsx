@@ -538,13 +538,13 @@ export default function OEM() {
         {/* Background Image */}
         <div className="absolute inset-0 overflow-hidden">
           <img
-            src="/images/oem-bg.png"
-            alt="Manufacturing facility"
-            className="w-full h-full object-cover scale-[1.2]"
-            style={{ objectPosition: 'center 60%', minWidth: '100%', minHeight: '100%' }}
+            src="/images/oem-hero-production.png"
+            alt="Silicone sealant production line"
+            className="w-full h-full object-cover"
+            style={{ objectPosition: 'center center' }}
           />
           {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -553,11 +553,11 @@ export default function OEM() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                <span className="text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">Premium Quality,</span><br />
-                <span className="text-amber-400 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">Your Label</span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight tracking-tight">
+                <span className="text-white" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.7)' }}>Premium Quality,</span><br />
+                <span className="text-amber-400" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.7)' }}>Your Label</span>
               </h1>
-              <p className="text-lg text-white/90 mb-8 max-w-lg drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] leading-relaxed">
+              <p className="text-lg text-white mb-8 max-w-lg leading-relaxed font-medium" style={{ textShadow: '1px 1px 6px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.7)' }}>
                 Premium silicone sealants manufactured under your brand.
                 25+ years of expertise, professional grade quality, flexible MOQ.
               </p>
