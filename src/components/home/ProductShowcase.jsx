@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ArrowLeft, Shield, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -71,15 +71,27 @@ const featuredProducts = [
 
 export default function ProductShowcase() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const currentProduct = featuredProducts[currentIndex];
 
-  const nextProduct = () => {
+  const nextProduct = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % featuredProducts.length);
-  };
+  }, []);
 
   const prevProduct = () => {
     setCurrentIndex((prev) => (prev - 1 + featuredProducts.length) % featuredProducts.length);
   };
+
+  // Auto-slide every 3 seconds
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      nextProduct();
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isPaused, nextProduct]);
 
   return (
     <section className="py-24 bg-white overflow-hidden">
@@ -101,7 +113,11 @@ export default function ProductShowcase() {
         </motion.div>
 
         {/* Product Slider */}
-        <div className="max-w-6xl mx-auto">
+        <div
+          className="max-w-6xl mx-auto"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Product Image */}
             <motion.div
