@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
-  Award,
   Shield,
-  Factory,
-  FlaskConical,
-  Leaf,
-  DollarSign,
-  Handshake,
-  Settings,
   Eye,
   X,
-  CheckCircle2
+  Sun,
+  Droplets,
+  Wind,
+  ThermometerSun,
+  Sparkles,
+  Clock
 } from 'lucide-react';
 
 // Certificate images
@@ -28,48 +26,15 @@ const certificateImages = [
   }
 ];
 
-// Why Choose GAUDON items
+// Why Choose GAUDON items - Clean icons + titles only
 const whyChooseItems = [
-  {
-    title: "25+ Years of Manufacturing Experience",
-    description: "Proven silicone sealant production since 1999, built on real factory know-how, not outsourcing.",
-    icon: Award
-  },
-  {
-    title: "Professional-Grade Performance",
-    description: "Formulated for strong adhesion, durability, and long-term sealing in demanding construction applications.",
-    icon: Shield
-  },
-  {
-    title: "Strict Quality Control",
-    description: "Manufactured under ISO 9001:2015 with full process control, from raw materials to finished products.",
-    icon: CheckCircle2
-  },
-  {
-    title: "Modern Automated Production",
-    description: "Large-scale facilities with advanced automated lines ensure consistency, stability, and supply reliability.",
-    icon: Factory
-  },
-  {
-    title: "Precision Testing Standards",
-    description: "Every product batch is verified through in-house testing to meet performance and safety requirements.",
-    icon: FlaskConical
-  },
-  {
-    title: "Environmentally Responsible Formulations",
-    description: "Designed with low-odor, safe, and compliant materials suitable for modern building environments.",
-    icon: Leaf
-  },
-  {
-    title: "Competitive Value",
-    description: "Factory-direct manufacturing delivers professional performance at a cost-effective price point.",
-    icon: DollarSign
-  },
-  {
-    title: "Built for Long-Term Partnerships",
-    description: "Focused on OEM, private label, and distribution partnerships with dependable supply and support.",
-    icon: Handshake
-  }
+  { title: "UV Resistant", icon: Sun },
+  { title: "Waterproof", icon: Droplets },
+  { title: "Weather Tough", icon: Wind },
+  { title: "Heat Stable", icon: ThermometerSun },
+  { title: "Premium Formula", icon: Sparkles },
+  { title: "Long Lasting", icon: Shield },
+  { title: "Easy Application", icon: Clock },
 ];
 
 export default function Achievements() {
@@ -219,38 +184,35 @@ export default function Achievements() {
         </div>
       </section>
 
-      {/* Why Choose GAUDON Section - SECOND TO LAST with updated icon style */}
-      <section className="py-20">
+      {/* Why Choose GAUDON Section - Clean icons + titles */}
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-10"
           >
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-              Why Choose GAUDON
+            <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-2">
+              Why Choose GAUDON?
             </h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
-              What sets us apart in the silicone sealant industry
+            <p className="text-slate-500">
+              Professional-grade sealants built for performance
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto">
             {whyChooseItems.map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-white rounded-2xl p-6 border border-slate-200 hover:border-amber-300 hover:shadow-lg transition-all"
+                className="flex flex-col items-center text-center"
               >
-                <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-4">
-                  <item.icon className="w-6 h-6 text-amber-600" />
-                </div>
-                <h3 className="font-bold text-slate-900 mb-2 text-lg">{item.title}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">{item.description}</p>
+                <item.icon className="w-6 h-6 text-slate-600 mb-2" />
+                <span className="text-sm font-medium text-slate-700">{item.title}</span>
               </motion.div>
             ))}
           </div>
