@@ -460,12 +460,12 @@ export default function OEM() {
       {/* Hero Section */}
       <section className="relative pt-36 md:pt-40 pb-20 overflow-hidden">
         {/* Background Image */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 overflow-hidden">
           <img
             src="/images/oem-bg.png"
             alt="Manufacturing facility"
-            className="w-full h-full object-cover scale-[1.3]"
-            style={{ objectPosition: 'center bottom' }}
+            className="w-full h-full object-cover scale-[1.2]"
+            style={{ objectPosition: 'center 60%', minWidth: '100%', minHeight: '100%' }}
           />
           {/* Dark overlay for text readability */}
           <div className="absolute inset-0 bg-black/40" />

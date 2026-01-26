@@ -101,36 +101,36 @@ export default function Achievements() {
         </div>
       )}
 
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
+      {/* Hero Section - Clean & Simple */}
+      <section className="relative pt-36 md:pt-40 pb-24 overflow-hidden">
         {/* Background Image */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 overflow-hidden">
           <img
             src="/images/about-bg.jpg"
             alt="Modern glass architecture"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover scale-110"
           />
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+          <div className="absolute inset-0 bg-black/50" />
         </div>
+
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center max-w-3xl mx-auto"
+            className="max-w-2xl"
           >
-            <h1
-              className="text-4xl lg:text-5xl font-bold text-white mb-4"
-              style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5)' }}
-            >
-              About{' '}
-              <span className="text-amber-400">GAUDON</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              <span className="text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">About</span>{' '}
+              <span className="text-amber-400 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">GAUDON</span>
             </h1>
-            <p
-              className="text-lg text-white/90"
-              style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.8)' }}
-            >
-              Professional silicone sealant manufacturer with 25+ years of experience
+
+            <p className="text-lg text-white/90 mb-4 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] leading-relaxed max-w-xl">
+              Professional silicone sealant manufacturer with 25+ years of experience.
+              Trusted by construction professionals in over 100 countries worldwide.
+            </p>
+            <p className="text-base text-white/80 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] leading-relaxed max-w-xl">
+              From kitchen & bath sealants to heavy-duty construction adhesives, we deliver
+              ISO 9001 certified quality you can count on.
             </p>
           </motion.div>
         </div>

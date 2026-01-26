@@ -13,7 +13,7 @@ function LayoutContent({ children, currentPageName }) {
     { name: t('home'), page: 'Home' },
     { name: t('products'), page: 'Products' },
     { name: 'OEM Services', page: 'OEM' },
-    { name: 'About Us', page: 'Achievements' },
+    { name: 'About Us', page: 'About' },
     { name: 'Calculator', page: 'Calculator' },
     { name: t('contact'), page: 'Contact' }
   ];

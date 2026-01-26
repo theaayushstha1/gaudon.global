@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 import Layout from "./Layout.jsx";
 
-import About from "./About";
-
 import Achievements from "./Achievements";
 
 import Certifications from "./Certifications";
@@ -34,9 +32,7 @@ function ScrollToTop() {
 
 const PAGES = {
 
-    About: About,
-
-    Achievements: Achievements,
+    About: Achievements,
 
     Certifications: Certifications,
 
@@ -80,10 +76,7 @@ function PagesContent() {
 
                 <Route path="/" element={<Home />} />
 
-
-                <Route path="/About" element={<About />} />
-
-                <Route path="/Achievements" element={<Achievements />} />
+                <Route path="/about" element={<Achievements />} />
 
                 <Route path="/Certifications" element={<Certifications />} />
 

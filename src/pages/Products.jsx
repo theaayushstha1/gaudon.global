@@ -114,26 +114,26 @@ export default function Products() {
               transition={{ delay: 0.2 }}
               className="hidden lg:block relative"
             >
-              {/* Horizontal scrolling product showcase */}
-              <div className="flex items-end gap-4">
-                {products.slice(0, 6).map((product, i) => (
+              {/* Product showcase grid */}
+              <div className="flex items-end justify-center gap-3">
+                {products.slice(0, 4).map((product, i) => (
                   <motion.div
                     key={product.id}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 + i * 0.08 }}
-                    whileHover={{ y: -10, scale: 1.02 }}
+                    transition={{ delay: 0.2 + i * 0.1 }}
+                    whileHover={{ y: -20, scale: 1.08 }}
                     className="group cursor-pointer"
                   >
                     <Link to={createPageUrl(`ProductDetail?id=${product.id}`)}>
                       <div
                         className="relative"
-                        style={{ height: i % 2 === 0 ? '160px' : '140px' }}
+                        style={{ height: i % 2 === 0 ? '280px' : '250px' }}
                       >
                         <img
                           src={product.image}
                           alt={product.name}
-                          className="h-full w-auto object-contain drop-shadow-2xl group-hover:drop-shadow-[0_20px_40px_rgba(255,255,255,0.15)] transition-all duration-300"
+                          className="h-full w-auto object-contain drop-shadow-[0_15px_35px_rgba(0,0,0,0.5)] group-hover:drop-shadow-[0_25px_50px_rgba(255,255,255,0.25)] transition-all duration-300"
                         />
                       </div>
                     </Link>
@@ -142,7 +142,7 @@ export default function Products() {
               </div>
 
               {/* Subtle reflection/glow effect */}
-              <div className="absolute -bottom-4 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent blur-xl" />
+              <div className="absolute -bottom-4 left-0 right-0 h-20 bg-gradient-to-t from-black/30 via-white/5 to-transparent blur-xl" />
             </motion.div>
           </div>
         </div>
