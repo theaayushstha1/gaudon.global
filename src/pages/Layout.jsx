@@ -124,41 +124,62 @@ function LayoutContent({ children, currentPageName }) {
           </nav>
         </div>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-              className={`lg:hidden ${isScrolled ? 'bg-white border-t border-slate-200' : 'bg-slate-950 border-t border-slate-800'}`}
-            >
-              <div className="container mx-auto px-4 py-4 space-y-1">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.page}
-                    to={createPageUrl(link.page)}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={`block px-4 py-3 rounded-xl font-medium text-sm transition-all duration-200 ${
-                      currentPageName === link.page
-                        ? (isScrolled ? 'bg-slate-100 text-slate-900' : 'bg-white/10 text-white')
-                        : (isScrolled ? 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' : 'text-slate-300 hover:bg-white/5 hover:text-white')
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-                <Link to={createPageUrl('Contact')} onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button className={`w-full mt-4 rounded-xl font-medium ${isScrolled ? 'bg-emerald-600 hover:bg-emerald-700 text-white' : 'bg-white hover:bg-slate-100 text-slate-900'}`}>
-                    {t('getQuote')}
-                  </Button>
-                </Link>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </header>
+
+      {/* Mobile Menu - Full Screen Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="lg:hidden fixed inset-0 z-[99] bg-slate-950"
+          >
+            {/* Header with logo and close button */}
+            <div className="container mx-auto px-4">
+              <div className="flex items-center justify-between h-32">
+                <Link to={createPageUrl('Home')} onClick={() => setIsMobileMenuOpen(false)}>
+                  <img
+                    src="/gaudon-mascot-logo.png"
+                    alt="GAUDON Logo"
+                    className="h-28 w-auto object-contain"
+                  />
+                </Link>
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="p-2 rounded-lg text-white hover:bg-white/10"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+            </div>
+
+            {/* Menu Links */}
+            <div className="container mx-auto px-4 py-4 space-y-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.page}
+                  to={createPageUrl(link.page)}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`block px-4 py-3 rounded-xl font-medium text-sm transition-all duration-200 ${
+                    currentPageName === link.page
+                      ? 'bg-white/10 text-white'
+                      : 'text-slate-300 hover:bg-white/5 hover:text-white'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <Link to={createPageUrl('Contact')} onClick={() => setIsMobileMenuOpen(false)}>
+                <Button className="w-full mt-4 rounded-xl font-medium bg-white hover:bg-slate-100 text-slate-900">
+                  {t('getQuote')}
+                </Button>
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Main Content */}
       <main>
