@@ -44,33 +44,26 @@ const oemBenefits = [
   { title: 'Global Shipping', desc: 'Fast delivery to 100+ countries worldwide', image: '/images/factory-new/warehouse.jpg' }
 ];
 
-// Factory gallery images with proper labels - 28 images organized by category
+// Factory gallery images with proper labels - 20 images organized by category
 const factoryImages = [
-  // Facility (6 images)
-  { src: '/images/factory-new/headquarters-building.png', title: 'GAUDON Headquarters', desc: 'Modern manufacturing facility in Foshan, China', category: 'Facility' },
+  // Facility (3 images)
   { src: '/images/factory-new/production-hall-01.png', title: 'Main Production Hall', desc: 'Spacious manufacturing floor with advanced equipment', category: 'Facility' },
-  { src: '/images/factory-new/production-hall-02.png', title: 'Production Area', desc: 'Clean and organized production environment', category: 'Facility' },
   { src: '/images/factory-new/production-floor-01.png', title: 'Factory Floor', desc: 'State-of-the-art production facility', category: 'Facility' },
   { src: '/images/factory-new/production-floor-02.png', title: 'Manufacturing Space', desc: 'Large-scale production capabilities', category: 'Facility' },
-  { src: '/images/factory-new/facility-overview.png', title: 'Facility Overview', desc: 'Complete view of our manufacturing complex', category: 'Facility' },
 
-  // Production (10 images)
+  // Production (7 images)
   { src: '/images/factory-new/production-machinery-01.png', title: 'Production Machinery', desc: 'Advanced industrial equipment for silicone processing', category: 'Production' },
   { src: '/images/factory-new/production-machinery-02.png', title: 'Processing Equipment', desc: 'Precision machinery for consistent quality', category: 'Production' },
   { src: '/images/factory-new/production-line-01.png', title: 'Production Line', desc: 'Automated manufacturing systems', category: 'Production' },
   { src: '/images/factory-new/production-line-02.png', title: 'Assembly Line', desc: 'Efficient production workflow', category: 'Production' },
   { src: '/images/factory-new/production-line-03.png', title: 'Manufacturing Line', desc: 'High-capacity production setup', category: 'Production' },
-  { src: '/images/factory-new/production-equipment-01.png', title: 'Industrial Equipment', desc: 'Heavy-duty manufacturing machinery', category: 'Production' },
   { src: '/images/factory-new/mixing-equipment-01.png', title: 'Mixing Equipment', desc: 'Precision blending systems for formulations', category: 'Production' },
   { src: '/images/factory-new/mixing-equipment-02.png', title: 'Blending Systems', desc: 'Advanced mixing technology', category: 'Production' },
-  { src: '/images/factory-new/worker-operating-01.png', title: 'Skilled Operators', desc: 'Experienced technicians ensuring quality', category: 'Production' },
-  { src: '/images/factory-new/equipment-detail-01.png', title: 'Equipment Detail', desc: 'Close-up of precision machinery', category: 'Production' },
 
-  // Packaging (8 images)
+  // Packaging (7 images)
   { src: '/images/factory-new/filling-line-automated.png', title: 'Automated Filling', desc: 'High-speed automated filling systems', category: 'Packaging' },
   { src: '/images/factory-new/filling-equipment-01.png', title: 'Filling Equipment', desc: 'Precision dispensing technology', category: 'Packaging' },
   { src: '/images/factory-new/filling-line-02.png', title: 'Filling Line', desc: 'Efficient packaging operations', category: 'Packaging' },
-  { src: '/images/factory-new/filling-line-03.png', title: 'Packaging Station', desc: 'Quality-controlled filling process', category: 'Packaging' },
   { src: '/images/factory-new/filling-precision-01.png', title: 'Precision Filling', desc: 'Accurate volume dispensing systems', category: 'Packaging' },
   { src: '/images/factory-new/packaging-machine-01.png', title: 'Packaging Machine', desc: 'Automated cartridge packaging', category: 'Packaging' },
   { src: '/images/factory-new/packaging-machine-02.png', title: 'Sealing Equipment', desc: 'Product sealing and finishing', category: 'Packaging' },
@@ -80,20 +73,10 @@ const factoryImages = [
   { src: '/images/factory-new/raw-material-storage.png', title: 'Raw Material Storage', desc: 'Organized chemical storage with safety protocols', category: 'Storage' },
   { src: '/images/factory-new/chemical-storage-01.png', title: 'Chemical Warehouse', desc: 'Temperature-controlled material storage', category: 'Storage' },
   { src: '/images/factory-new/chemical-storage-02.png', title: 'Material Handling', desc: 'Safe storage and handling systems', category: 'Storage' },
-
-  // Quality (2 images)
-  { src: '/images/factory-new/quality-control-01.png', title: 'Quality Control', desc: 'Rigorous testing and inspection standards', category: 'Quality' },
-  { src: '/images/factory-new/product-in-action.png', title: 'Product In Action', desc: 'GAUDON D2 Heavy Duty Silicone Sealant on the job site', category: 'Quality' },
-
-  // Products In Use (4 images)
-  { src: '/images/factory-new/jobsite-window-install.png', title: 'Window Installation', desc: 'Weather Tough sealant in professional use', category: 'Products' },
-  { src: '/images/factory-new/jobsite-workbench.png', title: 'Professional Workbench', desc: 'Mold Free sealant ready for application', category: 'Products' },
-  { src: '/images/factory-new/jobsite-sliding-door.png', title: 'Door Frame Sealing', desc: 'D2 Heavy Duty at sliding door installation', category: 'Products' },
-  { src: '/images/factory-new/jobsite-toolbox.png', title: 'Ready For Work', desc: 'GAUDON products with professional tools', category: 'Products' },
 ];
 
 // Gallery categories for filtering
-const galleryCategories = ['All', 'Facility', 'Production', 'Packaging', 'Storage', 'Quality', 'Products'];
+const galleryCategories = ['All', 'Facility', 'Production', 'Packaging', 'Storage'];
 
 // Animated Counter Component - All counters finish at the same time
 function AnimatedCounter({ value, suffix = '', duration = 1.5 }) {
@@ -154,10 +137,10 @@ function ImageLightbox({ images, currentIndex, onClose, onNext, onPrev }) {
     >
       {/* Close button */}
       <button
-        onClick={onClose}
-        className="absolute top-4 right-4 z-10 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+        onClick={(e) => { e.stopPropagation(); onClose(); }}
+        className="fixed top-8 right-8 z-[100] p-4 rounded-full bg-white text-black hover:bg-gray-200 transition-colors shadow-xl"
       >
-        <X className="w-6 h-6 text-white" />
+        <X className="w-8 h-8" strokeWidth={2.5} />
       </button>
 
       {/* Navigation arrows */}
@@ -279,41 +262,9 @@ function FactoryGallerySection() {
 
         {/* Gallery Grid */}
         <div className="max-w-6xl mx-auto">
-          {/* Hero Image - First image full width */}
-          {displayedImages.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="relative cursor-pointer overflow-hidden rounded-xl group mb-3"
-              onClick={() => openLightbox(0)}
-            >
-              <div className="aspect-[21/9] bg-slate-100">
-                <img
-                  src={displayedImages[0].src}
-                  alt={displayedImages[0].title}
-                  className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6">
-                <span className="inline-block px-2 py-1 bg-white/20 backdrop-blur-sm rounded text-xs text-white mb-2">
-                  {displayedImages[0].category}
-                </span>
-                <h3 className="text-white font-bold text-lg md:text-2xl">{displayedImages[0].title}</h3>
-                <p className="text-white/80 text-sm mt-1">{displayedImages[0].desc}</p>
-              </div>
-              <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                <div className="w-10 h-10 rounded-full bg-black/30 backdrop-blur flex items-center justify-center">
-                  <ZoomIn className="w-5 h-5 text-white" />
-                </div>
-              </div>
-            </motion.div>
-          )}
-
-          {/* Grid of remaining images - 4 columns on desktop, 2 on mobile */}
+          {/* Grid of all images - 4 columns on desktop, 2 on mobile */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-            {displayedImages.slice(1).map((image, idx) => (
+            {displayedImages.map((image, idx) => (
               <motion.div
                 key={image.src}
                 initial={{ opacity: 0, y: 20 }}
@@ -321,7 +272,7 @@ function FactoryGallerySection() {
                 viewport={{ once: true }}
                 transition={{ delay: Math.min(idx * 0.05, 0.3) }}
                 className="relative cursor-pointer overflow-hidden rounded-xl group"
-                onClick={() => openLightbox(idx + 1)}
+                onClick={() => openLightbox(idx)}
               >
                 <div className="aspect-[4/3] bg-slate-100">
                   <img

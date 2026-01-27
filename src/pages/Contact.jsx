@@ -49,15 +49,31 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
-    const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-    const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+    const EMAILJS_SERVICE_ID = 'service_8dn9mxl';
+    const EMAILJS_TEMPLATE_ID = 'template_s1ctti8';
+    const EMAILJS_PUBLIC_KEY = 'uS79tK2Q5eM5n9Qhl';
 
     try {
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
-        { ...formData, inquiry_type: selectedType?.label || 'General', to_email: 'gaudonusallc@gmail.com' },
+        {
+          name: formData.contact_person,
+          email: formData.email,
+          title: `${selectedType?.label || 'General Inquiry'} - ${formData.company_name}`,
+          message: `Company: ${formData.company_name}
+Contact: ${formData.contact_person}
+Email: ${formData.email}
+Phone: ${formData.phone || 'Not provided'}
+Country: ${formData.country}
+Inquiry Type: ${selectedType?.label || 'General'}
+Product Interest: ${formData.product_interest || 'Not specified'}
+Quantity: ${formData.quantity || 'Not specified'}
+
+Message:
+${formData.message}`,
+          time: new Date().toLocaleString()
+        },
         EMAILJS_PUBLIC_KEY
       );
       setSubmitted(true);
