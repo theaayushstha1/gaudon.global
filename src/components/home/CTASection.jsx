@@ -10,33 +10,41 @@ export default function CTASection() {
   const { t } = useLanguage();
 
   return (
-    <section
-      className="py-20 relative overflow-hidden"
-      style={{ background: 'linear-gradient(to bottom, #000000 0%, #111111 100%)' }}
-    >
-      <div className="absolute inset-0 pattern-grid" />
+    <section className="py-32 relative overflow-hidden min-h-[500px]">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src="/images/cta-bg.jpg"
+          alt="Business partnership"
+          className="w-full h-full object-cover object-top"
+        />
+        {/* Dark overlay for text visibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/70 to-black/60" />
+      </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-2xl mx-auto text-center">
+        <div className="max-w-2xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-sm font-medium text-slate-500 uppercase tracking-wider mb-3 block">Get Started</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-4 text-display">
+            <span className="inline-block text-sm font-semibold text-emerald-400 uppercase tracking-wider mb-4 px-4 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
+              Get Started
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-5 leading-tight drop-shadow-lg">
               {t('readyToSeal')}
             </h2>
-            <p className="text-lg text-gray-400 mb-8 max-w-xl mx-auto">
+            <p className="text-lg text-white/80 mb-8 max-w-xl leading-relaxed drop-shadow-md">
               {t('ctaDesc')}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Link to={createPageUrl('Contact')}>
                 <Button
                   size="lg"
-                  className="bg-emerald-600 text-white hover:bg-emerald-700 px-8 py-5 text-base rounded-full font-medium transition-all duration-200"
+                  className="bg-emerald-500 text-white hover:bg-emerald-600 px-8 py-5 text-base rounded-full font-semibold transition-all duration-200 shadow-lg shadow-emerald-500/25"
                 >
                   <Mail className="mr-2 w-4 h-4" />
                   {t('requestQuote')}
@@ -45,7 +53,7 @@ export default function CTASection() {
               <a href="mailto:gaudonusallc@gmail.com">
                 <Button
                   size="lg"
-                  className="bg-transparent border border-white/30 text-white hover:bg-white/10 hover:border-white/50 px-8 py-5 text-base rounded-full font-medium transition-all duration-200"
+                  className="bg-white/10 backdrop-blur-sm border border-white/30 text-white hover:bg-white/20 hover:border-white/50 px-8 py-5 text-base rounded-full font-semibold transition-all duration-200"
                 >
                   <MessageCircle className="mr-2 w-4 h-4" />
                   {t('talkToSales')}
