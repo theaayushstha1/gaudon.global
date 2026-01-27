@@ -325,8 +325,8 @@ export const products = [
       unitsPerCase: 12,
       casesPerPallet: 216
     },
-    image: "/images/products/gaudon-b1-acrylic-latex.png",
-    images: ["/images/products/gaudon-b1-acrylic-latex.png"],
+    image: "/images/products/gaudon-b1-acrylic-latex.jpg",
+    images: ["/images/products/gaudon-b1-acrylic-latex.jpg"],
     featured: true,
     popular: true,
     badge: "Paintable",
@@ -382,12 +382,78 @@ export const products = [
       unitsPerCase: 12,
       casesPerPallet: 216
     },
-    image: "/images/products/gaudon-b1-premium-latex.png",
-    images: ["/images/products/gaudon-b1-premium-latex.png"],
+    image: "/images/products/gaudon-b2-acrylic-latex.jpg",
+    images: ["/images/products/gaudon-b2-acrylic-latex.jpg"],
     featured: false,
     popular: false,
     badge: "Standard",
     color: "#DB2777"
+  },
+
+  // ============================================
+  // GAUDON PF1 - Polyurethane Foam Multi-Use
+  // ============================================
+  {
+    id: "gaudon-pf1",
+    model: "PF1",
+    name: "Polyurethane Foam Multi-Use",
+    fullName: "GAUDON Polyurethane Foam High Expansion",
+    tagline: "High-expansion, professional-grade construction foam for sealing, filling, and insulating",
+    bestFor: "Insulation & Gap Filling",
+    category: "insulating_foam",
+    type: "aerosol",
+    cureType: "Moisture Cure",
+    warranty: 10,
+    warrantyBadge: "Pro Grade",
+    description: "GAUDON Polyurethane Foam is a high-expansion, professional-grade construction foam designed for sealing, filling, and insulating gaps in residential and commercial applications. It provides excellent adhesion to most building materials and delivers reliable thermal and acoustic insulation.",
+    recommendedUse: "Window and door installation. Filling and insulating gaps and voids. Sealing wall penetrations and joints. General construction and renovation use.",
+    featureIcons: [
+      { icon: "expansion", label: "High Expansion" },
+      { icon: "adhesion", label: "Excellent Adhesion" },
+      { icon: "insulation", label: "Thermal & Sound Insulation" },
+      { icon: "pro-grade", label: "Construction Grade" }
+    ],
+    applications: [
+      "Window and door installation",
+      "Filling and insulating gaps and voids",
+      "Sealing wall penetrations and joints",
+      "General construction and renovation use"
+    ],
+    directions: [
+      "Shake the can vigorously for 30 seconds before use. If use is interrupted, shake again for 30 seconds before continuing.",
+      "Clean application area and remove dust, grease, and loose particles. Protect surrounding surfaces with tape or film.",
+      "Remove cap and attach a clean spray gun or nozzle.",
+      "Apply foam from the bottom upward. Fill gaps to approximately 50% volume to allow for expansion.",
+      "Foam will become tack-free in about 10 minutes. Further work may continue after 1 hour.",
+      "After full curing, trim excess foam with a sharp knife. For multi-layer application, apply layers 2–3 inches thick and wait at least 12 hours between layers.",
+      "Fresh stains may be removed with acetone or approved foam cleaner.",
+      "For best results, apply at temperatures between 41°F and 68°F (5°C–20°C)."
+    ],
+    skus: [
+      {
+        sku: "PF1",
+        size: "25.4 fl oz",
+        color: "Yellow/Tan",
+        dimension: "2.7 × 2.7 × 10.5 in",
+        weight: "1.65 lb",
+        casePack: 12,
+        casesPerPallet: 120
+      }
+    ],
+    colors: ["Yellow/Tan"],
+    sizes: ["25.4 fl oz"],
+    packaging: {
+      size: "25.4 fl oz",
+      type: "Aerosol Can",
+      unitsPerCase: 12,
+      casesPerPallet: 120
+    },
+    image: "/images/products/gaudon-polyurethane-foam.png",
+    images: ["/images/products/gaudon-polyurethane-foam.png"],
+    featured: true,
+    popular: true,
+    badge: "Multi-Use",
+    color: "#78350F"
   }
 ];
 
@@ -398,7 +464,8 @@ export const categories = [
   { id: "weatherproof", name: "Weatherproof", count: products.filter(p => p.category === "weatherproof").length },
   { id: "glass", name: "Glass & Aquarium", count: products.filter(p => p.category === "glass").length },
   { id: "construction", name: "Construction", count: products.filter(p => p.category === "construction").length },
-  { id: "acrylic", name: "Acrylic Latex", count: products.filter(p => p.category === "acrylic").length }
+  { id: "acrylic", name: "Acrylic Latex", count: products.filter(p => p.category === "acrylic").length },
+  { id: "insulating_foam", name: "Insulating Foams", count: products.filter(p => p.category === "insulating_foam").length }
 ];
 
 // Product Types

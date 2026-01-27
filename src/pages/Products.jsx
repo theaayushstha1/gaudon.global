@@ -1,25 +1,46 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import ComparisonTool from '../components/products/ComparisonTool';
-import { Search, Plus, Check, ArrowRight, X, SlidersHorizontal } from 'lucide-react';
+import { Search, Plus, Check, ArrowRight, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { products, categories } from '@/data/products';
 
-const categoryFilters = [
-  { id: 'all', label: 'All Products' },
-  { id: 'kitchen_bath', label: 'Kitchen & Bath' },
-  { id: 'weatherproof', label: 'Weatherproof' },
-  { id: 'glass', label: 'Glass & Aquarium' },
-  { id: 'construction', label: 'Construction' },
-  { id: 'acrylic', label: 'Acrylic & Latex' }
+// Main categories with sub-categories
+const mainCategories = [
+  {
+    id: 'silicone',
+    label: '100% Silicone Sealants',
+    shortLabel: 'Silicone',
+    accent: '#3b82f6',
+    subCategories: [
+      { id: 'neutral_cure', label: 'Neutral Cure' },
+      { id: 'acetic_cure', label: 'Acetic Cure' }
+    ]
+  },
+  {
+    id: 'acrylic_latex',
+    label: 'Acrylic Latex Sealants',
+    shortLabel: 'Acrylic Latex',
+    accent: '#8b5cf6',
+    subCategories: []
+  },
+  {
+    id: 'insulating_foam',
+    label: 'Insulating Foams',
+    shortLabel: 'Foams',
+    accent: '#f59e0b',
+    subCategories: []
+  }
 ];
 
 export default function Products() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [activeCategory, setActiveCategory] = useState('all');
+  const [activeMainCategory, setActiveMainCategory] = useState(null);
+  const [activeSubCategory, setActiveSubCategory] = useState(null);
+  const [expandedCategory, setExpandedCategory] = useState(null);
   const [comparisonIds, setComparisonIds] = useState([]);
 
   const toggleComparison = (productId) => {
@@ -30,15 +51,52 @@ export default function Products() {
     );
   };
 
+  const handleMainCategoryClick = (categoryId) => {
+    if (expandedCategory === categoryId) {
+      setExpandedCategory(null);
+    } else {
+      setExpandedCategory(categoryId);
+    }
+    setActiveMainCategory(categoryId);
+    setActiveSubCategory(null);
+  };
+
+  const handleSubCategoryClick = (subCategoryId) => {
+    setActiveSubCategory(subCategoryId);
+  };
+
+  const clearFilters = () => {
+    setActiveMainCategory(null);
+    setActiveSubCategory(null);
+    setExpandedCategory(null);
+    setSearchQuery('');
+  };
+
   const filteredProducts = products.filter((product) => {
     const matchesSearch = !searchQuery ||
       product.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.model?.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.fullName?.toLowerCase().includes(searchQuery.toLowerCase());
 
-    const matchesCategory = activeCategory === 'all' || product.category === activeCategory;
+    // Filter by main category
+    let matchesMainCategory = true;
+    if (activeMainCategory === 'silicone') {
+      matchesMainCategory = product.cureType?.includes('Cure') && product.category !== 'insulating_foam' && product.category !== 'acrylic';
+    } else if (activeMainCategory === 'acrylic_latex') {
+      matchesMainCategory = product.category === 'acrylic' || product.name?.toLowerCase().includes('acrylic') || product.name?.toLowerCase().includes('latex');
+    } else if (activeMainCategory === 'insulating_foam') {
+      matchesMainCategory = product.category === 'insulating_foam' || product.name?.toLowerCase().includes('foam');
+    }
 
-    return matchesSearch && matchesCategory;
+    // Filter by sub-category (cure type)
+    let matchesSubCategory = true;
+    if (activeSubCategory === 'neutral_cure') {
+      matchesSubCategory = product.cureType === 'Neutral Cure';
+    } else if (activeSubCategory === 'acetic_cure') {
+      matchesSubCategory = product.cureType === 'Acetic Cure';
+    }
+
+    return matchesSearch && matchesMainCategory && matchesSubCategory;
   });
 
   return (
@@ -148,103 +206,272 @@ export default function Products() {
         </div>
       </section>
 
-      {/* Filter Bar with Search */}
+      {/* Search Bar */}
       <section className="sticky top-16 z-30 bg-white border-b border-slate-200 shadow-sm">
-        <div className="container mx-auto px-4 py-5">
-          {/* Search Bar - Full Width & Bigger */}
-          <div className="relative mb-5">
-            <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-6 h-6 text-slate-400" />
+        <div className="container mx-auto px-4 py-4">
+          <div className="relative">
+            <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
             <input
               type="text"
-              placeholder="Search products by name, model, category, or application..."
+              placeholder="Search products by name, model, or application..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-14 pr-14 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 placeholder-slate-400 focus:outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all text-base"
+              className="w-full pl-12 pr-12 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all text-sm"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors p-1"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors p-1"
               >
-                <X className="w-5 h-5" />
-              </button>
-            )}
-          </div>
-
-          {/* Category Filters */}
-          <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide">
-            <SlidersHorizontal className="w-4 h-4 text-slate-400 mr-1 flex-shrink-0" />
-            {categoryFilters.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
-                  activeCategory === cat.id
-                    ? 'bg-slate-900 text-white'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                }`}
-              >
-                {cat.label}
-              </button>
-            ))}
-
-            {(searchQuery || activeCategory !== 'all') && (
-              <button
-                onClick={() => { setSearchQuery(''); setActiveCategory('all'); }}
-                className="px-3 py-2 text-sm text-slate-500 hover:text-red-500 flex items-center gap-1 transition-colors"
-              >
-                <X className="w-3.5 h-3.5" />
-                Clear All
+                <X className="w-4 h-4" />
               </button>
             )}
           </div>
         </div>
       </section>
 
-      {/* Products Grid */}
-      <section id="product-grid" className="py-10">
+      {/* Products Section with Sidebar */}
+      <section id="product-grid" className="py-8">
         <div className="container mx-auto px-4">
-          {/* Results count */}
-          <div className="mb-6 flex items-center justify-between">
-            <p className="text-sm text-slate-500">
-              {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''} found
-            </p>
-            {comparisonIds.length > 0 && (
-              <p className="text-sm text-slate-600">
-                <span className="font-medium">{comparisonIds.length}</span> selected for comparison
-              </p>
-            )}
-          </div>
+          <div className="flex gap-8">
+            {/* Left Sidebar - Categories */}
+            <div className="w-64 flex-shrink-0 hidden lg:block">
+              <div className="bg-white rounded-2xl border border-slate-200 sticky top-36 overflow-hidden">
+                {/* Header */}
+                <div className="px-5 py-4 border-b border-slate-100 bg-slate-50/50">
+                  <h3 className="font-semibold text-slate-900 text-sm">Product Categories</h3>
+                </div>
 
-          {filteredProducts.length === 0 ? (
-            <div className="text-center py-20">
-              <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Search className="w-7 h-7 text-slate-400" />
+                <div className="p-3">
+                  {/* All Products */}
+                  <button
+                    onClick={clearFilters}
+                    className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-all duration-200 ${
+                      !activeMainCategory
+                        ? 'bg-slate-900 text-white font-medium'
+                        : 'text-slate-700 hover:bg-slate-50'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span>All Products</span>
+                      <span className={`text-xs tabular-nums ${
+                        !activeMainCategory ? 'text-white/60' : 'text-slate-400'
+                      }`}>
+                        {products.length}
+                      </span>
+                    </div>
+                  </button>
+
+                  {/* Divider */}
+                  <div className="my-2 border-t border-slate-100" />
+
+                  {/* Main Categories */}
+                  <div className="space-y-1">
+                    {mainCategories.map((category, index) => {
+                      const isActive = activeMainCategory === category.id;
+                      const isExpanded = expandedCategory === category.id;
+                      const productCount = products.filter(p => {
+                        if (category.id === 'silicone') return p.cureType?.includes('Cure') && p.category !== 'insulating_foam' && p.category !== 'acrylic';
+                        if (category.id === 'acrylic_latex') return p.category === 'acrylic';
+                        if (category.id === 'insulating_foam') return p.category === 'insulating_foam';
+                        return false;
+                      }).length;
+
+                      return (
+                        <div key={category.id}>
+                          <button
+                            onClick={() => handleMainCategoryClick(category.id)}
+                            className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-all duration-200 ${
+                              isActive
+                                ? 'text-white font-medium'
+                                : 'text-slate-700 hover:bg-slate-50'
+                            }`}
+                            style={isActive ? { backgroundColor: category.accent } : {}}
+                          >
+                            <div className="flex items-center justify-between gap-2">
+                              <div className="flex items-center gap-3 min-w-0">
+                                {/* Number index */}
+                                <span className={`w-6 h-6 rounded-md flex items-center justify-center text-xs font-semibold flex-shrink-0 ${
+                                  isActive
+                                    ? 'bg-white/20 text-white'
+                                    : 'bg-slate-100 text-slate-500'
+                                }`}>
+                                  {index + 1}
+                                </span>
+                                <span className="truncate">{category.label}</span>
+                              </div>
+                              <div className="flex items-center gap-2 flex-shrink-0">
+                                <span className={`text-xs tabular-nums ${
+                                  isActive ? 'text-white/60' : 'text-slate-400'
+                                }`}>
+                                  {productCount}
+                                </span>
+                                {category.subCategories.length > 0 && (
+                                  <motion.span
+                                    animate={{ rotate: isExpanded ? 180 : 0 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="flex-shrink-0"
+                                  >
+                                    <ChevronDown className={`w-4 h-4 ${isActive ? 'text-white/70' : 'text-slate-400'}`} />
+                                  </motion.span>
+                                )}
+                              </div>
+                            </div>
+                          </button>
+
+                          {/* Sub Categories */}
+                          <AnimatePresence>
+                            {isExpanded && category.subCategories.length > 0 && (
+                              <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                exit={{ opacity: 0, height: 0 }}
+                                transition={{ duration: 0.2 }}
+                                className="overflow-hidden"
+                              >
+                                <div className="py-2 pl-8 pr-3 space-y-1">
+                                  {category.subCategories.map((sub, subIndex) => {
+                                    const isSubActive = activeSubCategory === sub.id;
+                                    return (
+                                      <button
+                                        key={sub.id}
+                                        onClick={() => handleSubCategoryClick(sub.id)}
+                                        className={`w-full text-left px-3 py-2.5 rounded-md text-sm transition-all duration-200 flex items-center gap-3 ${
+                                          isSubActive
+                                            ? 'font-medium bg-slate-100'
+                                            : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'
+                                        }`}
+                                        style={isSubActive ? { color: category.accent } : {}}
+                                      >
+                                        <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
+                                          isSubActive ? '' : 'bg-slate-300'
+                                        }`} style={isSubActive ? { backgroundColor: category.accent } : {}} />
+                                        <span>{sub.label}</span>
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Clear Filters Footer */}
+                <AnimatePresence>
+                  {(activeMainCategory || activeSubCategory || searchQuery) && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="border-t border-slate-100"
+                    >
+                      <button
+                        onClick={clearFilters}
+                        className="w-full px-5 py-3 text-sm text-slate-400 hover:text-red-500 hover:bg-red-50 flex items-center justify-center gap-2 transition-all"
+                      >
+                        <X className="w-4 h-4" />
+                        Clear All Filters
+                      </button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
-              <h3 className="text-lg font-semibold text-slate-700 mb-2">No products found</h3>
-              <p className="text-slate-500 mb-4">Try adjusting your search or filters</p>
-              <Button
-                variant="outline"
-                onClick={() => { setSearchQuery(''); setActiveCategory('all'); }}
-                className="rounded-full"
-              >
-                Clear all filters
-              </Button>
             </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProducts.map((product, index) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  index={index}
-                  isSelected={comparisonIds.includes(product.id)}
-                  onToggleCompare={() => toggleComparison(product.id)}
-                  canAddMore={comparisonIds.length < 3}
-                />
-              ))}
+
+            {/* Right - Products Grid */}
+            <div className="flex-1">
+              {/* Mobile Category Pills */}
+              <div className="lg:hidden mb-6">
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={clearFilters}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all duration-200 ${
+                      !activeMainCategory
+                        ? 'bg-slate-900 text-white'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    All ({products.length})
+                  </button>
+                  {mainCategories.map((cat) => {
+                    const isActive = activeMainCategory === cat.id;
+                    const productCount = products.filter(p => {
+                      if (cat.id === 'silicone') return p.cureType?.includes('Cure') && p.category !== 'insulating_foam' && p.category !== 'acrylic';
+                      if (cat.id === 'acrylic_latex') return p.category === 'acrylic';
+                      if (cat.id === 'insulating_foam') return p.category === 'insulating_foam';
+                      return false;
+                    }).length;
+                    return (
+                      <button
+                        key={cat.id}
+                        onClick={() => handleMainCategoryClick(cat.id)}
+                        className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all duration-200 ${
+                          isActive
+                            ? 'text-white'
+                            : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                        }`}
+                        style={isActive ? { backgroundColor: cat.accent } : {}}
+                      >
+                        {cat.shortLabel} ({productCount})
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Results count */}
+              <div className="mb-6 flex items-center justify-between">
+                <p className="text-sm text-slate-500">
+                  {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''} found
+                  {activeMainCategory && (
+                    <span className="ml-2 text-slate-400">
+                      in {mainCategories.find(c => c.id === activeMainCategory)?.label}
+                      {activeSubCategory && ` > ${mainCategories.find(c => c.id === activeMainCategory)?.subCategories.find(s => s.id === activeSubCategory)?.label}`}
+                    </span>
+                  )}
+                </p>
+                {comparisonIds.length > 0 && (
+                  <p className="text-sm text-slate-600">
+                    <span className="font-medium">{comparisonIds.length}</span> selected for comparison
+                  </p>
+                )}
+              </div>
+
+              {filteredProducts.length === 0 ? (
+                <div className="text-center py-20 bg-white rounded-2xl border border-slate-200">
+                  <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Search className="w-7 h-7 text-slate-400" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-slate-700 mb-2">No products found</h3>
+                  <p className="text-slate-500 mb-4">Try adjusting your search or filters</p>
+                  <Button
+                    variant="outline"
+                    onClick={clearFilters}
+                    className="rounded-full"
+                  >
+                    Clear all filters
+                  </Button>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+                  {filteredProducts.map((product, index) => (
+                    <ProductCard
+                      key={product.id}
+                      product={product}
+                      index={index}
+                      isSelected={comparisonIds.includes(product.id)}
+                      onToggleCompare={() => toggleComparison(product.id)}
+                      canAddMore={comparisonIds.length < 3}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </section>
 

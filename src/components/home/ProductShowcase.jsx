@@ -55,17 +55,17 @@ const featuredProducts = [
     category: 'Acrylic',
     description: 'Water-based acrylic latex sealant for everyday interior use. Easy one-step application with paintable finish.',
     features: ['Paintable', 'Water-Based', 'Easy Apply', 'Interior'],
-    image: '/images/products/gaudon-b1-acrylic-latex.png'
+    image: '/images/products/gaudon-b1-acrylic-latex.jpg'
   },
   {
-    id: 'gaudon-b1-premium',
-    model: 'GAUDON B1 Premium',
-    name: 'Premium Latex Sealant',
-    warranty: '15 Years',
+    id: 'gaudon-b2',
+    model: 'GAUDON B2',
+    name: 'Acrylic Latex Sealant',
+    warranty: '5 Years',
     category: 'Acrylic',
-    description: 'Premium water-based latex sealant with fast dry formula. Professional-grade results with premium paintable finish.',
-    features: ['Fast Dry', 'Premium', 'Paintable', 'Professional'],
-    image: '/images/products/gaudon-b1-premium-latex.png'
+    description: 'Water-based acrylic latex sealant for everyday interior sealing and finishing tasks. Easy apply with paintable finish.',
+    features: ['Paintable', 'Easy Apply', 'Water Resistant', 'Interior'],
+    image: '/images/products/gaudon-b2-acrylic-latex.jpg'
   }
 ];
 

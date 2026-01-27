@@ -190,8 +190,8 @@ function FactoryGallerySection() {
     ? factoryImages
     : factoryImages.filter(img => img.category === selectedCategory);
 
-  // Show 17 images initially (1 hero + 16 grid = 4 full rows), or all if showAll is true
-  const displayedImages = showAll ? filteredImages : filteredImages.slice(0, 17);
+  // Show 12 images initially, or all 20 if showAll is true
+  const displayedImages = showAll ? filteredImages : filteredImages.slice(0, 12);
 
   const openLightbox = (index) => {
     // Find the actual index in the full filtered array
@@ -298,7 +298,7 @@ function FactoryGallerySection() {
           </div>
 
           {/* Show More / Show Less Button */}
-          {filteredImages.length > 17 && (
+          {filteredImages.length > 12 && (
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -588,7 +588,7 @@ export default function OEM() {
                   className="text-center"
                 >
                   <img
-                    src="/images/products/gaudon-b1-acrylic-latex.png"
+                    src="/images/products/gaudon-b1-acrylic-latex.jpg"
                     alt="GAUDON Silicone Sealant"
                     className="h-64 md:h-80 w-auto mx-auto"
                   />
