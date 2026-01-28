@@ -196,7 +196,7 @@ function LayoutContent({ children, currentPageName }) {
                 <img
                   src="/gaudon-mascot-logo.png"
                   alt="GAUDON Logo"
-                  className="h-24 w-auto object-contain"
+                  className="h-36 w-auto object-contain"
                 />
               </Link>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
@@ -271,6 +271,21 @@ function LayoutContent({ children, currentPageName }) {
                 30 Year Warranty
               </span>
             </div>
+          </div>
+
+          {/* Credit */}
+          <div className="mt-8 pt-6 border-t border-white/5 text-center">
+            <p className="text-slate-600 text-[11px] tracking-wide">
+              Designed & Developed by{' '}
+              <a
+                href="https://github.com/theaayushstha1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-500 hover:text-white transition-colors"
+              >
+                @theaayushstha1
+              </a>
+            </p>
           </div>
         </div>
       </footer>
