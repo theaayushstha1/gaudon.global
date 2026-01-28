@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import ComparisonTool from '../components/products/ComparisonTool';
 import { Search, Plus, Check, ArrowRight, X, ChevronDown } from 'lucide-react';
@@ -37,11 +37,21 @@ const mainCategories = [
 ];
 
 export default function Products() {
+  const [searchParams] = useSearchParams();
   const [searchQuery, setSearchQuery] = useState('');
   const [activeMainCategory, setActiveMainCategory] = useState(null);
   const [activeSubCategory, setActiveSubCategory] = useState(null);
   const [expandedCategory, setExpandedCategory] = useState(null);
   const [comparisonIds, setComparisonIds] = useState([]);
+
+  // Read category from URL on page load
+  useEffect(() => {
+    const categoryFromUrl = searchParams.get('category');
+    if (categoryFromUrl && mainCategories.some(c => c.id === categoryFromUrl)) {
+      setActiveMainCategory(categoryFromUrl);
+      setExpandedCategory(categoryFromUrl);
+    }
+  }, [searchParams]);
 
   const toggleComparison = (productId) => {
     setComparisonIds(prev =>
