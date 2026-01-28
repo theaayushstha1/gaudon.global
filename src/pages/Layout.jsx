@@ -226,11 +226,21 @@ function LayoutContent({ children, currentPageName }) {
             <div>
               <h4 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">Products</h4>
               <ul className="space-y-3 text-sm text-slate-400">
-                <li className="hover:text-white transition-colors cursor-pointer">Structural Sealants</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Weatherproofing Sealants</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Glass Sealants</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Specialty Silicones</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Construction Adhesives</li>
+                <li>
+                  <Link to="/products?category=silicone" className="hover:text-white transition-colors">
+                    100% Silicone Sealants
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/products?category=insulating_foam" className="hover:text-white transition-colors">
+                    Insulating Foams
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/products?category=acrylic_latex" className="hover:text-white transition-colors">
+                    Acrylic Latex Sealants
+                  </Link>
+                </li>
               </ul>
             </div>
 
