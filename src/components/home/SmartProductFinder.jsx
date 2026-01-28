@@ -23,7 +23,8 @@ const properties = [
   { value: 'high_temp', label: 'High Temperature Resistance' },
   { value: 'fast_cure', label: 'Fast Curing' },
   { value: 'heavy_duty', label: 'Heavy Duty / Industrial' },
-  { value: 'paintable', label: 'Paintable' }
+  { value: 'paintable', label: 'Paintable' },
+  { value: 'insulation', label: 'Insulation & Gap Filling' }
 ];
 
 // Mapping to actual GAUDON product models
@@ -35,6 +36,7 @@ const recommendations = {
   'construction-fast_cure': ['B1 Premium', 'B1', 'D2'],
   'construction-heavy_duty': ['D2', 'G2', 'D1'],
   'construction-paintable': ['B1', 'B1 Premium', 'G2'],
+  'construction-insulation': ['PF1', 'G2', 'D2'],
 
   // Kitchen & Bath
   'kitchen_bath-weatherproof': ['G1', 'G2', 'D2'],
@@ -43,6 +45,7 @@ const recommendations = {
   'kitchen_bath-fast_cure': ['G1', 'B1 Premium', 'D1'],
   'kitchen_bath-heavy_duty': ['G1', 'D2', 'G2'],
   'kitchen_bath-paintable': ['B1', 'B1 Premium', 'G1'],
+  'kitchen_bath-insulation': ['PF1', 'G1', 'G2'],
 
   // Automotive & HVAC
   'automotive-weatherproof': ['D2', 'G2', 'D1'],
@@ -51,6 +54,7 @@ const recommendations = {
   'automotive-fast_cure': ['D2', 'B1 Premium', 'G2'],
   'automotive-heavy_duty': ['D2', 'G2', 'D1'],
   'automotive-paintable': ['B1 Premium', 'B1', 'D2'],
+  'automotive-insulation': ['PF1', 'D2', 'G2'],
 
   // Marine & Outdoor
   'marine-weatherproof': ['G2', 'D2', 'D1'],
@@ -59,6 +63,7 @@ const recommendations = {
   'marine-fast_cure': ['G2', 'D2', 'B1 Premium'],
   'marine-heavy_duty': ['D2', 'G2', 'D1'],
   'marine-paintable': ['B1 Premium', 'B1', 'G2'],
+  'marine-insulation': ['PF1', 'G2', 'D2'],
 
   // Glass & Aquarium
   'glass-weatherproof': ['G2', 'D1', 'D2'],
@@ -67,6 +72,7 @@ const recommendations = {
   'glass-fast_cure': ['D1', 'G2', 'B1 Premium'],
   'glass-heavy_duty': ['D1', 'D2', 'G2'],
   'glass-paintable': ['B1', 'B1 Premium', 'G2'],
+  'glass-insulation': ['PF1', 'D1', 'G2'],
 
   // Interior & Painting
   'interior-weatherproof': ['G2', 'G1', 'B1 Premium'],
@@ -75,6 +81,7 @@ const recommendations = {
   'interior-fast_cure': ['B1 Premium', 'B1', 'G1'],
   'interior-heavy_duty': ['D2', 'B1 Premium', 'G2'],
   'interior-paintable': ['B1', 'B1 Premium', 'G1'],
+  'interior-insulation': ['PF1', 'B1', 'G1'],
 
   // Default fallback
   'default': ['G1', 'G2', 'D2']

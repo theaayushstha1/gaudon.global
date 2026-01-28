@@ -3,7 +3,6 @@ import HeroSection from '../components/home/HeroSection';
 import TrustIndicators from '../components/home/TrustIndicators';
 import ProductShowcase from '../components/home/ProductShowcase';
 import CustomerReviews from '../components/home/CustomerReviews';
-import ProjectGallery from '../components/home/ProjectGallery';
 import SmartProductFinder from '../components/home/SmartProductFinder';
 import CTASection from '../components/home/CTASection';
 
@@ -21,9 +20,6 @@ export default function Home() {
 
       {/* Customer testimonials */}
       <CustomerReviews />
-
-      {/* Project gallery / case studies */}
-      <ProjectGallery />
 
       {/* Interactive product finder tool */}
       <SmartProductFinder />

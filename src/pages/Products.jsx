@@ -102,7 +102,7 @@ export default function Products() {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Hero Section - Dark prism background */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
+      <section className="relative pt-24 sm:pt-32 pb-12 sm:pb-20 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
@@ -132,23 +132,23 @@ export default function Products() {
                 <span className="text-sm text-amber-300 font-medium">{products.length} Products Available</span>
               </motion.div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 leading-[1.1]">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 leading-[1.1]">
                 <span className="text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">Find Your Perfect</span>
                 <span className="block text-amber-400 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
                   Sealant Solution
                 </span>
               </h1>
 
-              <p className="text-base md:text-lg text-white/90 mb-6 max-w-lg leading-relaxed drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
-                Browse our complete range of professional-grade silicone sealants. From structural bonding to weatherproofing — we have the right product for every project.
+              <p className="text-sm sm:text-base md:text-lg text-white/90 mb-5 sm:mb-6 max-w-lg leading-relaxed drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
+                Professional-grade silicone sealants for every project.
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Link to={createPageUrl('Contact')}>
                   <Button
                     size="lg"
-                    className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-5 text-sm rounded-full font-medium transition-all duration-200 hover:-translate-y-0.5"
+                    className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-5 sm:px-6 py-4 sm:py-5 text-sm rounded-full font-medium transition-all duration-200 hover:-translate-y-0.5"
                   >
                     Request a Quote
                     <ArrowRight className="ml-2 w-4 h-4" />
@@ -157,7 +157,7 @@ export default function Products() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border border-white/30 text-white hover:bg-white/10 hover:border-white/50 px-6 py-5 text-sm rounded-full font-medium bg-transparent transition-all duration-200"
+                  className="w-full sm:w-auto border border-white/30 text-white hover:bg-white/10 hover:border-white/50 px-5 sm:px-6 py-4 sm:py-5 text-sm rounded-full font-medium bg-transparent transition-all duration-200"
                   onClick={() => document.getElementById('product-grid').scrollIntoView({ behavior: 'smooth' })}
                 >
                   View All Products
@@ -252,14 +252,7 @@ export default function Products() {
                         : 'text-slate-700 hover:bg-slate-50'
                     }`}
                   >
-                    <div className="flex items-center justify-between">
-                      <span>All Products</span>
-                      <span className={`text-xs tabular-nums ${
-                        !activeMainCategory ? 'text-white/60' : 'text-slate-400'
-                      }`}>
-                        {products.length}
-                      </span>
-                    </div>
+                    <span>All Products</span>
                   </button>
 
                   {/* Divider */}
@@ -289,33 +282,16 @@ export default function Products() {
                             style={isActive ? { backgroundColor: category.accent } : {}}
                           >
                             <div className="flex items-center justify-between gap-2">
-                              <div className="flex items-center gap-3 min-w-0">
-                                {/* Number index */}
-                                <span className={`w-6 h-6 rounded-md flex items-center justify-center text-xs font-semibold flex-shrink-0 ${
-                                  isActive
-                                    ? 'bg-white/20 text-white'
-                                    : 'bg-slate-100 text-slate-500'
-                                }`}>
-                                  {index + 1}
-                                </span>
-                                <span className="truncate">{category.label}</span>
-                              </div>
-                              <div className="flex items-center gap-2 flex-shrink-0">
-                                <span className={`text-xs tabular-nums ${
-                                  isActive ? 'text-white/60' : 'text-slate-400'
-                                }`}>
-                                  {productCount}
-                                </span>
-                                {category.subCategories.length > 0 && (
-                                  <motion.span
-                                    animate={{ rotate: isExpanded ? 180 : 0 }}
-                                    transition={{ duration: 0.2 }}
-                                    className="flex-shrink-0"
-                                  >
-                                    <ChevronDown className={`w-4 h-4 ${isActive ? 'text-white/70' : 'text-slate-400'}`} />
-                                  </motion.span>
-                                )}
-                              </div>
+                              <span className="truncate">{category.label}</span>
+                              {category.subCategories.length > 0 && (
+                                <motion.span
+                                  animate={{ rotate: isExpanded ? 180 : 0 }}
+                                  transition={{ duration: 0.2 }}
+                                  className="flex-shrink-0"
+                                >
+                                  <ChevronDown className={`w-4 h-4 ${isActive ? 'text-white/70' : 'text-slate-400'}`} />
+                                </motion.span>
+                              )}
                             </div>
                           </button>
 
@@ -384,39 +360,33 @@ export default function Products() {
 
             {/* Right - Products Grid */}
             <div className="flex-1">
-              {/* Mobile Category Pills */}
-              <div className="lg:hidden mb-6">
-                <div className="flex flex-wrap gap-2">
+              {/* Mobile Category Pills - Horizontal Scroll */}
+              <div className="lg:hidden mb-6 -mx-4 px-4">
+                <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
                   <button
                     onClick={clearFilters}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all duration-200 ${
+                    className={`px-4 py-2.5 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 flex-shrink-0 ${
                       !activeMainCategory
                         ? 'bg-slate-900 text-white'
-                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                        : 'bg-slate-100 text-slate-600 active:bg-slate-200'
                     }`}
                   >
-                    All ({products.length})
+                    All
                   </button>
                   {mainCategories.map((cat) => {
                     const isActive = activeMainCategory === cat.id;
-                    const productCount = products.filter(p => {
-                      if (cat.id === 'silicone') return p.cureType?.includes('Cure') && p.category !== 'insulating_foam' && p.category !== 'acrylic';
-                      if (cat.id === 'acrylic_latex') return p.category === 'acrylic';
-                      if (cat.id === 'insulating_foam') return p.category === 'insulating_foam';
-                      return false;
-                    }).length;
                     return (
                       <button
                         key={cat.id}
                         onClick={() => handleMainCategoryClick(cat.id)}
-                        className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all duration-200 ${
+                        className={`px-4 py-2.5 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 flex-shrink-0 ${
                           isActive
                             ? 'text-white'
-                            : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                            : 'bg-slate-100 text-slate-600 active:bg-slate-200'
                         }`}
                         style={isActive ? { backgroundColor: cat.accent } : {}}
                       >
-                        {cat.shortLabel} ({productCount})
+                        {cat.shortLabel}
                       </button>
                     );
                   })}
@@ -457,7 +427,7 @@ export default function Products() {
                   </Button>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
                   {filteredProducts.map((product, index) => (
                     <ProductCard
                       key={product.id}
@@ -486,36 +456,36 @@ export default function Products() {
   );
 }
 
-// Clean Product Card Component
+// Clean Product Card Component - Mobile Optimized
 function ProductCard({ product, index, isSelected, onToggleCompare, canAddMore }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.05, duration: 0.3 }}
+      transition={{ delay: index * 0.03, duration: 0.3 }}
     >
       <Link
         to={createPageUrl(`ProductDetail?id=${product.id}`)}
         className="group block h-full"
       >
-        <div className={`bg-white rounded-2xl overflow-hidden h-full flex flex-col transition-all duration-200 ${
+        <div className={`bg-white rounded-xl sm:rounded-2xl overflow-hidden h-full flex flex-col transition-all duration-200 ${
           isSelected
             ? 'ring-2 ring-slate-900 shadow-lg'
             : 'hover:shadow-xl border border-slate-100'
         }`}>
           {/* Image Container */}
-          <div className="relative aspect-[4/5] bg-gradient-to-b from-slate-50 to-white p-4">
+          <div className="relative aspect-square sm:aspect-[4/5] bg-gradient-to-b from-slate-50 to-white p-2 sm:p-4">
             {/* Badge */}
             {product.badge && (
               <Badge
-                className="absolute top-3 left-3 z-10 text-white border-0 text-[10px] font-semibold px-2 py-0.5"
+                className="absolute top-2 left-2 sm:top-3 sm:left-3 z-10 text-white border-0 text-[8px] sm:text-[10px] font-semibold px-1.5 sm:px-2 py-0.5"
                 style={{ backgroundColor: product.color || '#0f172a' }}
               >
                 {product.badge}
               </Badge>
             )}
 
-            {/* Compare Button */}
+            {/* Compare Button - Hidden on mobile */}
             {onToggleCompare && (
               <button
                 onClick={(e) => {
@@ -524,7 +494,7 @@ function ProductCard({ product, index, isSelected, onToggleCompare, canAddMore }
                   if (isSelected || canAddMore) onToggleCompare();
                 }}
                 disabled={!isSelected && !canAddMore}
-                className={`absolute top-3 right-3 z-10 w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+                className={`absolute top-2 right-2 sm:top-3 sm:right-3 z-10 w-6 h-6 sm:w-8 sm:h-8 rounded-full hidden sm:flex items-center justify-center transition-all ${
                   isSelected
                     ? 'bg-slate-900 text-white'
                     : canAddMore
@@ -532,7 +502,7 @@ function ProductCard({ product, index, isSelected, onToggleCompare, canAddMore }
                       : 'bg-slate-100 text-slate-300 cursor-not-allowed'
                 }`}
               >
-                {isSelected ? <Check className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                {isSelected ? <Check className="w-3 h-3 sm:w-4 sm:h-4" /> : <Plus className="w-3 h-3 sm:w-4 sm:h-4" />}
               </button>
             )}
 
@@ -545,25 +515,25 @@ function ProductCard({ product, index, isSelected, onToggleCompare, canAddMore }
           </div>
 
           {/* Content */}
-          <div className="p-4 flex-1 flex flex-col">
+          <div className="p-2.5 sm:p-4 flex-1 flex flex-col">
             <div className="flex-1">
-              <p className="text-[10px] font-medium text-slate-400 uppercase tracking-wider mb-1">
+              <p className="text-[8px] sm:text-[10px] font-medium text-slate-400 uppercase tracking-wider mb-0.5 sm:mb-1 hidden sm:block">
                 {product.category?.replace(/_/g, ' ')}
               </p>
-              <h3 className="text-base font-bold text-slate-900 mb-0.5 group-hover:text-slate-600 transition-colors">
+              <h3 className="text-xs sm:text-base font-bold text-slate-900 mb-0.5 group-hover:text-slate-600 transition-colors line-clamp-1">
                 GAUDON {product.model}
               </h3>
-              <p className="text-xs text-slate-500 line-clamp-1">
+              <p className="text-[10px] sm:text-xs text-slate-500 line-clamp-1 sm:line-clamp-2">
                 {product.name}
               </p>
             </div>
 
-            {/* Footer */}
-            <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between">
-              <span className="text-xs font-medium text-slate-900">
-                View Details
+            {/* Footer - Simplified on mobile */}
+            <div className="mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-slate-100 flex items-center justify-between">
+              <span className="text-[10px] sm:text-xs font-medium text-slate-900">
+                Details
               </span>
-              <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-slate-900 group-hover:translate-x-0.5 transition-all" />
+              <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 text-slate-400 group-hover:text-slate-900 group-hover:translate-x-0.5 transition-all" />
             </div>
           </div>
         </div>
