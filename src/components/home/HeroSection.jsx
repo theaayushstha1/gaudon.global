@@ -49,7 +49,7 @@ export default function HeroSection() {
                   className="flex items-center gap-2 text-sm sm:text-base font-semibold text-white"
                   style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.9)' }}
                 >
-                  <span className="w-2 h-2 bg-emerald-400 rounded-full" style={{ boxShadow: '0 0 6px rgba(52, 211, 153, 0.8)' }}></span>
+                  <span className="w-2 h-2 bg-white rounded-full"></span>
                   {industry}
                 </span>
               ))}
