@@ -7,7 +7,7 @@ import { createPageUrl } from '@/utils';
 
 export default function HeroSection() {
   return (
-    <div className="relative h-[60vh] min-h-[500px] md:min-h-[550px] w-full overflow-hidden pt-32 md:pt-36">
+    <div className="relative h-[70vh] min-h-[550px] md:min-h-[600px] w-full overflow-hidden pt-24 md:pt-28">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img

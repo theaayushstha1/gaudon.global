@@ -59,7 +59,7 @@ function LayoutContent({ children, currentPageName }) {
         style={{ transition: 'background-color 0.3s ease-out, box-shadow 0.3s ease-out' }}
       >
         <div className="container mx-auto px-4">
-          <nav className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-16' : 'h-24'}`}>
+          <nav className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-14' : 'h-20'}`}>
             {/* Logo */}
             <Link to={createPageUrl('Home')} className="flex items-center gap-3 group">
               <motion.div
@@ -69,7 +69,7 @@ function LayoutContent({ children, currentPageName }) {
                 <img
                   src="/gaudon-mascot-logo.png"
                   alt="GAUDON Logo"
-                  className={`transition-all duration-300 ${isScrolled ? 'h-12' : 'h-20'} w-auto object-contain`}
+                  className={`transition-all duration-300 ${isScrolled ? 'h-10' : 'h-16'} w-auto object-contain`}
                 />
               </motion.div>
             </Link>
@@ -138,12 +138,12 @@ function LayoutContent({ children, currentPageName }) {
           >
             {/* Header with logo and close button */}
             <div className="container mx-auto px-4">
-              <div className="flex items-center justify-between h-24">
+              <div className="flex items-center justify-between h-20">
                 <Link to={createPageUrl('Home')} onClick={() => setIsMobileMenuOpen(false)}>
                   <img
                     src="/gaudon-mascot-logo.png"
                     alt="GAUDON Logo"
-                    className="h-20 w-auto object-contain"
+                    className="h-16 w-auto object-contain"
                   />
                 </Link>
                 <button
