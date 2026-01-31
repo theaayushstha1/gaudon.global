@@ -105,6 +105,42 @@ export default function Achievements() {
         </div>
       </section>
 
+      {/* Factory Video Section */}
+      <section className="py-16 bg-slate-900">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-8"
+          >
+            <h2 className="text-2xl lg:text-3xl font-bold text-white mb-2">
+              Our Manufacturing Process
+            </h2>
+            <p className="text-slate-400">
+              See how we produce professional-grade silicone sealants
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
+              <iframe
+                src="https://www.youtube.com/embed/2EHbWOFZrME?autoplay=1&mute=1&start=0&end=30&loop=1&playlist=2EHbWOFZrME&controls=0&showinfo=0&rel=0"
+                title="GAUDON Factory Manufacturing Process"
+                className="absolute inset-0 w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Certificates Display - MOVED UP */}
       <section className="py-20">
         <div className="container mx-auto px-4">
