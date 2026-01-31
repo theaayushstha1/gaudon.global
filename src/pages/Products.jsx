@@ -115,10 +115,10 @@ export default function Products() {
   });
 
   return (
-    <div className="min-h-screen bg-slate-50 overflow-x-hidden">
+    <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Search Bar + Mobile Categories + Download - Sticky Together */}
-      <section className="sticky top-14 z-30 bg-white border-b border-slate-200 shadow-sm pt-20">
-        <div className="container mx-auto px-4 pb-3">
+      <section className="sticky top-14 z-30 bg-white border-b border-slate-200 shadow-sm mt-20">
+        <div className="container mx-auto px-4 py-3">
           <div className="relative">
             <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
             <input
