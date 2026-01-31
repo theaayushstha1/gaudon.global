@@ -241,7 +241,7 @@ export default function Achievements() {
             </p>
           </motion.div>
 
-          <div className="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {whyChooseItems.map((item, index) => (
               <motion.div
                 key={index}
@@ -249,7 +249,7 @@ export default function Achievements() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="flex flex-col items-center text-center"
+                className="flex flex-col items-center text-center p-4"
               >
                 <item.icon className="w-6 h-6 text-slate-600 mb-2" />
                 <span className="text-sm font-medium text-slate-700">{item.title}</span>
