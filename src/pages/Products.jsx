@@ -115,9 +115,9 @@ export default function Products() {
   });
 
   return (
-    <div className="min-h-screen bg-slate-50 pt-0 md:pt-20">
+    <div className="min-h-screen bg-slate-50 pt-0 md:pt-20 overflow-x-hidden">
       {/* Search Bar */}
-      <section className="sticky top-20 z-30 bg-white border-b border-slate-200 shadow-sm">
+      <section className="sticky top-14 z-30 bg-white border-b border-slate-200 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="relative">
             <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
@@ -143,11 +143,11 @@ export default function Products() {
       {/* Products Section with Sidebar */}
       <section id="product-grid" className="py-8">
         <div className="container mx-auto px-4">
-          <div className="flex gap-8">
+          <div className="flex flex-col lg:flex-row lg:gap-8">
             {/* Left Sidebar - Categories */}
             <div className="w-64 flex-shrink-0 hidden lg:block">
               {/* Catalog Download Card */}
-              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 mb-4 sticky top-36">
+              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 mb-4 sticky top-32">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center">
                     <FileText className="w-5 h-5 text-white" />
