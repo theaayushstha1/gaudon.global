@@ -92,7 +92,7 @@ export default function HeroSection() {
           >
             <div className="text-right max-w-md">
               <p
-                className="font-black text-2xl lg:text-3xl mb-2 tracking-tight text-white"
+                className="font-black text-3xl sm:text-4xl lg:text-5xl mb-2 tracking-tight text-white"
                 style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.95), 0 0 20px rgba(0,0,0,0.8)' }}
               >
                 Order Today
