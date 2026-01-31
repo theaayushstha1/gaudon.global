@@ -115,7 +115,7 @@ export default function Products() {
   });
 
   return (
-    <div className="min-h-screen bg-slate-50 pt-16 md:pt-20">
+    <div className="min-h-screen bg-slate-50 pt-0 md:pt-20">
       {/* Search Bar */}
       <section className="sticky top-20 z-30 bg-white border-b border-slate-200 shadow-sm">
         <div className="container mx-auto px-4 py-4">

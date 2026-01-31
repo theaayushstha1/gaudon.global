@@ -138,14 +138,14 @@ ${formData.message}`,
       {/* Quick Contact Bar - Clean */}
       <section className="py-4 bg-white border-b border-slate-100">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-8">
+          <div className="flex flex-col gap-3 md:flex-row md:flex-wrap md:justify-center md:gap-8">
             {[
               { icon: Mail, label: 'Email Us', value: 'gaudonusallc@gmail.com', href: 'mailto:gaudonusallc@gmail.com' },
               { icon: Phone, label: 'Call / WhatsApp', value: '+1 626-778-9568', href: 'tel:+16267789568' },
               { icon: Clock, label: 'Business Hours', value: 'Mon-Fri 8:30AM - 5:30PM CST', href: null },
             ].map((item, index) => (
               <div key={index} className="flex items-center gap-3 py-2">
-                <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0">
                   <item.icon className="w-4 h-4 text-[#000000]" />
                 </div>
                 <div>
