@@ -37,7 +37,7 @@ export default function HeroSection() {
               GAUDON
             </h1>
             <p
-              className="text-base sm:text-lg font-bold text-amber-400 tracking-wide mb-1"
+              className="text-xl sm:text-2xl lg:text-3xl font-bold text-amber-400 tracking-wide mb-2"
               style={{ textShadow: '1px 1px 6px rgba(0,0,0,0.9), 0 0 15px rgba(0,0,0,0.7)' }}
             >
               Professional Grade Sealants
