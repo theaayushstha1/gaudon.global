@@ -106,7 +106,7 @@ export default function Achievements() {
       </section>
 
       {/* Factory Video Section */}
-      <section className="py-16 bg-slate-900">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -114,10 +114,10 @@ export default function Achievements() {
             viewport={{ once: true }}
             className="text-center mb-8"
           >
-            <h2 className="text-2xl lg:text-3xl font-bold text-white mb-2">
+            <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-2">
               Our Manufacturing Process
             </h2>
-            <p className="text-slate-400">
+            <p className="text-slate-500">
               See how we produce professional-grade silicone sealants
             </p>
           </motion.div>
