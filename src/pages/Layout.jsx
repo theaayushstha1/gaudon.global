@@ -192,7 +192,7 @@ function LayoutContent({ children, currentPageName }) {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
             {/* Company Info */}
             <div className="lg:col-span-1">
-              <Link to={createPageUrl('Home')} className="block mb-6 -ml-2">
+              <Link to={createPageUrl('Home')} className="block mb-6 -ml-6">
                 <img
                   src="/gaudon-mascot-logo.png"
                   alt="GAUDON Logo"
