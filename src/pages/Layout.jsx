@@ -191,12 +191,12 @@ function LayoutContent({ children, currentPageName }) {
         <div className="container mx-auto px-4 py-16">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
             {/* Company Info */}
-            <div className="lg:col-span-1 text-left">
-              <Link to={createPageUrl('Home')} className="inline-block mb-6">
+            <div className="lg:col-span-1">
+              <Link to={createPageUrl('Home')} className="block mb-6 -ml-2">
                 <img
                   src="/gaudon-mascot-logo.png"
                   alt="GAUDON Logo"
-                  className="h-36 w-auto object-contain object-left"
+                  className="h-36 w-auto"
                 />
               </Link>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
