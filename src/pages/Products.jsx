@@ -115,8 +115,8 @@ export default function Products() {
   });
 
   return (
-    <div className="min-h-screen bg-slate-50 pt-0 md:pt-20 overflow-x-hidden">
-      {/* Search Bar + Mobile Categories - Sticky Together */}
+    <div className="min-h-screen bg-slate-50 pt-14 md:pt-20 overflow-x-hidden">
+      {/* Search Bar + Mobile Categories + Download - Sticky Together */}
       <section className="sticky top-14 z-30 bg-white border-b border-slate-200 shadow-sm">
         <div className="container mx-auto px-4 py-3">
           <div className="relative">
@@ -138,9 +138,9 @@ export default function Products() {
             )}
           </div>
 
-          {/* Mobile Category Pills - Inside sticky section */}
+          {/* Mobile Category Pills + Download - Inside sticky section */}
           <div className="lg:hidden mt-3 -mx-4 px-4">
-            <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide items-center">
               <button
                 onClick={clearFilters}
                 className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 flex-shrink-0 ${
@@ -168,6 +168,15 @@ export default function Products() {
                   </button>
                 );
               })}
+              {/* Download Catalog Button */}
+              <a
+                href="/GAUDON-Product-Catalog.pdf"
+                download="GAUDON-Product-Catalog.pdf"
+                className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap bg-slate-100 text-slate-600 flex-shrink-0"
+              >
+                <Download className="w-3.5 h-3.5" />
+                Catalog
+              </a>
             </div>
           </div>
         </div>
@@ -324,19 +333,6 @@ export default function Products() {
 
             {/* Right - Products Grid */}
             <div className="flex-1">
-              {/* Mobile Catalog Download */}
-              <a
-                href="/GAUDON-Product-Catalog.pdf"
-                download="GAUDON-Product-Catalog.pdf"
-                className="lg:hidden flex items-center justify-between mb-6 bg-slate-100 border border-slate-200 rounded-xl px-4 py-3"
-              >
-                <div className="flex items-center gap-3">
-                  <FileText className="w-5 h-5 text-slate-700" />
-                  <span className="text-sm font-medium text-slate-900">Download Product Catalog</span>
-                </div>
-                <Download className="w-4 h-4 text-slate-500" />
-              </a>
-
               {/* Results count */}
               <div className="mb-6 flex items-center justify-between">
                 <p className="text-sm text-slate-500">
