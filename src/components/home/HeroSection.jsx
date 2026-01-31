@@ -43,7 +43,7 @@ export default function HeroSection() {
               Professional Grade Sealants
             </p>
             <p
-              className="text-sm sm:text-base font-semibold text-white mb-3"
+              className="text-base sm:text-lg lg:text-xl font-semibold text-white mb-3"
               style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.9)' }}
             >
               Construction • HVAC • Automotive • Industrial
