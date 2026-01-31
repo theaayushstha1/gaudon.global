@@ -191,15 +191,15 @@ function LayoutContent({ children, currentPageName }) {
         <div className="container mx-auto px-4 py-16">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
             {/* Company Info */}
-            <div className="lg:col-span-1">
+            <div className="lg:col-span-1 text-left">
               <Link to={createPageUrl('Home')} className="inline-block mb-6">
                 <img
                   src="/gaudon-mascot-logo.png"
                   alt="GAUDON Logo"
-                  className="h-36 w-auto object-contain"
+                  className="h-36 w-auto object-contain object-left"
                 />
               </Link>
-              <p className="text-slate-400 text-sm leading-relaxed mb-4 text-left">
+              <p className="text-slate-400 text-sm leading-relaxed mb-4">
                 Professional silicone sealant manufacturer since 1999.
                 Serving 100+ countries worldwide.
               </p>
