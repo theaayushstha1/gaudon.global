@@ -4,12 +4,14 @@ import {
   Shield,
   Eye,
   X,
-  Sun,
-  Droplets,
-  Wind,
-  ThermometerSun,
-  Sparkles,
-  Clock
+  Award,
+  TrendingUp,
+  ShieldCheck,
+  Cog,
+  ClipboardCheck,
+  Leaf,
+  Factory,
+  Handshake
 } from 'lucide-react';
 
 // Certificate images
@@ -28,13 +30,14 @@ const certificateImages = [
 
 // Why Choose GAUDON items - Clean icons + titles only
 const whyChooseItems = [
-  { title: "UV Resistant", icon: Sun },
-  { title: "Waterproof", icon: Droplets },
-  { title: "Weather Tough", icon: Wind },
-  { title: "Heat Stable", icon: ThermometerSun },
-  { title: "Premium Formula", icon: Sparkles },
-  { title: "Long Lasting", icon: Shield },
-  { title: "Easy Application", icon: Clock },
+  { title: "Proven Expertise", icon: Award },
+  { title: "Professional Performance", icon: TrendingUp },
+  { title: "ISO-Certified Quality", icon: ShieldCheck },
+  { title: "Automated Manufacturing", icon: Cog },
+  { title: "Batch-Verified Testing", icon: ClipboardCheck },
+  { title: "Clean Formulation", icon: Leaf },
+  { title: "Factory-Direct Value", icon: Factory },
+  { title: "Long-Term Partnerships", icon: Handshake },
 ];
 
 export default function Achievements() {

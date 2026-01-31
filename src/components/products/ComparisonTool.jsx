@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, GitCompare, Plus, Minus, CheckCircle2 } from 'lucide-react';
+import { X, Scale, Plus, Minus, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
@@ -23,7 +23,7 @@ export default function ComparisonTool({ products, selectedIds, onToggle, onClea
         <div className="bg-white rounded-2xl shadow-2xl border-2 border-black p-4 flex items-center gap-4">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-black to-neutral-700 flex items-center justify-center">
-              <GitCompare className="w-6 h-6 text-white" />
+              <Scale className="w-6 h-6 text-white" />
             </div>
             <div>
               <p className="font-bold text-neutral-900">
@@ -61,7 +61,7 @@ export default function ComparisonTool({ products, selectedIds, onToggle, onClea
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[150] flex items-center justify-center p-4 overflow-y-auto"
             onClick={() => setIsExpanded(false)}
           >
             <motion.div
@@ -72,22 +72,22 @@ export default function ComparisonTool({ products, selectedIds, onToggle, onClea
               className="bg-white rounded-3xl shadow-2xl max-w-6xl w-full my-8 overflow-hidden"
             >
               {/* Header */}
-              <div className="bg-gradient-to-r from-black to-neutral-700 p-6 text-white">
+              <div className="bg-white border-b border-slate-200 p-6">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                      <GitCompare className="w-7 h-7" />
+                    <div className="w-14 h-14 rounded-2xl bg-slate-900 flex items-center justify-center">
+                      <Scale className="w-7 h-7 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold">Product Comparison</h3>
-                      <p className="text-gray-300">Compare {selectedProducts.length} products side-by-side</p>
+                      <h3 className="text-2xl font-bold text-slate-900">Product Comparison</h3>
+                      <p className="text-slate-500">Compare {selectedProducts.length} products side-by-side</p>
                     </div>
                   </div>
                   <button
                     onClick={() => setIsExpanded(false)}
-                    className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
+                    className="w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-colors"
                   >
-                    <X className="w-5 h-5" />
+                    <X className="w-5 h-5 text-slate-600" />
                   </button>
                 </div>
               </div>
@@ -99,22 +99,23 @@ export default function ComparisonTool({ products, selectedIds, onToggle, onClea
                     <tr className="border-b-2 border-neutral-200">
                       <th className="text-left p-4 font-bold text-neutral-900 w-48">Specification</th>
                       {selectedProducts.map(product => (
-                        <th key={product.id} className="p-4 text-center min-w-[200px]">
+                        <th key={product.id} className="p-4 text-center min-w-[250px]">
                           <div className="space-y-3">
-                            <div className="aspect-square w-full bg-slate-100 rounded-xl overflow-hidden mb-2">
-                              {product.images?.[0] ? (
-                                <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover" />
+                            <div className="h-48 bg-gradient-to-b from-slate-50 to-white rounded-xl overflow-hidden mb-2 p-4 flex items-center justify-center">
+                              {product.image ? (
+                                <img src={product.image} alt={product.name} loading="lazy" className="h-full w-auto object-contain" />
                               ) : (
                                 <div className="w-full h-full flex items-center justify-center text-neutral-300">
-                                  <GitCompare className="w-12 h-12" />
+                                  <Scale className="w-12 h-12" />
                                 </div>
                               )}
                             </div>
                             <div>
-                              <p className="font-bold text-lg text-neutral-900">GAUDON {product.model}</p>
-                              <p className="text-sm text-neutral-600">{product.name}</p>
+                              <p className="font-bold text-lg text-neutral-900">{product.bestFor || product.name.split(' ').slice(0, 2).join(' ')}</p>
+                              <p className="text-sm text-neutral-600">{product.cureType ? `${product.cureType} Sealant` : product.name}</p>
+                              <p className="text-xs text-neutral-400 font-medium mt-0.5">GAUDON {product.model}</p>
                               {product.badge && (
-                                <Badge className="mt-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white border-0">
+                                <Badge className="mt-2 text-white border-0" style={{ backgroundColor: product.color || '#f59e0b' }}>
                                   {product.badge}
                                 </Badge>
                               )}
@@ -135,20 +136,18 @@ export default function ComparisonTool({ products, selectedIds, onToggle, onClea
                   </thead>
                   <tbody>
                     {[
-                      { label: 'Category', key: 'category', format: (v) => v?.replace(/_/g, ' ') },
-                      { label: 'Type', key: 'type', format: (v) => v },
-                      { label: 'Capacity', key: 'capacity', format: (v) => v },
-                      { label: 'Temperature Range', key: 'temperature_range', format: (v) => v },
-                      { label: 'Cure Time', key: 'cure_time', format: (v) => v },
-                      { label: 'Shelf Life', key: 'shelf_life', format: (v) => v },
-                      { label: 'Warranty', key: 'warranty_years', format: (v) => v ? `${v} Years` : '-' },
-                      { label: 'Color Options', key: 'color_options', format: (v) => v?.join(', ') || '-' }
+                      { label: 'Best For', key: 'bestFor', format: (v) => v || '-' },
+                      { label: 'Cure Type', key: 'cureType', format: (v) => v || '-' },
+                      { label: 'Product Type', key: 'type', format: (v) => v ? v.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : '-' },
+                      { label: 'Size', key: 'packaging', format: (v) => v?.size || '-' },
+                      { label: 'Warranty', key: 'warranty', format: (v) => v ? `${v} Years` : '-' },
+                      { label: 'Colors Available', key: 'colors', format: (v) => v?.length > 0 ? v.join(', ') : '-' },
                     ].map((spec, idx) => (
-                      <tr key={idx} className="border-b border-neutral-100 hover:bg-slate-50 transition-colors">
+                      <tr key={idx} className={`border-b border-neutral-100 ${idx % 2 === 0 ? 'bg-slate-50/50' : ''}`}>
                         <td className="p-4 font-semibold text-neutral-700">{spec.label}</td>
                         {selectedProducts.map(product => (
                           <td key={product.id} className="p-4 text-center text-neutral-600">
-                            {spec.format(product[spec.key]) || '-'}
+                            {spec.format(product[spec.key])}
                           </td>
                         ))}
                       </tr>
@@ -156,18 +155,32 @@ export default function ComparisonTool({ products, selectedIds, onToggle, onClea
                     <tr className="border-b border-neutral-100">
                       <td className="p-4 font-semibold text-neutral-700">Key Features</td>
                       {selectedProducts.map(product => (
-                        <td key={product.id} className="p-4">
-                          {product.features?.length > 0 ? (
-                            <ul className="space-y-2 text-sm text-left">
-                              {product.features.slice(0, 3).map((feature, i) => (
-                                <li key={i} className="flex items-start gap-2">
-                                  <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
-                                  <span className="text-neutral-600">{feature}</span>
-                                </li>
+                        <td key={product.id} className="p-4 text-center">
+                          {product.featureIcons?.length > 0 ? (
+                            <div className="flex flex-col items-center gap-2">
+                              {product.featureIcons.slice(0, 4).map((feature, i) => (
+                                <div key={i} className="flex items-center gap-2">
+                                  <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                                  <span className="text-neutral-600 text-sm">{feature.label}</span>
+                                </div>
                               ))}
-                            </ul>
+                            </div>
                           ) : (
                             <span className="text-neutral-400">-</span>
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                    <tr className="bg-slate-50/50">
+                      <td className="p-4 font-semibold text-neutral-700">Applications</td>
+                      {selectedProducts.map(product => (
+                        <td key={product.id} className="p-4">
+                          {product.applications?.length > 0 ? (
+                            <p className="text-sm text-neutral-600 text-center">
+                              {product.applications.slice(0, 4).join(', ')}
+                            </p>
+                          ) : (
+                            <span className="text-neutral-400 text-center block">-</span>
                           )}
                         </td>
                       ))}

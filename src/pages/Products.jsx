@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useSearchParams } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import ComparisonTool from '../components/products/ComparisonTool';
-import { Search, Plus, Check, ArrowRight, X, ChevronDown } from 'lucide-react';
+import { Search, Plus, Check, ArrowRight, X, ChevronDown, Download, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { products, categories } from '@/data/products';
@@ -16,8 +16,8 @@ const mainCategories = [
     shortLabel: 'Silicone',
     accent: '#3b82f6',
     subCategories: [
-      { id: 'neutral_cure', label: 'Neutral Cure' },
-      { id: 'acetic_cure', label: 'Acetic Cure' }
+      { id: 'neutral_cure', label: 'Neutral Cure RTV Silicone Adhesive' },
+      { id: 'acetic_cure', label: 'Acetic Cure RTV Silicone Adhesive' }
     ]
   },
   {
@@ -50,6 +50,11 @@ export default function Products() {
     if (categoryFromUrl && mainCategories.some(c => c.id === categoryFromUrl)) {
       setActiveMainCategory(categoryFromUrl);
       setExpandedCategory(categoryFromUrl);
+    } else {
+      // Clear filters when no category in URL
+      setActiveMainCategory(null);
+      setActiveSubCategory(null);
+      setExpandedCategory(null);
     }
   }, [searchParams]);
 
@@ -110,114 +115,9 @@ export default function Products() {
   });
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Hero Section - Dark prism background */}
-      <section className="relative pt-24 sm:pt-32 pb-12 sm:pb-20 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <img
-            src="/images/product-bg.jpg"
-            alt="Product background"
-            className="w-full h-full object-cover"
-          />
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
-              {/* Eyebrow */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.1 }}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/20 backdrop-blur-sm border border-amber-400/30 rounded-full mb-6"
-              >
-                <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                <span className="text-sm text-amber-300 font-medium">{products.length} Products Available</span>
-              </motion.div>
-
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 leading-[1.1]">
-                <span className="text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">Find Your Perfect</span>
-                <span className="block text-amber-400 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
-                  Sealant Solution
-                </span>
-              </h1>
-
-              <p className="text-sm sm:text-base md:text-lg text-white/90 mb-5 sm:mb-6 max-w-lg leading-relaxed drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
-                Professional-grade silicone sealants for every project.
-              </p>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <Link to={createPageUrl('Contact')}>
-                  <Button
-                    size="lg"
-                    className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-5 sm:px-6 py-4 sm:py-5 text-sm rounded-full font-medium transition-all duration-200 hover:-translate-y-0.5"
-                  >
-                    Request a Quote
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
-                </Link>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="w-full sm:w-auto border border-white/30 text-white hover:bg-white/10 hover:border-white/50 px-5 sm:px-6 py-4 sm:py-5 text-sm rounded-full font-medium bg-transparent transition-all duration-200"
-                  onClick={() => document.getElementById('product-grid').scrollIntoView({ behavior: 'smooth' })}
-                >
-                  View All Products
-                </Button>
-              </div>
-            </motion.div>
-
-            {/* Right - Product Showcase */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-              className="hidden lg:block relative"
-            >
-              {/* Product showcase grid */}
-              <div className="flex items-end justify-center gap-3">
-                {products.slice(0, 4).map((product, i) => (
-                  <motion.div
-                    key={product.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 + i * 0.1 }}
-                    whileHover={{ y: -20, scale: 1.08 }}
-                    className="group cursor-pointer"
-                  >
-                    <Link to={createPageUrl(`ProductDetail?id=${product.id}`)}>
-                      <div
-                        className="relative"
-                        style={{ height: i % 2 === 0 ? '280px' : '250px' }}
-                      >
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          className="h-full w-auto object-contain drop-shadow-[0_15px_35px_rgba(0,0,0,0.5)] group-hover:drop-shadow-[0_25px_50px_rgba(255,255,255,0.25)] transition-all duration-300"
-                        />
-                      </div>
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Subtle reflection/glow effect */}
-              <div className="absolute -bottom-4 left-0 right-0 h-20 bg-gradient-to-t from-black/30 via-white/5 to-transparent blur-xl" />
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
+    <div className="min-h-screen bg-slate-50 pt-32">
       {/* Search Bar */}
-      <section className="sticky top-16 z-30 bg-white border-b border-slate-200 shadow-sm">
+      <section className="sticky top-20 z-30 bg-white border-b border-slate-200 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="relative">
             <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
@@ -246,7 +146,28 @@ export default function Products() {
           <div className="flex gap-8">
             {/* Left Sidebar - Categories */}
             <div className="w-64 flex-shrink-0 hidden lg:block">
-              <div className="bg-white rounded-2xl border border-slate-200 sticky top-36 overflow-hidden">
+              {/* Catalog Download Card */}
+              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 mb-4 sticky top-36">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center">
+                    <FileText className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-slate-900 text-sm">Product Catalog</p>
+                    <p className="text-slate-500 text-xs">Full specs & details</p>
+                  </div>
+                </div>
+                <a
+                  href="/GAUDON-Product-Catalog.pdf"
+                  download="GAUDON-Product-Catalog.pdf"
+                  className="flex items-center justify-center gap-2 w-full bg-slate-900 hover:bg-slate-800 text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-all"
+                >
+                  <Download className="w-4 h-4" />
+                  Download PDF
+                </a>
+              </div>
+
+              <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
                 {/* Header */}
                 <div className="px-5 py-4 border-b border-slate-100 bg-slate-50/50">
                   <h3 className="font-semibold text-slate-900 text-sm">Product Categories</h3>
@@ -403,6 +324,19 @@ export default function Products() {
                 </div>
               </div>
 
+              {/* Mobile Catalog Download */}
+              <a
+                href="/GAUDON-Product-Catalog.pdf"
+                download="GAUDON-Product-Catalog.pdf"
+                className="lg:hidden flex items-center justify-between mb-6 bg-slate-100 border border-slate-200 rounded-xl px-4 py-3"
+              >
+                <div className="flex items-center gap-3">
+                  <FileText className="w-5 h-5 text-slate-700" />
+                  <span className="text-sm font-medium text-slate-900">Download Product Catalog</span>
+                </div>
+                <Download className="w-4 h-4 text-slate-500" />
+              </a>
+
               {/* Results count */}
               <div className="mb-6 flex items-center justify-between">
                 <p className="text-sm text-slate-500">
@@ -437,7 +371,7 @@ export default function Products() {
                   </Button>
                 </div>
               ) : (
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
                   {filteredProducts.map((product, index) => (
                     <ProductCard
                       key={product.id}
@@ -451,6 +385,27 @@ export default function Products() {
                 </div>
               )}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Product Disclaimer Section */}
+      <section className="py-12 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <div className="text-left space-y-4">
+            <p className="text-slate-500 text-sm leading-relaxed">
+              Explore GAUDON's full range of silicone sealants, acrylic caulks, and specialty sealing solutions, available in bulk quantities at competitive pricing. Whether you're working on a large-scale construction project, ongoing commercial maintenance, or stocking your shop, GAUDON delivers reliable sealing products designed for real-world applications.
+            </p>
+            <p className="text-slate-500 text-sm leading-relaxed">
+              Our lineup includes neutral-cure and acetic-cure silicone sealants, acrylic latex caulks, waterproof sealing solutions, and application-specific formulas built to meet the demands of professional contractors and industrial users.
+            </p>
+            <p className="text-slate-500 text-sm leading-relaxed">
+              Need help choosing the right product or have questions about specifications, usage, or availability?{' '}
+              <Link to={createPageUrl('Contact')} className="font-bold text-slate-700 hover:text-slate-900 underline">
+                Contact us today
+              </Link>
+              . Our product specialists are here to help you find the right GAUDON solution for your job.
+            </p>
           </div>
         </div>
       </section>
@@ -520,21 +475,22 @@ function ProductCard({ product, index, isSelected, onToggleCompare, canAddMore }
             <img
               src={product.image || product.images?.[0]}
               alt={product.name}
+              loading="lazy"
               className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
             />
           </div>
 
           {/* Content */}
-          <div className="p-2.5 sm:p-4 flex-1 flex flex-col">
-            <div className="flex-1">
-              <p className="text-[8px] sm:text-[10px] font-medium text-slate-400 uppercase tracking-wider mb-0.5 sm:mb-1 hidden sm:block">
-                {product.category?.replace(/_/g, ' ')}
-              </p>
-              <h3 className="text-xs sm:text-base font-bold text-slate-900 mb-0.5 group-hover:text-slate-600 transition-colors line-clamp-1">
-                GAUDON {product.model}
+          <div className="p-2.5 sm:p-4 flex-1 flex flex-col justify-end">
+            <div>
+              <h3 className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-slate-600 transition-colors leading-tight">
+                {product.bestFor || product.name.split(' ').slice(0, 2).join(' ')}
               </h3>
-              <p className="text-[10px] sm:text-xs text-slate-500 line-clamp-1 sm:line-clamp-2">
-                {product.name}
+              <p className="text-[10px] sm:text-xs text-slate-600 mb-0.5">
+                {product.cureType ? `${product.cureType} Sealant` : product.name}
+              </p>
+              <p className="text-[10px] sm:text-xs text-slate-400 font-medium">
+                GAUDON {product.model}
               </p>
             </div>
 

@@ -75,7 +75,7 @@ export const products = [
   {
     id: "gaudon-g2",
     model: "G2",
-    name: "Doors & Windows Neutral Cure Sealant",
+    name: "Doors & Windows Neutral Cure Silicone",
     fullName: "GAUDON G2 Window & Door Neutral Cure Silicone Sealant",
     tagline: "High-performance silicone for durable sealing and long-term weather protection",
     bestFor: "Windows, Doors, Exterior",
@@ -209,7 +209,7 @@ export const products = [
     name: "General Purpose Acetic Cure Sealant",
     fullName: "GAUDON D2 General Purpose Acetic Cure Silicone Sealant",
     tagline: "Versatile silicone for everyday sealing and bonding applications",
-    bestFor: "General Purpose, Residential, Commercial",
+    bestFor: "General, Residential, Commercial",
     category: "construction",
     type: "single-component",
     cureType: "Acetic Cure",

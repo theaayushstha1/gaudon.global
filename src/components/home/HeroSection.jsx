@@ -95,8 +95,7 @@ export default function HeroSection() {
                 className="text-sm text-white leading-relaxed mb-3"
                 style={{ textShadow: '1px 1px 6px rgba(0,0,0,0.95), 0 0 15px rgba(0,0,0,0.8)' }}
               >
-                25+ years of excellence. Trusted by professionals in 100+ countries with our{' '}
-                <span className="text-amber-400 font-bold">premium silicone sealants</span>.
+                Premium silicone sealants manufacturer. 25+ years of expertise, professional grade quality, flexible MOQ.
               </p>
               <div className="flex flex-wrap gap-3 justify-end">
                 <Link to={createPageUrl('Products')}>
@@ -108,13 +107,13 @@ export default function HeroSection() {
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </Link>
-                <Link to={createPageUrl('Contact')}>
+                <Link to={createPageUrl('OEM')}>
                   <Button
                     size="default"
-                    variant="outline"
-                    className="border-2 border-amber-400/60 text-white hover:bg-amber-400/20 hover:border-amber-400 px-5 py-2 text-sm rounded-full font-semibold bg-black/20 backdrop-blur-sm transition-all duration-200"
+                    className="bg-white text-black hover:bg-white/90 px-5 py-2 text-sm rounded-full font-semibold transition-all duration-200 hover:-translate-y-0.5 shadow-lg"
                   >
-                    Get a Quote
+                    Explore Private Labeling
+                    <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </Link>
               </div>

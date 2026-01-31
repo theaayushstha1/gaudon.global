@@ -53,10 +53,10 @@ const factoryImages = [
 
   // Production (7 images)
   { src: '/images/factory-new/production-machinery-01.png', title: 'Production Machinery', desc: 'Advanced industrial equipment for silicone processing', category: 'Production' },
-  { src: '/images/factory-new/production-machinery-02.png', title: 'Processing Equipment', desc: 'Precision machinery for consistent quality', category: 'Production' },
+  { src: '/images/factory-new/production-machinery-02.png', title: 'Quality Lab Testing', desc: 'Laboratory analysis for quality assurance', category: 'Production' },
   { src: '/images/factory-new/production-line-01.png', title: 'Production Line', desc: 'Automated manufacturing systems', category: 'Production' },
   { src: '/images/factory-new/production-line-02.png', title: 'Assembly Line', desc: 'Efficient production workflow', category: 'Production' },
-  { src: '/images/factory-new/production-line-03.png', title: 'Manufacturing Line', desc: 'High-capacity production setup', category: 'Production' },
+  { src: '/images/factory-new/production-line-03.png', title: 'Inventory Storage', desc: 'Organized product storage facility', category: 'Production' },
   { src: '/images/factory-new/mixing-equipment-01.png', title: 'Mixing Equipment', desc: 'Precision blending systems for formulations', category: 'Production' },
   { src: '/images/factory-new/mixing-equipment-02.png', title: 'Blending Systems', desc: 'Advanced mixing technology', category: 'Production' },
 
@@ -66,13 +66,13 @@ const factoryImages = [
   { src: '/images/factory-new/filling-line-02.png', title: 'Filling Line', desc: 'Efficient packaging operations', category: 'Packaging' },
   { src: '/images/factory-new/filling-precision-01.png', title: 'Precision Filling', desc: 'Accurate volume dispensing systems', category: 'Packaging' },
   { src: '/images/factory-new/packaging-machine-01.png', title: 'Packaging Machine', desc: 'Automated cartridge packaging', category: 'Packaging' },
-  { src: '/images/factory-new/packaging-machine-02.png', title: 'Sealing Equipment', desc: 'Product sealing and finishing', category: 'Packaging' },
+  { src: '/images/factory-new/packaging-machine-02.png', title: 'Team Planning', desc: 'Group discussion and production coordination', category: 'Packaging' },
   { src: '/images/factory-new/packaging-line-full.png', title: 'Complete Packaging Line', desc: 'Full packaging production workflow', category: 'Packaging' },
 
   // Storage (3 images)
   { src: '/images/factory-new/raw-material-storage.png', title: 'Raw Material Storage', desc: 'Organized chemical storage with safety protocols', category: 'Storage' },
   { src: '/images/factory-new/chemical-storage-01.png', title: 'Chemical Warehouse', desc: 'Temperature-controlled material storage', category: 'Storage' },
-  { src: '/images/factory-new/chemical-storage-02.png', title: 'Material Handling', desc: 'Safe storage and handling systems', category: 'Storage' },
+  { src: '/images/factory-new/chemical-storage-02.png', title: 'Finished Goods Storage', desc: 'Ready-to-ship product warehouse', category: 'Storage' },
 ];
 
 // Gallery categories for filtering
@@ -647,7 +647,7 @@ export default function OEM() {
                 <p className="text-center text-slate-500 text-sm max-w-2xl mx-auto">
                   We handle the entire manufacturing process — from raw material sourcing to quality testing.
                   You provide your branding specifications, and we deliver ready-to-sell products with your logo,
-                  colors, and packaging design. No factory needed, no equipment costs.
+                  colors, and packaging design.
                 </p>
               </div>
             </motion.div>
@@ -658,7 +658,7 @@ export default function OEM() {
                 { title: 'Custom Formula', desc: 'Your specifications', Icon: FlaskConical },
                 { title: 'Your Branding', desc: 'Logo & packaging', Icon: Tag },
                 { title: 'Low MOQ', desc: '500 units minimum', Icon: Package },
-                { title: 'Fast Delivery', desc: '5-7 working days', Icon: Truck },
+                { title: 'Fast Delivery', desc: '15+ working days', Icon: Truck },
               ].map((item, idx) => (
                 <motion.div
                   key={idx}

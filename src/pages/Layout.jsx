@@ -23,7 +23,7 @@ function LayoutContent({ children, currentPageName }) {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   // Pages with light backgrounds that need dark navbar text from the start
-  const lightBackgroundPages = ['ProductDetail'];
+  const lightBackgroundPages = ['ProductDetail', 'Products'];
   const hasLightBackground = lightBackgroundPages.includes(currentPageName);
 
   useEffect(() => {
@@ -59,7 +59,7 @@ function LayoutContent({ children, currentPageName }) {
         style={{ transition: 'background-color 0.3s ease-out, box-shadow 0.3s ease-out' }}
       >
         <div className="container mx-auto px-4">
-          <nav className={`flex items-center justify-between transition-all duration-300 ${isScrolled || hasLightBackground ? 'h-20' : 'h-32'}`}>
+          <nav className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-20' : 'h-32'}`}>
             {/* Logo */}
             <Link to={createPageUrl('Home')} className="flex items-center gap-3 group">
               <motion.div
@@ -69,7 +69,7 @@ function LayoutContent({ children, currentPageName }) {
                 <img
                   src="/gaudon-mascot-logo.png"
                   alt="GAUDON Logo"
-                  className={`transition-all duration-300 ${isScrolled || hasLightBackground ? 'h-16' : 'h-28'} w-auto object-contain`}
+                  className={`transition-all duration-300 ${isScrolled ? 'h-16' : 'h-28'} w-auto object-contain`}
                 />
               </motion.div>
             </Link>
@@ -226,6 +226,11 @@ function LayoutContent({ children, currentPageName }) {
             <div>
               <h4 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">Products</h4>
               <ul className="space-y-3 text-sm text-slate-400">
+                <li>
+                  <Link to="/products" className="hover:text-white transition-colors">
+                    All Products
+                  </Link>
+                </li>
                 <li>
                   <Link to="/products?category=silicone" className="hover:text-white transition-colors">
                     100% Silicone Sealants

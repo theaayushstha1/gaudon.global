@@ -1,16 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Droplets, Sun, Wind, ThermometerSun, Sparkles, Clock, BadgeCheck } from 'lucide-react';
+import { Award, TrendingUp, ShieldCheck, Cog, ClipboardCheck, Leaf, Factory, Handshake } from 'lucide-react';
 
 const features = [
-  { icon: Sun, title: 'UV Resistant' },
-  { icon: Droplets, title: 'Waterproof' },
-  { icon: Wind, title: 'Weather Tough' },
-  { icon: ThermometerSun, title: 'Heat Stable' },
-  { icon: Sparkles, title: 'Premium Formula' },
-  { icon: Shield, title: 'Long Lasting' },
-  { icon: Clock, title: 'Easy Application' },
-  { icon: BadgeCheck, title: 'Pro Grade' },
+  { icon: Award, title: 'Proven Expertise' },
+  { icon: TrendingUp, title: 'Professional Performance' },
+  { icon: ShieldCheck, title: 'ISO-Certified Quality' },
+  { icon: Cog, title: 'Automated Manufacturing' },
+  { icon: ClipboardCheck, title: 'Batch-Verified Testing' },
+  { icon: Leaf, title: 'Clean Formulation' },
+  { icon: Factory, title: 'Factory-Direct Value' },
+  { icon: Handshake, title: 'Long-Term Partnerships' },
 ];
 
 export default function WhyGaudon() {
