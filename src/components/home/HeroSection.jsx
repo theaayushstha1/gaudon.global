@@ -101,7 +101,7 @@ export default function HeroSection() {
                 className="text-base sm:text-lg text-white leading-relaxed mb-4"
                 style={{ textShadow: '1px 1px 6px rgba(0,0,0,0.95), 0 0 15px rgba(0,0,0,0.8)' }}
               >
-                Premium silicone sealants manufacturer. 25+ years of expertise, professional grade quality, flexible MOQ.
+                25 years of expertise, professional grade quality, flexible MOQ.
               </p>
               <div className="flex flex-wrap gap-3 justify-end">
                 <Link to={createPageUrl('Products')}>
