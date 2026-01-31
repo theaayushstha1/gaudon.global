@@ -116,9 +116,9 @@ export default function Products() {
 
   return (
     <div className="min-h-screen bg-slate-50 pt-0 md:pt-20 overflow-x-hidden">
-      {/* Search Bar */}
+      {/* Search Bar + Mobile Categories - Sticky Together */}
       <section className="sticky top-14 z-30 bg-white border-b border-slate-200 shadow-sm">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-4 py-3">
           <div className="relative">
             <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
             <input
@@ -136,6 +136,39 @@ export default function Products() {
                 <X className="w-4 h-4" />
               </button>
             )}
+          </div>
+
+          {/* Mobile Category Pills - Inside sticky section */}
+          <div className="lg:hidden mt-3 -mx-4 px-4">
+            <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+              <button
+                onClick={clearFilters}
+                className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 flex-shrink-0 ${
+                  !activeMainCategory
+                    ? 'bg-slate-900 text-white'
+                    : 'bg-slate-100 text-slate-600 active:bg-slate-200'
+                }`}
+              >
+                All
+              </button>
+              {mainCategories.map((cat) => {
+                const isActive = activeMainCategory === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => handleMainCategoryClick(cat.id)}
+                    className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 flex-shrink-0 ${
+                      isActive
+                        ? 'text-white'
+                        : 'bg-slate-100 text-slate-600 active:bg-slate-200'
+                    }`}
+                    style={isActive ? { backgroundColor: cat.accent } : {}}
+                  >
+                    {cat.shortLabel}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -291,39 +324,6 @@ export default function Products() {
 
             {/* Right - Products Grid */}
             <div className="flex-1">
-              {/* Mobile Category Pills - Horizontal Scroll */}
-              <div className="lg:hidden sticky top-[125px] z-20 -mx-4 px-4 pt-2 pb-3 bg-slate-50 border-b border-slate-200">
-                <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
-                  <button
-                    onClick={clearFilters}
-                    className={`px-4 py-2.5 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 flex-shrink-0 ${
-                      !activeMainCategory
-                        ? 'bg-slate-900 text-white'
-                        : 'bg-slate-100 text-slate-600 active:bg-slate-200'
-                    }`}
-                  >
-                    All
-                  </button>
-                  {mainCategories.map((cat) => {
-                    const isActive = activeMainCategory === cat.id;
-                    return (
-                      <button
-                        key={cat.id}
-                        onClick={() => handleMainCategoryClick(cat.id)}
-                        className={`px-4 py-2.5 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 flex-shrink-0 ${
-                          isActive
-                            ? 'text-white'
-                            : 'bg-slate-100 text-slate-600 active:bg-slate-200'
-                        }`}
-                        style={isActive ? { backgroundColor: cat.accent } : {}}
-                      >
-                        {cat.shortLabel}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
               {/* Mobile Catalog Download */}
               <a
                 href="/GAUDON-Product-Catalog.pdf"
