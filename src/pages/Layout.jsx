@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowUp, Facebook } from 'lucide-react';
+import { Menu, X, ArrowUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { LanguageProvider, useLanguage } from '../components/shared/LanguageContext';
 
@@ -275,10 +275,9 @@ function LayoutContent({ children, currentPageName }) {
                     href="https://www.facebook.com/share/17rnM7yDpd/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 hover:text-white transition-colors"
+                    className="hover:text-white transition-colors"
                   >
-                    <Facebook className="w-4 h-4" />
-                    <span>Facebook</span>
+                    Facebook
                   </a>
                 </li>
               </ul>
