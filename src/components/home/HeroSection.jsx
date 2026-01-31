@@ -37,10 +37,16 @@ export default function HeroSection() {
               GAUDON
             </h1>
             <p
-              className="text-lg sm:text-xl font-bold text-amber-400 tracking-wide mb-1"
+              className="text-base sm:text-lg font-bold text-amber-400 tracking-wide mb-1"
               style={{ textShadow: '1px 1px 6px rgba(0,0,0,0.9), 0 0 15px rgba(0,0,0,0.7)' }}
             >
-              Premium Silicone Sealants
+              Professional Grade Silicone & Acrylic Sealants
+            </p>
+            <p
+              className="text-xs sm:text-sm text-white/90 mb-2"
+              style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.9)' }}
+            >
+              Construction • HVAC • Automotive • Industrial
             </p>
             <p
               className="text-base sm:text-lg lg:text-xl font-semibold text-white tracking-tight mb-4"
