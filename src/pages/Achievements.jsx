@@ -115,10 +115,10 @@ export default function Achievements() {
             className="text-center mb-8"
           >
             <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-2">
-              Our Manufacturing Process
+              Factory Overview & Production Process
             </h2>
             <p className="text-slate-500">
-              See how we produce professional-grade silicone sealants
+              State-of-the-art manufacturing facility producing professional-grade silicone sealants
             </p>
           </motion.div>
 
