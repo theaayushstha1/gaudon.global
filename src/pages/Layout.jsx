@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowUp, Award, Shield } from 'lucide-react';
+import { Menu, X, ArrowUp, Award, Shield, Facebook, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { LanguageProvider, useLanguage } from '../components/shared/LanguageContext';
 
@@ -269,28 +269,6 @@ function LayoutContent({ children, currentPageName }) {
                   <span className="text-slate-500 block mb-1">Location</span>
                   <span>USA</span>
                 </li>
-                <li>
-                  <span className="text-slate-500 block mb-1">Follow Us</span>
-                  <div className="flex items-center gap-3">
-                    <a
-                      href="https://www.facebook.com/share/17rnM7yDpd/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-white transition-colors"
-                    >
-                      Facebook
-                    </a>
-                    <span className="text-slate-600">|</span>
-                    <a
-                      href="https://www.linkedin.com/in/gaudon-silicone-sealants-77829b3a9/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-white transition-colors"
-                    >
-                      LinkedIn
-                    </a>
-                  </div>
-                </li>
               </ul>
             </div>
           </div>
@@ -300,7 +278,27 @@ function LayoutContent({ children, currentPageName }) {
             <p className="text-slate-500 text-sm">
               &copy; {new Date().getFullYear()} GAUDON USA LLC. All rights reserved.
             </p>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
+              {/* Social Icons */}
+              <div className="flex items-center gap-2">
+                <a
+                  href="https://www.facebook.com/share/17rnM7yDpd/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-slate-500 hover:text-white hover:border-white/40 transition-colors"
+                >
+                  <Facebook className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/gaudon-silicone-sealants-77829b3a9/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-slate-500 hover:text-white hover:border-white/40 transition-colors"
+                >
+                  <Linkedin className="w-4 h-4" />
+                </a>
+              </div>
+              {/* Badges */}
               <span className="text-xs text-slate-500 px-3 py-1.5 rounded-full border border-white/20 flex items-center gap-1.5">
                 <Award className="w-3 h-3" />
                 Professional Grade
