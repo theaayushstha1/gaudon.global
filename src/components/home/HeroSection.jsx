@@ -90,15 +90,15 @@ export default function HeroSection() {
             transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
             className="flex justify-end"
           >
-            <div className="text-right max-w-sm">
+            <div className="text-right max-w-md">
               <p
-                className="font-black text-xl lg:text-2xl mb-2 tracking-tight text-white"
+                className="font-black text-2xl lg:text-3xl mb-2 tracking-tight text-white"
                 style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.95), 0 0 20px rgba(0,0,0,0.8)' }}
               >
                 Order Today
               </p>
               <p
-                className="text-sm text-white leading-relaxed mb-3"
+                className="text-base sm:text-lg text-white leading-relaxed mb-4"
                 style={{ textShadow: '1px 1px 6px rgba(0,0,0,0.95), 0 0 15px rgba(0,0,0,0.8)' }}
               >
                 Premium silicone sealants manufacturer. 25+ years of expertise, professional grade quality, flexible MOQ.
@@ -107,19 +107,19 @@ export default function HeroSection() {
                 <Link to={createPageUrl('Products')}>
                   <Button
                     size="default"
-                    className="bg-white text-black hover:bg-white/90 px-5 py-2 text-sm rounded-full font-semibold transition-all duration-200 hover:-translate-y-0.5 shadow-lg"
+                    className="bg-white text-black hover:bg-white/90 px-6 py-2.5 text-base rounded-full font-semibold transition-all duration-200 hover:-translate-y-0.5 shadow-lg"
                   >
                     Explore Products
-                    <ArrowRight className="ml-2 w-4 h-4" />
+                    <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>
                 <Link to={createPageUrl('OEM')}>
                   <Button
                     size="default"
-                    className="bg-white text-black hover:bg-white/90 px-5 py-2 text-sm rounded-full font-semibold transition-all duration-200 hover:-translate-y-0.5 shadow-lg"
+                    className="bg-white text-black hover:bg-white/90 px-6 py-2.5 text-base rounded-full font-semibold transition-all duration-200 hover:-translate-y-0.5 shadow-lg"
                   >
                     Explore Private Labeling
-                    <ArrowRight className="ml-2 w-4 h-4" />
+                    <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>
               </div>
