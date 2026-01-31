@@ -292,7 +292,7 @@ export default function Products() {
             {/* Right - Products Grid */}
             <div className="flex-1">
               {/* Mobile Category Pills - Horizontal Scroll */}
-              <div className="lg:hidden sticky top-[116px] z-20 -mx-4 px-4 py-3 bg-slate-50">
+              <div className="lg:hidden sticky top-[125px] z-20 -mx-4 px-4 pt-2 pb-3 bg-slate-50 border-b border-slate-200">
                 <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
                   <button
                     onClick={clearFilters}
