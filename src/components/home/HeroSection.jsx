@@ -42,12 +42,17 @@ export default function HeroSection() {
             >
               Professional Grade Sealants
             </p>
-            <p
-              className="text-xs sm:text-sm text-white/90 mb-2"
-              style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.9)' }}
-            >
-              Construction • HVAC • Automotive • Industrial
-            </p>
+            <div className="flex flex-wrap gap-2 mb-3">
+              {['Construction', 'HVAC', 'Automotive', 'Industrial'].map((industry) => (
+                <span
+                  key={industry}
+                  className="px-3 py-1 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full text-xs sm:text-sm font-medium text-white"
+                  style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.8)' }}
+                >
+                  {industry}
+                </span>
+              ))}
+            </div>
             <p
               className="text-base sm:text-lg lg:text-xl font-semibold text-white tracking-tight mb-4"
               style={{ textShadow: '1px 1px 6px rgba(0,0,0,0.9), 0 0 15px rgba(0,0,0,0.7)' }}
