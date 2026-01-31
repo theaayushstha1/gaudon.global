@@ -40,7 +40,7 @@ export default function HeroSection() {
               className="text-base sm:text-lg font-bold text-amber-400 tracking-wide mb-1"
               style={{ textShadow: '1px 1px 6px rgba(0,0,0,0.9), 0 0 15px rgba(0,0,0,0.7)' }}
             >
-              Professional Grade Silicone & Acrylic Sealants
+              Professional Grade Sealants
             </p>
             <p
               className="text-xs sm:text-sm text-white/90 mb-2"
