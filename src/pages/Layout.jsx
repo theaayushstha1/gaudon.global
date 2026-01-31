@@ -134,7 +134,7 @@ function LayoutContent({ children, currentPageName }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="lg:hidden fixed inset-0 z-[99] bg-slate-950"
+            className="lg:hidden fixed inset-0 z-[101] bg-slate-950"
           >
             {/* Header with logo and close button */}
             <div className="container mx-auto px-4">
