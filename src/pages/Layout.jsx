@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowUp } from 'lucide-react';
+import { Menu, X, ArrowUp, Award, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { LanguageProvider, useLanguage } from '../components/shared/LanguageContext';
 
@@ -271,14 +271,25 @@ function LayoutContent({ children, currentPageName }) {
                 </li>
                 <li>
                   <span className="text-slate-500 block mb-1">Follow Us</span>
-                  <a
-                    href="https://www.facebook.com/share/17rnM7yDpd/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-white transition-colors"
-                  >
-                    Facebook
-                  </a>
+                  <div className="flex items-center gap-3">
+                    <a
+                      href="https://www.facebook.com/share/17rnM7yDpd/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-white transition-colors"
+                    >
+                      Facebook
+                    </a>
+                    <span className="text-slate-600">|</span>
+                    <a
+                      href="https://www.linkedin.com/in/gaudon-silicone-sealants-77829b3a9/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-white transition-colors"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -290,10 +301,12 @@ function LayoutContent({ children, currentPageName }) {
               &copy; {new Date().getFullYear()} GAUDON USA LLC. All rights reserved.
             </p>
             <div className="flex items-center gap-3">
-              <span className="text-xs text-slate-500 px-3 py-1.5 rounded-full border border-white/20">
+              <span className="text-xs text-slate-500 px-3 py-1.5 rounded-full border border-white/20 flex items-center gap-1.5">
+                <Award className="w-3 h-3" />
                 Professional Grade
               </span>
-              <span className="text-xs text-slate-500 px-3 py-1.5 rounded-full border border-white/20">
+              <span className="text-xs text-slate-500 px-3 py-1.5 rounded-full border border-white/20 flex items-center gap-1.5">
+                <Shield className="w-3 h-3" />
                 30 Year Warranty
               </span>
             </div>
