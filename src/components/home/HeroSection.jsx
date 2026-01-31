@@ -22,7 +22,7 @@ export default function HeroSection() {
 
       {/* Content Container */}
       <div className="relative z-10 h-full flex flex-col">
-        <div className="container mx-auto px-6 lg:px-12 flex-1 flex items-center">
+        <div className="container mx-auto px-6 lg:px-12 flex-1 flex items-start pt-8 md:items-center md:pt-0">
           {/* Left: GAUDON + Premium Silicone Sealants + Slogan + Trust Indicators */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
