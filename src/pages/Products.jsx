@@ -138,7 +138,7 @@ export default function Products() {
             )}
           </div>
 
-          {/* Mobile Category Pills + Download - Inside sticky section */}
+          {/* Mobile Category Pills - Inside sticky section */}
           <div className="lg:hidden mt-3 -mx-4 px-4">
             <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide items-center">
               <button
@@ -168,16 +168,19 @@ export default function Products() {
                   </button>
                 );
               })}
-              {/* Download Catalog Button */}
-              <a
-                href="/GAUDON-Product-Catalog.pdf"
-                download="GAUDON-Product-Catalog.pdf"
-                className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap bg-slate-100 text-slate-600 flex-shrink-0"
-              >
-                <Download className="w-3.5 h-3.5" />
-                Catalog
-              </a>
             </div>
+            {/* Mobile Download Catalog - Separate row, always visible */}
+            <a
+              href="/GAUDON-Product-Catalog.pdf"
+              download="GAUDON-Product-Catalog.pdf"
+              className="flex items-center justify-between mt-2 bg-slate-100 border border-slate-200 rounded-xl px-4 py-2.5"
+            >
+              <div className="flex items-center gap-2">
+                <FileText className="w-4 h-4 text-slate-700" />
+                <span className="text-sm font-medium text-slate-900">Download Product Catalog</span>
+              </div>
+              <Download className="w-4 h-4 text-slate-500" />
+            </a>
           </div>
         </div>
       </section>
